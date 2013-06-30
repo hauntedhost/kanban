@@ -11,3 +11,15 @@ users = User.create([
   { email: "somlor@eml.cc", password: "123" }
 ])
 
+boards = Board.create([
+  { name: "kanban app", description: "meta-kanban for this kanban app" },
+  { name: "second app", description: "my second app academy app" },
+  { name: "dev job", description: "job search board" }  
+])
+
+boards_members = BoardMember.create([
+  { board_id: 1, member_id: 1 },
+  { board_id: 2, member_id: 1 },
+  { board_id: 3, member_id: 1 }  
+])
+

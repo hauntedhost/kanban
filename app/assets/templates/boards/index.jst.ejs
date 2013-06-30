@@ -1,0 +1,11 @@
+<h2>Boards</h2>
+
+<ul id="boards">
+  <% boards.each(function (board) { %>
+    <li>
+      <a href="/boards/<%= board.id %>">
+        <%= board.escape("name") %>
+      </a>
+    </li>
+  <% }); %>
+</ul>

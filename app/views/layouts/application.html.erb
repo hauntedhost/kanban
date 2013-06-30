@@ -10,18 +10,19 @@
 
 <div id="wrapper">
 
-  <div id="main">
-    <%= yield %>
-  </div>
-
-  <footer>
+  <header>
     <% if logged_in? %>
       <p>welcome back <%= current_user.email %> (<%= link_to "logout", logout_url %>)</p>
       <p><%= current_user.session_key %></p>
     <% else %>
       <p><%= link_to "login", login_url %>
     <% end %>
-  </footer>
+  </header>
+
+  <div id="main">
+    <%= yield %>
+  </div>
+
 
 </div>
 

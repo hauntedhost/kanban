@@ -12,8 +12,8 @@
  *= require_tree .
  */
 
-#wrapper footer {
+#wrapper header {
   margin-top: 10px;
   padding: 10px;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }

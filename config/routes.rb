@@ -1,7 +1,8 @@
 Kanban::Application.routes.draw do
-  root :to => "Boards#index"
-
   resources :boards, :only => [:index, :show]
+
+  resource :root, :only => [:index]
+  root :to => "Root#index"
 
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "Sessions#new"
