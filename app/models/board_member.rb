@@ -17,4 +17,7 @@ class BoardMember < ActiveRecord::Base
   belongs_to :member, :class_name => "User"
   has_many :lists
 
+  validates_uniqueness_of :board_id, :scope => [:board_id, :member_id] 
+  validates_uniqueness_of :member_id, :scope => [:member_id, :board_id] 
+
 end

@@ -18,4 +18,10 @@ class Board < ActiveRecord::Base
 
   has_many :board_activities
 
+  has_many :lists
+
+  def as_json(options = {})
+    super(options.merge(:include => {:lists => { :include => :cards }}))
+  end
+
 end

@@ -10,14 +10,14 @@
 
 <div id="wrapper">
 
-  <header>
+  <div id="header">
     <% if logged_in? %>
       <p>welcome back <%= current_user.email %> (<%= link_to "logout", logout_url %>)</p>
       <p><%= current_user.session_key %></p>
     <% else %>
       <p><%= link_to "login", login_url %>
     <% end %>
-  </header>
+  </div>
 
   <div id="main">
     <%= yield %>

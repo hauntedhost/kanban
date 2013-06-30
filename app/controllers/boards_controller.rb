@@ -8,8 +8,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    # board = current_user.includes(:lists => :cards).find(params[:id])
     board = current_user.boards.find(params[:id])
-    render :json => board    
+    render :json => board
   end
 end

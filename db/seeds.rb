@@ -23,3 +23,19 @@ boards_members = BoardMember.create([
   { board_id: 3, member_id: 1 }  
 ])
 
+lists = List.create([
+  { board_id: 1, title: "todo" },           # kanban app
+  { board_id: 1, title: "in progress" },    # kanban app
+  { board_id: 1, title: "finished" },       # kanban app
+  { board_id: 2, title: "ideas" },          # second app
+  { board_id: 3, title: "apply" },          # dev job
+  { board_id: 3, title: "applied" }         # dev job
+])
+
+card = Card.create([
+  { list_id: 1, title: "pass lists/cards with board" }, # kanban/todo 
+  { list_id: 3, title: "add boards index" },            # kanban/finished
+  { list_id: 3, title: "add boards show" },             # kanban/finished
+  { list_id: 4, title: "chains.cc" }                    # second app/ideas
+])
+

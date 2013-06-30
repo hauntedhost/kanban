@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-#wrapper header {
+#header {
   margin-top: 10px;
   padding: 10px;
   border-bottom: 1px solid #ccc;

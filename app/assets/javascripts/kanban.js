@@ -4,10 +4,18 @@ window.Kanban = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Kanban.Routers.Boards({
-      $rootEl: $("#content")
+    var that = this;
+
+    that.$rootEl = $("#content");
+    that.$rootEl.html("loading ...");
+
+    Kanban.boards = new Kanban.Collections.Boards();
+    Kanban.boards.fetch({
+      success: function (boards) {
+        new Kanban.Routers.Boards({ $rootEl: that.$rootEl });
+        Backbone.history.start();
+      }
     });
-    Backbone.history.start();
   }
 };
 

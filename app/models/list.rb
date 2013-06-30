@@ -12,4 +12,8 @@
 
 class List < ActiveRecord::Base
   attr_accessible :board_id, :open, :title
+
+  belongs_to :board
+  has_many :cards
+
 end

@@ -12,4 +12,8 @@
 
 class CardComment < ActiveRecord::Base
   attr_accessible :card_id, :commenter_id, :content
+
+  belongs_to :card
+  belongs_to :commenter, :class_name => "User"
+
 end

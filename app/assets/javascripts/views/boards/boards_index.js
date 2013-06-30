@@ -1,5 +1,7 @@
 Kanban.Views.BoardsIndex = Backbone.View.extend({
   template: JST['boards/index'],
+  tagName: "section",
+  className: "boards_index",
 
   events: {
     
