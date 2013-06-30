@@ -1,6 +1,8 @@
 Kanban::Application.routes.draw do
   resources :boards, :only => [:index, :show]
-
+  resources :lists, :only => [:index, :show]
+  resources :cards, :only => [:index, :show]
+    
   resource :root, :only => [:index]
   root :to => "Root#index"
 

@@ -1,5 +1,4 @@
 class BoardsController < ApplicationController
-  before_filter :require_login
   respond_to :json
 
   def index
