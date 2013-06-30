@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: card_members
+#
+#  id         :integer          not null, primary key
+#  card_id    :integer          not null
+#  member_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  card_id: 1
+  member_id: 1
+
+two:
+  card_id: 1
+  member_id: 1

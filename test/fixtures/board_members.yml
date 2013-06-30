@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: board_members
+#
+#  id         :integer          not null, primary key
+#  board_id   :integer          not null
+#  member_id  :integer          not null
+#  admin      :boolean          default(FALSE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  board_id: 1
+  member_id: 1
+  admin: false
+
+two:
+  board_id: 1
+  member_id: 1
+  admin: false

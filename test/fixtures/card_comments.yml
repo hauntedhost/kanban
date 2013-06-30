@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: card_comments
+#
+#  id           :integer          not null, primary key
+#  card_id      :integer          not null
+#  commenter_id :integer          not null
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  card_id: 1
+  commenter_id: 1
+  content: MyText
+
+two:
+  card_id: 1
+  commenter_id: 1
+  content: MyText
