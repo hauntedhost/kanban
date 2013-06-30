@@ -5,7 +5,7 @@ Kanban.Routers.Boards = Backbone.Router.extend({
 
   routes: {
     "": "index",
-    "/boards/": "show"
+    "boards/:id": "show"
   },
 
   index: function () {
@@ -14,7 +14,7 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     var boards = new Kanban.Collections.Boards();
 
     boards.fetch({
-      success: function (data) {
+      success: function (boards) {
         console.log("fetched boards");
         console.log(boards);
 
@@ -23,6 +23,26 @@ Kanban.Routers.Boards = Backbone.Router.extend({
         });
 
         that.$rootEl.html(boardsIndex.render().$el);
+      }
+    });
+  },
+
+  show: function (id) {
+    var that = this;
+
+    console.log("show page");
+
+    var board = new Kanban.Models.Board({ id: id });
+    board.fetch({
+      success: function (board) {
+        console.log("got board");
+        console.log(board);
+
+        var boardShow = new Kanban.Views.BoardShow({
+          model: board
+        });
+
+        that.$rootEl.html(boardShow.render().$el);
       }
     });
   }
