@@ -14,7 +14,51 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :activation_key, :bio, :email, :password_digest, :session_key, :username
+  attr_accessible :username, :email, :password 
+  attr_reader :password
 
+  has_many :boards_members, 
+    :class_name => "BoardMember", 
+    :foreign_key => :member_id
+  has_many :boards, :through => :boards_members
 
+  has_many :cards_members, 
+    :class_name => "CardMember", 
+    :foreign_key => :member_id
+  has_many :cards, :through => :cards_members
+
+  validates_uniqueness_of :email
+  validates_presence_of :email, :password_digest
+  validates_length_of :password, { :minimum => 3 }
+
+  def password
+    @password || self.password_digest
+  end
+
+  def password=(password)
+    @password = password_digest
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def correct_password?(password)
+    BCrypt::Password.new(self.password_digest) == password
+  end
+
+  def reset_session_key
+    new_key = SecureRandom.urlsafe_base64(32)
+    while User.find_by_session_key(new_key)
+      new_key = SecureRandom.urlsafe_base64(32)
+    end
+    self.session_key = new_key
+    save
+  end
+
+  def destroy_session_key
+    self.session_key = nil
+    save
+  end
+
+  def correct_session_key?(key) 
+    key == self.session_key
+  end
 end

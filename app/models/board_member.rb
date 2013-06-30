@@ -12,4 +12,9 @@
 
 class BoardMember < ActiveRecord::Base
   attr_accessible :admin, :board_id, :member_id
+
+  belongs_to :board
+  belongs_to :member, :class_name => "User"
+  has_many :lists
+
 end

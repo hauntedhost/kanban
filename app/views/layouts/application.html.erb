@@ -8,7 +8,22 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="wrapper">
+
+  <div id="main">
+    <%= yield %>
+  </div>
+
+  <footer>
+    <% if logged_in? %>
+      <p>welcome back <%= current_user.email %> (<%= link_to "logout", logout_url %>)</p>
+      <p><%= current_user.session_key %></p>
+    <% else %>
+      <p><%= link_to "login", login_url %>
+    <% end %>
+  </footer>
+
+</div>
 
 </body>
 </html>

@@ -12,4 +12,10 @@
 
 class Board < ActiveRecord::Base
   attr_accessible :description, :name, :open
+
+  has_many :boards_members, :class_name => "BoardMember"
+  has_many :members, :through => :boards_members
+
+  has_many :board_activities
+
 end
