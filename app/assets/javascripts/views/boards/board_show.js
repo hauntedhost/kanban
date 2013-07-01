@@ -8,7 +8,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     // var board = that.model;
     // var lists = that.model.lists();
-    that.model.on('change', this.render, this);
+    that.model.on('reset', this.render, this);
   },
 
   events: {
