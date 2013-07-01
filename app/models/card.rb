@@ -10,10 +10,12 @@
 #  open        :boolean          default(TRUE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  position    :integer
 #
 
 class Card < ActiveRecord::Base
-  attr_accessible :description, :due_date, :list_id, :open, :title
+  attr_accessible :list_id, :title, :description, :due_date, :open, :position
+  default_scope :order => "cards.position"
 
   belongs_to :list
   has_one :board, :through => :list

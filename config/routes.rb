@@ -17,6 +17,10 @@ Kanban::Application.routes.draw do
         post :sort
       end
     end
-    resources :cards, :only => [:index, :show]
+    resources :cards, :only => [:index, :show, :sort] do
+      collection do
+        post :sort
+      end
+    end
   end
 end

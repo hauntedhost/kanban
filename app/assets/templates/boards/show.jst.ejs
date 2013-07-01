@@ -1,4 +1,8 @@
-<h2>Board: <%= board.escape("name") %></h2>
+<p>
+  <a href="#">Boards</a> > <%= board.escape("name") %>
+</p>
+
+<h2><%= board.escape("name") %></h2>
 
 <div class="lists">
   <% lists.each(function (list) { %>
@@ -9,7 +13,7 @@
 
       <div class="cards">
         <% list.cards().each(function (card) { %>
-          <div class="card" data-id="<%= card.id %>">
+          <div class="card" id="card_<%= card.id %>" data-id="<%= card.id %>">
             <%= card.escape("title") %>
           </div>
         <% }); %>

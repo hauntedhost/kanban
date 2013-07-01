@@ -35,17 +35,20 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     $lists.sortable({
       axis: "x",
       update: function () {
-        console.log("resorted!");
         var sortData = $(this).sortable("serialize");
-        console.log(sortData);
         $.post(sortListsUrl, sortData);
       }
     });
 
+    sortCardsUrl = "/api/cards/sort"
     var $cards = $lists.find("div.cards");
     $cards.sortable({
       axis: "y",
-      delay: 150
+      delay: 150,
+      update: function () {
+        var sortData = $(this).sortable("serialize");
+        $.post(sortCardsUrl, sortData);
+      }
     });
   }
 

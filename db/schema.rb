@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701031040) do
+ActiveRecord::Schema.define(:version => 20130701043748) do
 
   create_table "board_activities", :force => true do |t|
     t.integer  "member_id",   :null => false
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130701031040) do
     t.boolean  "open",        :default => true, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.integer  "position"
   end
 
   add_index "cards", ["list_id"], :name => "index_cards_on_list_id"

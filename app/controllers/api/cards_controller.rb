@@ -11,6 +11,21 @@ module Api
       card = current_user.cards.find(params[:id])
       render :json => card
     end
-    
+
+    def sort
+      cards = params[:card].map(&:to_i)
+
+      # cards owned by current user?
+      if (cards - current_user.card_ids).empty?
+        # TODO: move sort to model
+        cards.each_with_index do |id, index|
+          Card.update_all({ position: index + 1 }, { id: id })
+        end
+        render :nothing => true, :status => :ok
+      else
+        render :nothing => true, :status => :unprocessable_entity
+      end
+    end
+
   end
 end

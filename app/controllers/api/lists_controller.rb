@@ -16,7 +16,8 @@ module Api
       lists = params[:list].map(&:to_i)
 
       # are lists owned by current user?
-      if (lists - current_user.list_ids).empty? 
+      if (lists - current_user.list_ids).empty?
+        # TODO: move sort model
         lists.each_with_index do |id, index|
           List.update_all({ position: index + 1 }, { id: id })
         end

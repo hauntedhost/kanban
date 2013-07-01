@@ -13,7 +13,7 @@
 
 class List < ActiveRecord::Base
   attr_accessible :board_id, :title, :open, :position
-  default_scope :order => "position"
+  default_scope :order => "lists.position"
   
   belongs_to :board
   has_many :cards
