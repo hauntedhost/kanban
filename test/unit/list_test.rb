@@ -8,6 +8,7 @@
 #  open       :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  position   :integer
 #
 
 require 'test_helper'

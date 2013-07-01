@@ -12,8 +12,11 @@ Kanban::Application.routes.draw do
 
   namespace :api do
     resources :boards, :only => [:index, :show, :create]
-    resources :lists, :only => [:index, :show]
+    resources :lists , :only => [:index, :show, :sort] do
+      collection do
+        post :sort
+      end
+    end
     resources :cards, :only => [:index, :show]
   end
-  
 end

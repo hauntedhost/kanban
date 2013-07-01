@@ -11,5 +11,6 @@ module Api
       board = current_user.boards.find(params[:id])
       render :json => board
     end
+
   end
 end

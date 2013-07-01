@@ -11,6 +11,20 @@ module Api
       list = current_user.lists.find(params[:id])
       render :json => list
     end
-    
+
+    def sort
+      lists = params[:list].map(&:to_i)
+
+      # are lists owned by current user?
+      if (lists - current_user.list_ids).empty? 
+        lists.each_with_index do |id, index|
+          List.update_all({ position: index + 1 }, { id: id })
+        end
+        render :nothing => true, :status => :ok
+      else
+        render :nothing => true, :status => :unprocessable_entity
+      end
+    end
+
   end
 end

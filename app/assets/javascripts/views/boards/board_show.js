@@ -6,7 +6,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   events: {
     "click div.card": "cardClick"
   },
-  
+
   cardClick: function (event) {
     var id = parseInt($(event.target).data("id"));
     console.log("card click: " + id)
@@ -18,16 +18,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var board = that.model;
     var lists = that.model.lists();
-    // var cards = lists.get("cards");
-    // console.log(cards);
-    // lists.each(function (list) {
-    //   console.log(list.cards();)
-    // });
 
     var renderedContent = that.template({
       board: board,
       lists: lists,
-      // cards: cards
     });
 
     that.$el.html(renderedContent);

@@ -8,11 +8,13 @@
 #  open       :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  position   :integer
 #
 
 class List < ActiveRecord::Base
-  attr_accessible :board_id, :title, :open, :order
-
+  attr_accessible :board_id, :title, :open, :position
+  default_scope :order => "position"
+  
   belongs_to :board
   has_many :cards
 
