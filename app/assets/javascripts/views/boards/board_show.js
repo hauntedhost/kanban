@@ -3,8 +3,16 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   tagName: "section",
   className: "boards-show",
 
+  initialize: function () {
+    var that = this;
+
+    // var board = that.model;
+    // var lists = that.model.lists();
+    that.model.on('change', this.render, this);
+  },
+
   events: {
-    "click div.card": "cardClick"
+    "click div.card": "cardClick",
   },
 
   cardClick: function (event) {
@@ -15,6 +23,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
   render: function () {
     var that = this;
+
+    console.log("board_show render");
 
     var board = that.model;
     var lists = that.model.lists();

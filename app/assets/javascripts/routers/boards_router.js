@@ -29,14 +29,39 @@ Kanban.Routers.Boards = Backbone.Router.extend({
 
     that.$rootEl.html(boardShow.render().$el);
 
-    // var sortListsUrl = "/api/boards/" + id + "/sort_lists";
     sortListsUrl = "/api/lists/sort"
     var $lists = that.$rootEl.find("div.lists");
     $lists.sortable({
       axis: "x",
-      update: function () {
+      update: function (data) {
         var sortData = $(this).sortable("serialize");
-        $.post(sortListsUrl, sortData);
+        $.post(sortListsUrl, sortData, function (resortedLists) {
+          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
+        });
+
+        // var freshLists = new Kanban.Collections.Lists();
+        // freshLists.url = "/api/boards/" + id + "/lists";
+        // freshLists.fetch({
+        //   success: function (boards) {
+        //     board.set({ lists:  freshLists });
+        //   }
+        // });
+
+        // board.lists().each(function (list) {
+        //   console.log(list);
+        // })
+
+        // var sortArr = $(this).sortable("toArray");
+        // console.log(sortArr);
+
+        // for (var i = 0; i < sortData.length; i++) {
+        //   var list = board.get({ id: sortData[i] });
+        //   console.log(list);
+        // }
+        // board.set
+        // var boardId = $(this).data("boardId");
+        // Kanban.boards.trigger
+        // console.log(id);
       }
     });
 

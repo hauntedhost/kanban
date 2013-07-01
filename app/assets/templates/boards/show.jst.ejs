@@ -1,6 +1,6 @@
 <h2><%= board.escape("name") %></h2>
 
-<div class="lists">
+<div class="lists" data-board-id="<%= board.id %>">
   <% lists.each(function (list) { %>
     <div class="list" id="list_<%= list.id %>" data-id="<%= list.id %>">
       <header class="title">

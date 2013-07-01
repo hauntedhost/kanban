@@ -50,14 +50,14 @@ body {
 
 #content {
   float: left;
-  width: 940px;
+  width: 1000px;
   padding: 5px;
   padding-left: 15px;
 }
 
 #sidebar {
   float: right;
-  width: 280px;
+  width: 240px;
   min-height: 280px;
   background: #f0f0f0;
   padding: 10px;
@@ -98,7 +98,7 @@ section.boards-show { }
 
   .list {
     background: #e3e3e3;
-    width: 280px;
+    width: 220px;
     border: 1px solid #ccc;
     float: left;
     padding: 6px;

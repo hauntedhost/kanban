@@ -16,6 +16,7 @@
 class Card < ActiveRecord::Base
   attr_accessible :list_id, :title, :description, :due_date, :open, :position
   default_scope :order => "cards.position"
+  acts_as_list
 
   belongs_to :list
   has_one :board, :through => :list

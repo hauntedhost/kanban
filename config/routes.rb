@@ -8,10 +8,14 @@ Kanban::Application.routes.draw do
   get "logout" => "Sessions#destroy"
 
   resources :users, :only => [:show]
-  
+
   namespace :api do
     resources :users, :only => [:show]
-    resources :boards, :only => [:index, :show, :create]
+    resources :boards, :only => [:index, :show, :create] #do
+    #   member do
+    #     get :lists
+    #   end
+    # end
     resources :lists , :only => [:index, :show] do
       collection do
         post :sort
