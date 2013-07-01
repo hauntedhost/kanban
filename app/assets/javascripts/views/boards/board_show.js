@@ -4,17 +4,12 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   className: "boards_show",
 
   events: {
-    "click div.list": "listClick",
-    "click div.card": "cardClick",
+    "click div.card": "cardClick"
   },
-
-  listClick: function (event) {
-    console.log("list click");
-    event.stopPropagation();
-  },
-
+  
   cardClick: function (event) {
-    console.log("card click")
+    var id = parseInt($(event.target).data("id"));
+    console.log("card click: " + id)
     event.stopPropagation();
   },
 

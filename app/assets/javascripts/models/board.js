@@ -1,6 +1,6 @@
 Kanban.Models.Board = Backbone.Model.extend({
   initialize: function () {
-    console.log("initialize board");
+    // console.log("initialize board");
     var lists = this.get("lists");
     this.set({ lists: new Kanban.Collections.Lists(lists) });
   },

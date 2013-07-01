@@ -30,10 +30,15 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     that.$rootEl.html(boardShow.render().$el);
 
     var $lists = that.$rootEl.find("div.lists");
-    $lists.sortable();
+    $lists.sortable({
+      axis: "x"
+    });
 
     var $cards = $lists.find("div.cards");
-    $cards.sortable();
+    $cards.sortable({
+      axis: "y",
+      delay: 150
+    });
   }
 
 });

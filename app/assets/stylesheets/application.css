@@ -31,6 +31,15 @@
   float: left;
   padding: 10px;
   margin: 10px;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.list.ui-sortable-helper {
+  transform: rotate(4deg);
+  -moz-transform: rotate(4deg);
+  -webkit-transform: rotate(4deg);
 }
 
 .card {
@@ -38,4 +47,13 @@
   border: 1px solid #ccc;
   padding: 10px;
   margin: 3px 0 3px 0;
+  cursor: pointer;
 }
+
+.card.ui-sortable-helper {
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+
