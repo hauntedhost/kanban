@@ -48,7 +48,15 @@ Kanban.Routers.Boards = Backbone.Router.extend({
       delay: 150,
       update: function () {
         var sortData = $(this).sortable("serialize");
-        $.post(sortCardsUrl, sortData);
+
+        var listId = parseInt($(this).data("listId"));
+        var list = board.lists().get({ id: listId });
+        console.log("list");
+        console.log(list);
+ 
+        $.post(sortCardsUrl, sortData, function (resortedCards) {
+          list.set({ cards: new Kanban.Collections.Cards(resortedCards) });
+        });
       }
     });
   }

@@ -11,11 +11,6 @@ module Api
       board = current_user.boards.find(params[:id])
       render :json => board
     end
-
-    # def lists
-    #   board = current_user.boards.find(params[:id])
-    #   lists = board.lists
-    #   render :json => lists
-    # end
+    
   end
 end
