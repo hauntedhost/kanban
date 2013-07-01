@@ -13,47 +13,120 @@
  *= require jquery.ui.all
  */
 
+body {
+  margin: 0;
+  font-size: 16px;
+}
+
 #header {
-  margin-top: 10px;
-  padding: 10px;
+  padding: 5px;
   border-bottom: 1px solid #ccc;
+  overflow: hidden;
 }
 
-.lists header {
-  font-size: 1.15em;
-  font-weight: bold;
+  .header-logo {
+    width: 360px;
+    float: left;
+  }
+
+  .header-logo h1 {
+    font-size: 24px;
+    margin: 0;
+    padding: 10px 0 10px 6px;
+  }
+
+  .header-logo a {
+    text-decoration: none;
+  }
+
+  .header-user {
+    width: 300px;
+    float: right;
+  }
+
+#main {
+  overflow: hidden
 }
 
-.list {
-  background: #e3e3e3;
-  width: 300px;
-  border: 1px solid #ccc;
+#content {
   float: left;
-  padding: 6px;
-  margin: 6px;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  cursor: grab;
+  width: 940px;
+  padding: 5px;
+  padding-left: 15px;
 }
 
-.list.ui-sortable-helper {
-  transform: rotate(4deg);
-  -moz-transform: rotate(4deg);
-  -webkit-transform: rotate(4deg);
-}
-
-.card {
-  background: white;
-  border: 1px solid #ccc;
+#sidebar {
+  float: right;
+  width: 280px;
+  min-height: 280px;
+  background: #f0f0f0;
   padding: 10px;
-  margin: 3px 0 3px 0;
-  cursor: pointer;
+  margin: 0;
+  border-left: 1px solid #ccc;
 }
 
-.card.ui-sortable-helper {
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  cursor: grab;
+#footer {
+  border-top: 1px solid #ccc;
 }
+
+section.boards-index {
+  width: 360px;
+  margin: 0 auto;
+}
+
+  .boards-index h2 {
+    font-size: 18px;
+  }
+
+  ul.boards-list {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.boards-list li {
+    list-style-type: none;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+  }
+
+section.boards-show { }
+
+  .boards-show h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .list {
+    background: #e3e3e3;
+    width: 280px;
+    border: 1px solid #ccc;
+    float: left;
+    padding: 6px;
+    margin: 6px;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
+  .list.ui-sortable-helper {
+    transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+  }
+
+  .card {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 3px 0 3px 0;
+    cursor: pointer;
+  }
+
+  .card.ui-sortable-helper {
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+
 
 

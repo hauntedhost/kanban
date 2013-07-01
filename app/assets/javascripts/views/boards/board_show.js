@@ -1,7 +1,7 @@
 Kanban.Views.BoardShow = Backbone.View.extend({
   template: JST['boards/show'],
   tagName: "section",
-  className: "boards_show",
+  className: "boards-show",
 
   events: {
     "click div.card": "cardClick"
