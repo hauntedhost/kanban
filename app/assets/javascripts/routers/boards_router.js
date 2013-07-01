@@ -28,6 +28,12 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     });
 
     that.$rootEl.html(boardShow.render().$el);
+
+    var $lists = that.$rootEl.find("div.lists");
+    $lists.sortable();
+
+    var $cards = $lists.find("div.cards");
+    $cards.sortable();
   }
 
 });

@@ -28,5 +28,6 @@ end
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt' 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'thin'
 

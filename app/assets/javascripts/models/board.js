@@ -5,6 +5,10 @@ Kanban.Models.Board = Backbone.Model.extend({
     this.set({ lists: new Kanban.Collections.Lists(lists) });
   },
 
+  lists: function () {
+    return this.get("lists");
+  },
+
   // parse: function (data) {
   //   data.lists = new Kanban.Collections.Lists(data.lists);
 

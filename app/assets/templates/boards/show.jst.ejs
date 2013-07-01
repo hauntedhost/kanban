@@ -1,2 +1,20 @@
 <h2>Board: <%= board.escape("name") %></h2>
 
+<div class="lists">
+  <% lists.each(function (list) { %>
+    <div class="list" data-id="<%= list.id %>">
+      <header class="title">
+        <%= list.escape("title") %>
+      </header>
+
+      <div class="cards">
+        <% list.cards().each(function (card) { %>
+          <div class="card" data-id="<%= card.id %>">
+            <%= card.escape("title") %>
+          </div>
+        <% }); %>
+      </div>
+
+    </div>
+  <% }); %>
+</div>

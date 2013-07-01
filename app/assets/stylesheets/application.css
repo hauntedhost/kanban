@@ -10,10 +10,32 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery.ui.all
  */
 
 #header {
   margin-top: 10px;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+}
+
+.lists header {
+  font-size: 1.15em;
+  font-weight: bold;
+}
+
+.list {
+  background: #e3e3e3;
+  width: 300px;
+  border: 1px solid #ccc;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 3px 0 3px 0;
 }

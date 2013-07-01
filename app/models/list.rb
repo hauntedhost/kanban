@@ -11,7 +11,7 @@
 #
 
 class List < ActiveRecord::Base
-  attr_accessible :board_id, :open, :title
+  attr_accessible :board_id, :title, :open, :order
 
   belongs_to :board
   has_many :cards
