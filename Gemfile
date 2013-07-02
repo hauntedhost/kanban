@@ -15,6 +15,7 @@ group :development do
   gem 'debugger'
   gem 'meta_request'
   gem 'pry-rails'
+  gem 'rails-erd'
 end
 
 group :development, :test do

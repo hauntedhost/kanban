@@ -6,8 +6,6 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   initialize: function () {
     var that = this;
 
-    // var board = that.model;
-    // var lists = that.model.lists();
     that.model.on('reset', this.render, this);
   },
 
@@ -16,15 +14,13 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   },
 
   cardClick: function (event) {
-    var id = parseInt($(event.target).data("id"));
+    var id = parseInt($(event.target).data("card-id"));
     console.log("card click: " + id)
     event.stopPropagation();
   },
 
   render: function () {
     var that = this;
-
-    console.log("board_show render");
 
     var board = that.model;
     var lists = that.model.lists();

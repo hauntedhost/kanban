@@ -15,21 +15,17 @@ module Api
     def sort
       list_ids = params[:list].map(&:to_i)
 
-      # are lists owned by current user?
-      if (list_ids - current_user.list_ids).empty?
-
-        # TODO: move sort model
-        list_ids.each_with_index do |id, index|
-          List.update_all({ position: index + 1 }, { id: id })
-        end
-
-        # return re-sorted lists
-        board = List.find(list_ids.first).board
-        render :json => board.lists
-        # render :nothing => true, :status => :ok
-      else
-        render :nothing => true, :status => :unprocessable_entity
+      unless (list_ids - current_user.list_ids).empty?
+      	render :nothing => true, :status => :unauthorized
       end
+
+      list_ids.each_with_index do |id, index|
+        List.update_all({ position: index + 1 }, { id: id })
+      end
+
+      # return re-sorted lists
+      board = List.find(list_ids.first).board
+      render :json => board.lists
     end
 
   end

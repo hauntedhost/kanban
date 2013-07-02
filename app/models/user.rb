@@ -28,8 +28,6 @@ class User < ActiveRecord::Base
   has_many :boards, :through => :boards_members 
   has_many :lists, :through => :boards
   has_many :cards, :through => :lists
-  # has_many :cards, :through => :cards_members
-  # has_many :lists, :through => :cards
 
   validates_uniqueness_of :email
   validates_presence_of :email, :password_digest
