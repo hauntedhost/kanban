@@ -23,9 +23,12 @@ module Api
         end
 
         # return re-sorted cards
-        list = Card.find(card_ids.first).list
-        render :json => list.cards
-        # render :nothing => true, :status => :ok
+        # list = Card.find(card_ids.first).list
+        # render :json => list.cards
+
+        # return re-sorted lists
+        board = Card.find(card_ids.first).board
+        render :json => board.lists
       else
         render :nothing => true, :status => :unprocessable_entity
       end

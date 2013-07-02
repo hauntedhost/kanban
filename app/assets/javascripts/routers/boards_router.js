@@ -52,13 +52,15 @@ Kanban.Routers.Boards = Backbone.Router.extend({
       update: function () {
         var sortData = $(this).sortable("serialize");
 
-        var listId = parseInt($(this).data("listId"));
-        var list = board.lists().get({ id: listId });
-        console.log("list");
-        console.log(list);
+        // var listId = parseInt($(this).data("listId"));
+        // var list = board.lists().get({ id: listId });
+        // console.log("list");
+        // console.log(list);
  
-        $.post(sortCardsUrl, sortData, function (resortedCards) {
-          list.set({ cards: new Kanban.Collections.Cards(resortedCards) });
+        // $.post(sortCardsUrl, sortData, function (resortedCards) {
+        //   list.set({ cards: new Kanban.Collections.Cards(resortedCards) });
+        $.post(sortCardsUrl, sortData, function (resortedLists) {
+          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
         });
       }
     });
