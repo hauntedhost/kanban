@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require jquery.ui.all
+ *= require jquery.modal
  */
 
 body {
@@ -89,7 +90,7 @@ section.boards-index {
     padding: 5px;
   }
 
-section.boards-show { }
+section.board-show { }
 
   .boards-show h2 {
     font-size: 18px;
