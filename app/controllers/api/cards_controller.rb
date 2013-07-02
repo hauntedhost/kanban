@@ -13,13 +13,15 @@ module Api
     end
 
     def sort
+      list = List.find(params[:list_id])
       card_ids = params[:card].map(&:to_i)
 
       # cards owned by current user?
       if (card_ids - current_user.card_ids).empty?
         # TODO: move sort to model
         card_ids.each_with_index do |id, index|
-          Card.update_all({ position: index + 1 }, { id: id })
+          Card.update_all({ position: index + 1,  list_id: list.id }, 
+                          { id: id })
         end
 
         # return re-sorted cards

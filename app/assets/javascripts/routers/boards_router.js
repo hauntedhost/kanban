@@ -49,8 +49,32 @@ Kanban.Routers.Boards = Backbone.Router.extend({
       // scope: ".cards",
       connectWith: ".cards",
       delay: 150,
-      update: function () {
+      // receive: function(event, ui) {
+      //   var listId = parseInt($(this).data("listId"));
+      //   console.log("card received on list: " + listId);       
+      //   // event.target // div.cards where this landed
+      // },
+
+      // remove: function(event, ui) {
+      //   var listId = parseInt($(this).data("listId"));
+      //   console.log("card removed from list: " + listId);
+      //   // event.target // div.cards where this was removed
+      // },
+      update: function (event, ui) {
         var sortData = $(this).sortable("serialize");
+
+        var listId = parseInt($(this).data("listId"));
+
+        // NOTE: when updating the cards, set the list_id
+        // to be the target list id. 
+        // so i need to POST list_id along with cards
+        sortData += '&list_id=' + listId
+
+        console.log("listId:");
+        console.log(listId);
+
+        console.log("sortData:");
+        console.log(sortData);
 
         // var listId = parseInt($(this).data("listId"));
         // var list = board.lists().get({ id: listId });
