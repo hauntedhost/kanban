@@ -31,7 +31,7 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     sortListsUrl = "/api/lists/sort"
     var $lists = that.$rootEl.find("div.lists");
     $lists.sortable({
-      axis: "x",
+      // axis: "x",
       items: "div.list",
       update: function (data) {
         var sortData = $(this).sortable("serialize");

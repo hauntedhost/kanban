@@ -7,12 +7,14 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var that = this;
 
     that.model.on('reset', this.render, this);
-    // that.model.on('', this.render, this);
+    that.model.on('add', this.render, this);
+    that.model.on('remove', this.render, this);
   },
 
   events: {
     "click div.card": "cardClick",
-    "submit #add_list": "addList"
+    "submit #add_list": "addList",
+    "click button.archive_list": "archiveList"
   },
 
   addList: function (event) {
@@ -21,55 +23,56 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var board = that.model;
   	event.preventDefault();
 
-  	console.log("add list");
-
-  	console.log("current board:")
-  	console.log(board);
-
-  	// get attrs and reset form
+  	// get form attrs, reset form
   	var $form = $(event.target);
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
 		// add board_id to attrs
 		attrs.list.board_id = board.id;
-		// console.log(attrs);
 
 		// create new list
-  	console.log("list");
 		var list = new Kanban.Models.List();	
-		console.log(list);
 
+		// save list
 		list.save(attrs.list, {
 			success: function (data) {
-				console.log("list saved");
-
 				// add list to board				
 				var lists = board.lists();
 				lists.add(list);
 
-		  	console.log("board");
-				console.log(board);
-
-				that.render();
-				// board.trigger("reset");
+				// re-render board
+				// that.render();
+				board.trigger("add");
 			}
 		});
+  },
 
-		// ====================================
+  archiveList: function (event) {
+  	var that = this;
 
-		// that.collection.add(that.model);
-		// that.model.save(attrs,
-		// 	{ success: function (data) {
-		// 		console.log('la collection: ')
-		// 		console.log(that.model.collection);
+    var board = that.model;
+    event.stopPropagation();
 
-		// 		var url = "/posts/" + data.id;
-		// 		Backbone.history.navigate(url, true);
-		// 	}
-		// });
+  	console.log("archive list");
 
-		// debugger;
+    var listId = parseInt($(event.target).data("list-id"));
+    var lists = board.lists();
+    var list = lists.get(listId);    
+
+    console.log(lists);
+
+		// remove list
+		list.destroy({
+			success: function (data) {
+				// remove list from board
+				lists.remove({ id: listId });
+		    console.log(lists);
+
+				// re-render board
+		    board.trigger("remove");
+			}
+		});		
   },
 
   cardClick: function (event) {
@@ -96,7 +99,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     console.log("render board");
 
     var board = that.model;
-    var lists = that.model.lists();
+    var lists = board.lists();
     var renderedContent = that.template({
       board: board,
       lists: lists,

@@ -5,6 +5,8 @@
     <div class="list" id="list_<%= list.id %>">
       <header class="title">
         <%= list.escape("title") %>
+        <button class="archive_list"
+        				data-list-id="<%= list.id %>">X</button>
       </header>
 
       <div class="cards" 
@@ -23,7 +25,6 @@
 	<div class="add_list">
 		<form id="add_list">
   		<input type="text" name="list[title]" placeholder="Add a list" />
-  		<!-- <input type="hidden" name="list[board_id]" value="<%= board.id %>" /> -->
 			<input type="submit" value="Save" />
 		</form>
 	</div>

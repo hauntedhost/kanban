@@ -21,6 +21,15 @@ module Api
     	end
     end
 
+    def destroy
+      list = current_user.lists.find(params[:id])
+			if list.destroy
+				render :json => list, :status => :ok
+			else
+				render :nothing => true, :status => :unprocessable_entity
+			end
+    end
+
     def sort
       list_ids = params[:list].map(&:to_i)
 
