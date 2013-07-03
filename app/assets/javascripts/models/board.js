@@ -8,7 +8,6 @@ Kanban.Models.Board = Backbone.Model.extend({
 
   lists: function () {
     var that = this;
-
     return that.get("lists");
   },
 

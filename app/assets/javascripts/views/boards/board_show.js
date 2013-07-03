@@ -33,12 +33,11 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
 		// add board_id to attrs
 		attrs.list.board_id = board.id;
-		// attrs.cards = {};
 		// console.log(attrs);
 
 		// create new list
   	console.log("list");
-		var list = new Kanban.Models.List(attrs.list);
+		var list = new Kanban.Models.List();	
 		console.log(list);
 
 		list.save(attrs.list, {
@@ -51,9 +50,13 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
 		  	console.log("board");
 				console.log(board);
-				board.trigger("reset");
+
+				that.render();
+				// board.trigger("reset");
 			}
 		});
+
+		// ====================================
 
 		// that.collection.add(that.model);
 		// that.model.save(attrs,
