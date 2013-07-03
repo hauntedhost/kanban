@@ -12,6 +12,15 @@ module Api
       render :json => list
     end
 
+    def create
+    	list = List.new(params[:list])
+    	if list.save
+    		render :json => list, :status => :ok
+    	else
+    		render :nothing => true, :status => :unprocessable_entity
+    	end
+    end
+
     def sort
       list_ids = params[:list].map(&:to_i)
 

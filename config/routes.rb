@@ -12,7 +12,7 @@ Kanban::Application.routes.draw do
   namespace :api do
     resources :users, :only => [:show]
     resources :boards, :only => [:index, :show, :create]
-    resources :lists , :only => [:index, :show] do
+    resources :lists , :only => [:index, :show, :create] do
       collection do
         post :sort
       end
