@@ -4,13 +4,16 @@ Kanban.Views.CardShow = Backbone.View.extend({
   className: "card-show",
 
   events: {
-    "click button": "addComment",
+    "submit #add_comment": "addComment",
   },
 
   addComment: function (event) {
   	event.preventDefault();
-  	console.log("add comment")
-  	console.log(event);
+
+  	console.log("add comment");
+		console.log(event.target);  	
+  	var cardId = parseInt($(event.target).data("card-id"));
+  	console.log("card-id #" + cardId);
   },
 
   render: function () {

@@ -5,11 +5,10 @@
 
   <h4>Activity</h4>
 
-  <form id="add_comment">
+  <form id="add_comment" data-card-id="<%= card.id %>">
 	  <textarea name="card_comment[content]"
-	  					data-id="<%= card.id %>" 
 	  					placeholder="Write a comment"></textarea>
-		<button>Comment</button>
+		<input type="submit" value="Comment" />
 	</form>
 
   <section class="comments"></section>

@@ -7,9 +7,13 @@
         <%= list.escape("title") %>
       </header>
 
-      <div class="cards" id="cards_list_<%= list.id %>" data-list-id="<%= list.id %>">
+      <div class="cards" 
+      		 id="cards_list_<%= list.id %>" 
+      		 data-list-id="<%= list.id %>">
         <% list.cards().each(function (card) { %>
-          <div class="card" id="card_<%= card.id %>" data-card-id="<%= card.id %>">
+          <div class="card" 
+          		 id="card_<%= card.id %>" 
+          		 data-card-id="<%= card.id %>">
             <%= card.escape("title") %>
           </div>
         <% }); %>
