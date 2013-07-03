@@ -13,8 +13,35 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
   events: {
     "click div.card": "cardClick",
-    "submit #add_list": "addList",
-    "click button.archive_list": "archiveList"
+    "submit form.add_list": "addList",
+    "click button.archive_list": "archiveList",
+    "submit form.add_card": "addCard",
+  },
+
+  addCard: function (event) {
+  	var that = this;
+
+    var board = that.model;
+  	event.preventDefault();
+
+  	// get form attrs, reset form
+  	var $form = $(event.target);
+		var attrs = $form.serializeJSON();
+		$form[0].reset();
+
+		// add list_id to attrs, create new card
+		var listId = parseInt($(event.target).data("list-id"));
+		attrs.card.list_id = listId;
+		var card = new Kanban.Models.Card();
+
+		// save list
+		card.save(attrs.card, {
+			success: function (data) {
+				var cards = board.getList(listId).cards();
+				cards.add(card);
+				board.trigger("add");
+			}
+		});
   },
 
   addList: function (event) {
@@ -112,6 +139,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     sortCardsUrl = "/api/cards/sort"
     var $cards = $lists.find("div.cards");
     $cards.sortable({
+      items: "div.card",
       connectWith: ".cards",
       delay: 150,
       update: function (event, ui) {

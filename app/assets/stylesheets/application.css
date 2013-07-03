@@ -119,15 +119,28 @@ section.board-show { }
     -webkit-transform: rotate(4deg);
   }
 
-  .add_list {
+  div.add_list {
   	color: #666666;
     background: #e3e3e3;
     width: 220px;
-    border: 1px solid #ccc;
+    border: 1px dashed #666666;
     float: left;
     padding: 6px;
     margin: 6px;
+    opacity: .60;
   }
+
+	div.add_list:hover {
+		opacity: 1;
+	}
+
+	div.add_card {
+    opacity: .85;
+	}
+
+	div.add_card:hover {
+		opacity: 1;
+	}
 
 /*  .add_list:hover {
   	color: #4C4C4C;
@@ -161,6 +174,10 @@ section.board-show { }
     cursor: pointer;
   }
 
+  .card:hover {
+  	border: 1px solid #808080;
+  }
+
   .card.ui-sortable-helper {
     cursor: -moz-grab;
     cursor: -webkit-grab;
@@ -169,15 +186,19 @@ section.board-show { }
 
   input[type="text"] {
   	width: 90%;
-  	padding: 10px;
+  	padding: 5px;
   	border: 1px solid #ccc;
   }
 
   input[type="submit"] {
-  	width: 100%;
-  	padding: 7px;
+  	/*width: 60%;*/
+  	padding: 4px 16px 4px 16px;
   	border: 1px solid #A1A1A1;
   	background: #C5C5C5;
+  	display: block;
+  	/*float: right;*/
+  	margin-top: 3px;
+  	cursor: pointer;
   }
 
   input[type="submit"]:hover {

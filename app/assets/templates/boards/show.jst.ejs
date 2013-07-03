@@ -20,12 +20,21 @@
           </div>
         <% }); %>
       </div>
+
+      <div class="add_card">
+				<form class="add_card" data-list-id="<%= list.id %>">
+		  		<input type="text" name="card[title]" placeholder="Add a card ..." />
+					<input type="submit" value="Add Card" />
+				</form>
+			</div>
+
     </div>
   <% }); %>
+
 	<div class="add_list">
-		<form id="add_list">
-  		<input type="text" name="list[title]" placeholder="Add a list" />
-			<input type="submit" value="Save" />
+		<form class="add_list">
+  		<input type="text" name="list[title]" placeholder="Add a list ..." />
+			<input type="submit" value="Add List" />
 		</form>
 	</div>
 </div>

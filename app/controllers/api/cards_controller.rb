@@ -30,5 +30,13 @@ module Api
       render :json => board.lists
     end
 
+    def create
+    	card = Card.new(params[:card])
+    	if card.save
+    		render :json => card, :status => :ok
+    	else
+    		render :nothing => true, :status => :unprocessable_entity
+    	end    	
+    end
   end
 end
