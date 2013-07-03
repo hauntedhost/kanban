@@ -17,7 +17,7 @@ class List < ActiveRecord::Base
   acts_as_list
 
   belongs_to :board
-  has_many :cards
+  has_many :cards, :dependent => :destroy
 
   def as_json(options = {})
     super(options.merge(:include => :cards))

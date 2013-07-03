@@ -28,21 +28,15 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
-		// add board_id to attrs
+		// add board_id to attrs, create new list
 		attrs.list.board_id = board.id;
-
-		// create new list
 		var list = new Kanban.Models.List();	
 
 		// save list
 		list.save(attrs.list, {
 			success: function (data) {
-				// add list to board				
 				var lists = board.lists();
 				lists.add(list);
-
-				// re-render board
-				// that.render();
 				board.trigger("add");
 			}
 		});
@@ -60,16 +54,11 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var lists = board.lists();
     var list = lists.get(listId);    
 
-    console.log(lists);
-
 		// remove list
 		list.destroy({
 			success: function (data) {
-				// remove list from board
 				lists.remove({ id: listId });
 		    console.log(lists);
-
-				// re-render board
 		    board.trigger("remove");
 			}
 		});		
@@ -106,6 +95,40 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     });
 
     that.$el.html(renderedContent);
+
+    sortListsUrl = "/api/lists/sort"
+    var $lists = that.$el.find("div.lists");
+    $lists.sortable({
+      items: "div.list",
+      update: function (data) {
+        var sortData = $(this).sortable("serialize");
+        $.post(sortListsUrl, sortData, function (resortedLists) {
+          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
+        });
+      }
+    });
+
+
+    sortCardsUrl = "/api/cards/sort"
+    var $cards = $lists.find("div.cards");
+    $cards.sortable({
+      connectWith: ".cards",
+      delay: 150,
+      update: function (event, ui) {
+        var sortData = $(this).sortable("serialize");
+
+        if (sortData) {	        
+	        // add list_id to sortData
+	        var listId = parseInt($(this).data("listId"));
+	        sortData += '&list_id=' + listId
+
+	        $.post(sortCardsUrl, sortData, function (resortedLists) {
+	          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
+	        });
+        };
+      }
+    });
+
     return that;
   }
 

@@ -97,6 +97,10 @@ section.board-show { }
     font-weight: bold;
   }
 
+  .lists {
+  	overflow: hidden;
+  }
+  
   .list {
     background: #e3e3e3;
     width: 220px;
