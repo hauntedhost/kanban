@@ -20,26 +20,15 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var board = that.model;
     var cardId = parseInt($(event.target).data("card-id"));    
-    var $cardModal = that.$el.find("#card_modal");
-		$cardModal.html("");
+    var $cardModal = that.$el.find("section.card_detail");
 
     var card = board.getCard(cardId);
     var cardShow = new Kanban.Views.CardShow({
-      model: card,
-      el: $cardModal
+      model: card
     });
 
-    // WORKING:
-  	var renderedContent = cardShow.render().$el.html();
-		$(renderedContent).appendTo($cardModal).modal();
-
-		// EXPERIMENTAL:
-  	// var renderedContent = cardShow.render().$el;
-  	// $cardModal.html(renderedContent).modal();
-
-  	// BRUTE FORCE:
-		// var html = '<div class="modal"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p></div>';
-		// $(html).appendTo($cardModal).modal();
+  	$cardModal.html(cardShow.render().$el);
+  	$cardModal.find("article.card_detail").modal();
   },
 
   render: function () {

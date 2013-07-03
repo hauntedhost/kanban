@@ -1,16 +1,13 @@
-<div class="modal">
-	<h3><%= card.escape("title") %></h3>
+<h3><%= card.escape("title") %></h3>
 
-  <p>CARD DETAILS!</p>
+<p>CARD DETAILS!</p>
 
-  <h4>Activity</h4>
+<h4>Activity</h4>
 
-  <form id="add_comment" data-card-id="<%= card.id %>">
-	  <textarea name="card_comment[content]"
-	  					placeholder="Write a comment"></textarea>
-		<input type="submit" value="Comment" />
-	</form>
+<form id="add_comment" data-card-id="<%= card.id %>">
+  <textarea name="card_comment[content]"
+  					placeholder="Write a comment"></textarea>
+	<input type="submit" value="Comment" />
+</form>
 
-  <section class="comments"></section>
-
-</div>
+<section class="comments"></section>
