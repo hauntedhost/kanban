@@ -17,6 +17,8 @@
           		 id="card_<%= card.id %>" 
           		 data-card-id="<%= card.id %>">
             <%= card.escape("title") %>
+            <button class="archive_card"
+										data-card-id="<%= card.id %>">X</button>
           </div>
         <% }); %>
       </div>

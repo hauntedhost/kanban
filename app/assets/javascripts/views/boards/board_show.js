@@ -16,6 +16,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     "submit form.add_list": "addList",
     "click button.archive_list": "archiveList",
     "submit form.add_card": "addCard",
+    "click button.archive_card": "archiveCard",
   },
 
   addCard: function (event) {
@@ -29,19 +30,42 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
-		// add list_id to attrs, create new card
-		var listId = parseInt($(event.target).data("list-id"));
+		// add list_id to attrs
+		var listId = parseInt($(event.target).data("list-id"));    
 		attrs.card.list_id = listId;
+
+		// get list, create new card
+    var list = board.getList(listId);
 		var card = new Kanban.Models.Card();
 
-		// save list
+		// save card
 		card.save(attrs.card, {
 			success: function (data) {
-				var cards = board.getList(listId).cards();
-				cards.add(card);
+				list.cards().add(card);
 				board.trigger("add");
 			}
 		});
+  },
+
+  archiveCard: function (event) {
+  	var that = this;
+
+    var board = that.model;
+    event.stopPropagation();
+
+  	console.log("archive card");
+
+    var cardId = parseInt($(event.target).data("card-id"));
+    var card = board.getCard(cardId);
+    var list = board.getList(card.get("list_id"));
+
+		// remove list
+		card.destroy({
+			success: function (data) {
+				list.cards().remove(card);
+		    board.trigger("remove");
+			}
+		});		
   },
 
   addList: function (event) {

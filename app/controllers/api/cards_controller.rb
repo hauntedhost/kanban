@@ -12,6 +12,24 @@ module Api
       render :json => card
     end
 
+    def create
+    	card = Card.new(params[:card])
+    	if card.save
+    		render :json => card, :status => :ok
+    	else
+    		render :nothing => true, :status => :unprocessable_entity
+    	end    	
+    end
+
+    def destroy
+      card = current_user.cards.find(params[:id])
+			if card.destroy
+				render :json => card, :status => :ok
+			else
+				render :nothing => true, :status => :unprocessable_entity
+			end    	
+    end
+
     def sort
       list = List.find(params[:list_id])
       card_ids = params[:card].map(&:to_i)
@@ -30,13 +48,5 @@ module Api
       render :json => board.lists
     end
 
-    def create
-    	card = Card.new(params[:card])
-    	if card.save
-    		render :json => card, :status => :ok
-    	else
-    		render :nothing => true, :status => :unprocessable_entity
-    	end    	
-    end
   end
 end
