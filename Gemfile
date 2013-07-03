@@ -18,18 +18,10 @@ group :development do
   gem 'rails-erd'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-end
-
 gem 'acts_as_list'
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt' 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'pg'
 gem 'thin'
-
