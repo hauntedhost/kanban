@@ -15,7 +15,7 @@ Kanban.Models.Board = Backbone.Model.extend({
   getList: function (id) {
   	var that = this;
 
-  	// that.lists().get(id);
+  	// OPTIMIZE: refactor
 		var lists = that.lists();
 		var list = lists.get(id);
 		if (list) {
@@ -28,17 +28,15 @@ Kanban.Models.Board = Backbone.Model.extend({
   	var that = this;
 
   	var lists = that.lists();
-  	var found = null;
+  	var foundCard = undefined;
 		lists.each(function (list) {
 			var cards = list.cards();
 			var card = cards.get(id);
 			if (card) {
 				console.log("found card #" + id);
-				console.log(card);
-				found = card;
+				foundCard = card;
 			};
 		});
-		return found;
+		return foundCard;
   }
-
 });
