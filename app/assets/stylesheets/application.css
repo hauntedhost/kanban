@@ -133,5 +133,9 @@ section.board-show { }
     cursor: grab;
   }
 
-
+  textarea {
+  	width: 95%;
+  	padding: 10px;
+  	border: 1px solid #ccc;
+  }
 

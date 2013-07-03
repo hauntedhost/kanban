@@ -19,7 +19,7 @@ Kanban.Models.Board = Backbone.Model.extend({
 		var lists = that.lists();
 		var list = lists.get(id);
 		if (list) {
-			console.log("found list #" + id);
+			// console.log("found list #" + id);
 			return list;
 		};
   },
@@ -33,7 +33,7 @@ Kanban.Models.Board = Backbone.Model.extend({
 			var cards = list.cards();
 			var card = cards.get(id);
 			if (card) {
-				console.log("found card #" + id);
+				// console.log("found card #" + id);
 				foundCard = card;
 			};
 		});

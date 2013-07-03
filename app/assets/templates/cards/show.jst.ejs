@@ -5,6 +5,13 @@
 
   <h4>Activity</h4>
 
-  <div class="comment"></div>
+  <form id="add_comment">
+	  <textarea name="card_comment[content]"
+	  					data-id="<%= card.id %>" 
+	  					placeholder="Write a comment"></textarea>
+		<button>Comment</button>
+	</form>
+
+  <section class="comments"></section>
 
 </div>
