@@ -22,12 +22,9 @@ Kanban.Views.CardShow = Backbone.View.extend({
 		var card = Kanban.boards.getCard(cardId);
 		console.log(card);
 
-		var comment = Kanban.boards.getCard(cardId);
-		console.log(card);
-
 		// add board_id to attrs, create new list
 		// attrs.list.board_id = board.id;
-		// var list = new Kanban.Models.List();	
+		var cardComment = new Kanban.Models.CardComment();	
 
 		// // save list
 		// list.save(attrs.list, {
