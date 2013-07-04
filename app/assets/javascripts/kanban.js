@@ -10,6 +10,7 @@ window.Kanban = {
     that.$rootEl.html("loading ...");
 
     Kanban.boards = new Kanban.Collections.Boards();
+    console.log(Kanban.boards);
     Kanban.boards.fetch({
       success: function (boards) {
         new Kanban.Routers.Boards({ $rootEl: that.$rootEl });

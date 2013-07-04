@@ -1,15 +1,27 @@
-Kanban.Models.Board = Backbone.Model.extend({
-  initialize: function () {
-    var that = this;
+Kanban.Models.Board = Backbone.RelationalModel.extend({
 
-    var lists = that.get("lists");
-    that.set({ lists: new Kanban.Collections.Lists(lists) });
-  },
+	relations: [{
+		type: Backbone.HasMany,
+		key: "lists",
+		relatedModel: "Kanban.Models.List",
+		collectionType: "Kanban.Collections.Lists",
+		reverseRelation: {
+			key: "board"
+		}
+	}],
 
-  lists: function () {
-    var that = this;
-    return that.get("lists");
-  },
+  // initialize: function () {
+  //   var that = this;
+
+  //   debugger;
+  //   var lists = that.get("lists");
+  //   that.set({ lists: new Kanban.Collections.Lists(lists) });
+  // },
+
+  // lists: function () {
+  //   var that = this;
+  //   return that.get("lists");
+  // },
 
   getList: function (id) {
   	var that = this;

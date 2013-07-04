@@ -119,17 +119,19 @@ section.board-show {
 
   .list-placeholder {
     background: #B3B3B3;
-    width: 220px;
-    height: auto;
-    padding: 6px;
-    margin: 6px;
-    float: left;
+  	width: 220px;
+  	height: auto;
+  	padding: 6px;
+  	margin: 6px;
+  	float: left;
   }
 
   .list.ui-sortable-helper {
-    transform: rotate(4deg);
-    -moz-transform: rotate(4deg);
     -webkit-transform: rotate(4deg);
+  	-moz-transform: rotate(4deg);
+  	-o-transform: rotate(4deg);
+  	-ms-transform: rotate(4deg);
+  	transform: rotate(4deg);
   }
 
   div.add_list {

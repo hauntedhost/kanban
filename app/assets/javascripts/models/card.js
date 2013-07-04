@@ -1,4 +1,4 @@
-Kanban.Models.Card = Backbone.Model.extend({
+Kanban.Models.Card = Backbone.RelationalModel.extend({
 	urlRoot: "/api/cards",
 
   // initialize: function () {
