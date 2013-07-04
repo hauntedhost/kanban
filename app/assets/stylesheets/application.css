@@ -90,7 +90,11 @@ section.boards-index {
     padding: 5px;
   }
 
-section.board-show { }
+section.board-show {
+	/*white-space: nowrap;*/
+	/*overflow-x: scroll;*/
+
+}
 
   .boards-show h2 {
     font-size: 18px;
@@ -98,7 +102,7 @@ section.board-show { }
   }
 
   .lists {
-  	overflow: hidden;
+  	/*overflow: hidden;*/
   }
   
   .list {
@@ -111,6 +115,15 @@ section.board-show { }
     cursor: -moz-grab;
     cursor: -webkit-grab;
     cursor: grab;
+  }
+
+  .list-placeholder {
+    background: #B3B3B3;
+    width: 220px;
+    height: auto;
+    padding: 6px;
+    margin: 6px;
+    float: left;
   }
 
   .list.ui-sortable-helper {
@@ -178,6 +191,12 @@ section.board-show { }
 
   .card:hover {
   	border: 1px solid #808080;
+  }
+
+  .card-placeholder {
+    background: #CFCFCF;
+    padding: 10px;
+    margin: 3px 0 3px 0;
   }
 
   .card.ui-sortable-helper {

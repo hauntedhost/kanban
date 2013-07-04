@@ -151,6 +151,11 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var $lists = that.$el.find("div.lists");
     $lists.sortable({
       items: "div.list",
+    	tolerance: "pointer",
+      placeholder: "list-placeholder",
+ 			start: function(e, ui){
+      	ui.placeholder.height(ui.item.height());
+    	},
       update: function (data) {
         var sortData = $(this).sortable("serialize");
         $.post(sortListsUrl, sortData, function (resortedLists) {
@@ -159,13 +164,17 @@ Kanban.Views.BoardShow = Backbone.View.extend({
       }
     });
 
-
     sortCardsUrl = "/api/cards/sort"
     var $cards = $lists.find("div.cards");
     $cards.sortable({
       items: "div.card",
       connectWith: ".cards",
       delay: 150,
+    	tolerance: "pointer",
+      placeholder: "card-placeholder",
+ 			start: function(e, ui){
+      	ui.placeholder.height(ui.item.height());
+    	},
       update: function (event, ui) {
         var sortData = $(this).sortable("serialize");
 

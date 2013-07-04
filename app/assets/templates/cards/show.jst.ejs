@@ -1,10 +1,13 @@
 <h3><%= card.escape("title") %></h3>
 
-<p>CARD DETAILS!</p>
+<p>
+	<%= card.escape("description") %>
+</p>
 
 <h4>Activity</h4>
 
-<form id="add_comment" data-card-id="<%= card.id %>">
+<form id="add_comment" 
+			data-card-id="<%= card.id %>">
   <textarea name="card_comment[content]"
   					placeholder="Write a comment"></textarea>
 	<input type="submit" value="Comment" />
