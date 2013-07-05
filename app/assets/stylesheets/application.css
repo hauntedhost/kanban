@@ -17,6 +17,7 @@
 body {
   margin: 0;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #header {
@@ -26,7 +27,7 @@ body {
 }
 
   .header-logo {
-    width: 360px;
+    /*width: 360px;*/
     float: left;
   }
 
@@ -41,12 +42,15 @@ body {
   }
 
   .header-user {
-    width: 300px;
+    /*width: 460px;*/
     float: right;
+    text-align: right;
+    padding-right: 10px;
   }
 
 #main {
-  overflow: hidden
+  overflow: hidden;
+  padding: 15px 0 15px 0;
 }
 
 #content {
@@ -70,6 +74,11 @@ body {
   border-top: 1px solid #ccc;
 }
 
+section.login {
+  width: 360px;
+  margin: 0 auto;
+}
+
 section.boards-index {
   width: 360px;
   margin: 0 auto;
@@ -91,9 +100,6 @@ section.boards-index {
   }
 
 section.board-show {
-	/*white-space: nowrap;*/
-	/*overflow-x: scroll;*/
-
 }
 
   .boards-show h2 {
@@ -102,6 +108,7 @@ section.board-show {
   }
 
   .lists {
+    /*font-family: 'Cutive Mono', serif;*/
   	overflow: hidden;
   }
   
@@ -190,6 +197,7 @@ section.board-show {
   }
 
   .cards {
+    /*font-family: 'Cutive Mono', serif;*/
     min-height: 42px;
   }
 
@@ -217,7 +225,12 @@ section.board-show {
     cursor: grab;
   }
 
-  input[type="text"] {
+  .card_detail {
+    /*font-family: 'Cutive Mono', serif;*/
+  }
+
+  input[type="text"],
+  input[type="password"] {
   	width: 100%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
