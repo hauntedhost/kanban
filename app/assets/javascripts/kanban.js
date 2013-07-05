@@ -9,12 +9,23 @@ window.Kanban = {
     that.$rootEl = $("#content");
     that.$rootEl.html("loading ...");
 
-    Kanban.boards = new Kanban.Collections.Boards();
-    console.log(Kanban.boards);
-    Kanban.boards.fetch({
-      success: function (boards) {
-        new Kanban.Routers.Boards({ $rootEl: that.$rootEl });
-        Backbone.history.start();
+    Kanban.currentUser = new Kanban.Models.CurrentUser();
+    Kanban.currentUser.fetch({
+      success: function (response) {
+        console.log("got user");
+
+        Kanban.boards = new Kanban.Collections.Boards();
+        Kanban.boards.fetch({
+          success: function (response) {
+            console.log("got boards");
+            new Kanban.Routers.Boards({ $rootEl: that.$rootEl });
+            Backbone.history.start();        
+          }
+        });
+      },
+
+      error: function (response) {
+        console.log("please log in");
       }
     });
   }

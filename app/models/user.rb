@@ -12,6 +12,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+require "digest/md5"
 
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password 
@@ -63,4 +64,15 @@ class User < ActiveRecord::Base
   def correct_session_key?(key) 
     key == self.session_key
   end
+
+  def gravatar_url(size = 80)
+    md5 = Digest::MD5.hexdigest(self.email)
+    "http://www.gravatar.com/avatar/#{md5}?s=#{size}" 
+  end
+
+  def as_json(options = {})
+    super(options.merge(:only => [:username, :email, :bio], 
+                        :methods => :gravatar_url))
+  end
+
 end

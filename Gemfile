@@ -19,7 +19,6 @@ group :development do
 end
 
 gem 'acts_as_list'
-# gem 'backbone-on-rails'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'ejs' 
 gem 'jquery-rails'

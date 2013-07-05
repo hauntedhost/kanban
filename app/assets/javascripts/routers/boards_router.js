@@ -5,7 +5,12 @@ Kanban.Routers.Boards = Backbone.Router.extend({
 
   routes: {
     "": "index",
+    "/login": "login",
     "boards/:id": "show"
+  },
+
+  login: function () {
+    console.log("login");
   },
 
   index: function () {
@@ -14,7 +19,7 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     var boardsIndex = new Kanban.Views.BoardsIndex({
       collection: Kanban.boards
     });
-
+    
     that.$rootEl.html(boardsIndex.render().$el);
   },
 

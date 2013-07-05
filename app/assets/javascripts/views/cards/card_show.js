@@ -12,7 +12,6 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   	var cardId = parseInt($(event.target).data("card-id"));
   	console.log("add comment");
-  	console.log("card-id #" + cardId);
 
   	// get form attrs, reset form
   	var $form = $(event.target);
@@ -20,7 +19,6 @@ Kanban.Views.CardShow = Backbone.View.extend({
 		$form[0].reset();
 
 		var card = Kanban.boards.getCard(cardId);
-		console.log(card);
 
 		// add board_id to attrs, create new list
 		// attrs.list.board_id = board.id;
@@ -41,12 +39,10 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   	var card = that.model;
   	var comments = card.get("comments");
-  	console.log(comments);
-
+  	// console.log(comments);
   	// var list = card.get("list");
   	// var board = list.get("board");
-
-  	console.log("card show:");
+  	// console.log("card show:");
   	var renderedContent = that.template({
   		card: card,
   		comments: comments

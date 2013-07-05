@@ -1,16 +1,26 @@
-<h2>login</h2>
+<section class="login">
+  <h2>Log In</h2>
 
-<form action ="/session" method="post">
-  <p>
-    <label for="user_email">Email:</label>
-    <input type="text" name="user[email]" id="user_email" />
-  </p>
+  <form action ="/session" method="post">
+    <p>
+      <label for="user_email">Email</label>
+      <input type="text" 
+             name="user[email]" 
+             id="user_email" 
+             placeholder="Enter your email address"
+             />
+    </p>
 
-  <p>
-    <label for="user_password">Password:</label>
-    <input type="password" name="user[password]" id="user_password" />
-  </p>
+    <p>
+      <label for="user_password">Password:</label>
+      <input type="password" 
+             name="user[password]" 
+             id="user_password" 
+             placeholder="Enter your password"
+             />
+    </p>
 
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-  <input type="submit" value="Login" />
-</form>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+    <input type="submit" value="Login" />
+  </form>
+</div>

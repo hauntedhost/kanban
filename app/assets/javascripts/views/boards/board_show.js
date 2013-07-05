@@ -188,9 +188,6 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var board = that.model;
     var lists = board.get("lists");
 
-    console.log("lists");
-    console.log(lists);
-
     var renderedContent = that.template({
       board: board,
       lists: lists,
