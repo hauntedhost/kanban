@@ -25,9 +25,11 @@ Kanban::Application.routes.draw do
       collection do
         post :sort
       end
-      member do
-      	resources :card_comments, :only => [:index], :path => "comments"
-      end
+      # member do
+      # 	resources :card_comments, :only => [:index], :path => "comments"
+      # end
     end
+
+    resources :card_comments, :only => [:create, :destroy]
   end
 end

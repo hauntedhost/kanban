@@ -127,7 +127,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var board = that.model;
     event.stopPropagation();
 
-    var cardId = parseInt($(event.target).data("card-id"));    
+    var cardId = parseInt($(event.target).data("card-id"));
     var $cardModal = that.$el.find("section.card_detail");
 
     // var card = new Kanban.Models.Card({ id: cardId });

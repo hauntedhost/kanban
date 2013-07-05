@@ -8,21 +8,45 @@ Kanban.Views.CardShow = Backbone.View.extend({
   },
 
   addComment: function (event) {
+    var that = this;
   	event.preventDefault();
 
-  	var cardId = parseInt($(event.target).data("card-id"));
+  	// var cardId = parseInt($(event.target).data("card-id"));
   	console.log("add comment");
+    var card = that.model;
+    var cards = card.collection;
+    console.log(cards);
 
   	// get form attrs, reset form
   	var $form = $(event.target);
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
-		var card = Kanban.boards.getCard(cardId);
+    // TODO: research toJSON override via backbone relational
+    // suspect it prevents need to patch ids in like this
+    attrs.card_comment.card_id = card.id;
+    console.log(attrs.card_comment);
 
-		// add board_id to attrs, create new list
-		// attrs.list.board_id = board.id;
 		var cardComment = new Kanban.Models.CardComment();	
+    cardComment.save(attrs.card_comment, {
+      success: function (response) {
+        cards.add(cardComment);
+        console.log(cards);
+
+        // TODO: this is insane
+        // console.log(that.$el);
+        // that.$el.html("HELLLOOOOoooo.... ");
+        // var $cardModal = that.$el.find("section.card_detail");
+        // $cardModal.html("HELLO!");
+
+        // var cardShow = new Kanban.Views.CardShow({
+        //   model: card
+        // });
+        var $comments = that.$el.find("ul.comments");
+        $comments.append(attrs.card_comment.content);
+        // $cardModal.find("article.card_detail").modal();
+      }
+    });
 
 		// // save list
 		// list.save(attrs.list, {

@@ -17,6 +17,7 @@ require "digest/md5"
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password 
   attr_reader :password
+  default_scope :order => 'id'
 
   has_many :boards_members, 
     :class_name => "BoardMember", 

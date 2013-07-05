@@ -14,7 +14,8 @@
 #
 
 class Card < ActiveRecord::Base
-  attr_accessible :list_id, :title, :description, :due_date, :open, :position
+  attr_accessible :list_id, :title, :description, :due_date, :open, :position,
+                  :comments_attributes
   default_scope :order => "cards.position"
   acts_as_list
 
@@ -26,6 +27,8 @@ class Card < ActiveRecord::Base
 
   has_many :comments, :class_name => "CardComment"
   has_many :activities, :class_name => "CardActivities"
+
+  accepts_nested_attributes_for :comments
 
   def as_json(options = {})
     super(options.merge(:include => :comments))

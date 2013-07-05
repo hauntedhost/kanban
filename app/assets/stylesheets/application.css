@@ -44,8 +44,16 @@ body {
   .header-user {
     /*width: 460px;*/
     float: right;
-    text-align: right;
     padding-right: 10px;
+  }
+  
+  .header-user p {
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+  .header-user img {
+    display: inline-block;
+    margin-top: 10px;
   }
 
 #main {
