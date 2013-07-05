@@ -5,16 +5,19 @@
 </p>
 
 <h4>Activity</h4>
-<ul class="comments">
-<% comments.each(function (comment) { %>
-	<li><%= comment.escape("content") %></li>	
-<% }); %>
-</ul>
 
 <form id="add_comment">
   <textarea name="card_comment[content]"
   					placeholder="Write a comment"></textarea>
 	<input type="submit" value="Comment" />
 </form>
+
+<ul class="card_comments">
+<% comments.each(function (comment) { %>
+	<li class="comment">
+		<%= comment.escape("content") %>
+	</li>	
+<% }); %>
+</ul>
 
 <section class="comments"></section>

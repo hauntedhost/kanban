@@ -18,6 +18,7 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
+  color: #262626;
 }
 
 #header {
@@ -123,7 +124,7 @@ section.board-show {
   .list {
   	overflow: hidden;
     background: #e3e3e3;
-    width: 220px;
+    width: 240px;
     border: 1px solid #ccc;
     float: left;
     padding: 6px;
@@ -133,9 +134,14 @@ section.board-show {
     cursor: grab;
   }
 
+  .list:hover {
+    border: 1px solid #A6A6A6;
+  }
+
   .list-placeholder {
-    background: #B3B3B3;
-  	width: 220px;
+    background: #F8F8F8;
+    border: 1px dashed #BFBFBF;
+  	width: 240px;
   	height: auto;
   	padding: 6px;
   	margin: 6px;
@@ -146,17 +152,18 @@ section.board-show {
   	-webkit-font-smoothing: antialiased;
      font-smoothing: antialiased;
      
-	  transition: transform .04s ease;
-	  -moz-transition: -moz-transform .04s ease;
-  	-ms-transition: -ms-transform .04s ease;
-	  -o-transition: -o-transform .04s ease;
-	  -webkit-transition: -webkit-transform .04s ease;
+	  transition: transform .02s ease;
+	  -moz-transition: -moz-transform .02s ease;
+  	-ms-transition: -ms-transform .02s ease;
+	  -o-transition: -o-transform .02s ease;
+	  -webkit-transition: -webkit-transform .02s ease;
 
   	transform: rotate(4deg);
   	-moz-transform: rotate(4deg);
   	-ms-transform: rotate(4deg);
   	-o-transform: rotate(4deg);
     -webkit-transform: rotate(4deg);
+    -webkit-backface-visibility: hidden;
   }
 
   div.add_list {
@@ -167,7 +174,7 @@ section.board-show {
     float: left;
     padding: 6px;
     margin: 6px;
-    opacity: .60;
+    opacity: .75;
   }
 
 	div.add_list:hover {
@@ -188,14 +195,26 @@ section.board-show {
     border: 1px solid #A6A6A6;
   }*/
 
-  button.archive_list,
-  button.archive_card {
+  button.archive_list {
   	display: inline-block;
   	float: right;
   	border: none;
   	background: transparent;
   	color: #7D7D7D;
   	padding: 0 3px 3px 3px;
+  }
+
+  button.archive_card {
+/*  	display: inline-block;
+  	float: right;*/
+  	border: none;
+  	background: transparent;
+  	color: #7D7D7D;
+  	/*padding: 0 3px 3px 3px;*/
+  	position: absolute;
+  	top: 0px;
+  	right: -2px;
+  	font-size: 12px;
   }
 
   button.archive_list:hover,
@@ -215,6 +234,7 @@ section.board-show {
     padding: 10px;
     margin: 3px 0 3px 0;
     cursor: pointer;
+    position: relative;
   }
 
   .card:hover {
@@ -233,9 +253,31 @@ section.board-show {
     cursor: grab;
   }
 
-  .card_detail {
-    /*font-family: 'Cutive Mono', serif;*/
+  section.card_detail { }
+
+  .card_detail h4 {
+  	margin-bottom: 7px;
   }
+
+  ul.card_comments {
+  	margin: 0;
+  	padding: 0;
+  }
+
+  	li.comment {
+  		list-style-type: none;
+  		margin: 7px 0 7px 0;
+  		padding: 7px 0 7px 0;
+	  	border-bottom: 1px solid #D9D9D9;
+  	}
+
+  	li.comment:first-child {
+  		/*margin-top: 0;*/
+  	}
+
+  	li.comment:last-child {
+  		border-bottom: none;
+  	}
 
   input[type="text"],
   input[type="password"] {

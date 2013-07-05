@@ -3,6 +3,11 @@ Kanban.Views.CardShow = Backbone.View.extend({
   tagName: "article",
   className: "card_detail",
 
+  initialize: function () {
+  	var that = this;
+    that.model.on('change', this.render, this);
+  },
+
   events: {
     "submit form#add_comment": "addComment",
   },
@@ -15,7 +20,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
   	console.log("add comment");
     var card = that.model;
     var cards = card.collection;
-    console.log(cards);
+    var comments = card.get("comments");
+    console.log(comments);
 
   	// get form attrs, reset form
   	var $form = $(event.target);
@@ -27,35 +33,25 @@ Kanban.Views.CardShow = Backbone.View.extend({
     attrs.card_comment.card_id = card.id;
     console.log(attrs.card_comment);
 
-		var cardComment = new Kanban.Models.CardComment();	
+		var cardComment = new Kanban.Models.CardComment();
+
     cardComment.save(attrs.card_comment, {
       success: function (response) {
-        cards.add(cardComment);
-        console.log(cards);
+
+				comments.add(cardComment);
+				console.log(comments);
+				card.trigger("change");
 
         // TODO: this is insane
-        // console.log(that.$el);
-        // that.$el.html("HELLLOOOOoooo.... ");
-        // var $cardModal = that.$el.find("section.card_detail");
-        // $cardModal.html("HELLO!");
-
         // var cardShow = new Kanban.Views.CardShow({
         //   model: card
         // });
-        var $comments = that.$el.find("ul.comments");
-        $comments.append(attrs.card_comment.content);
+
+        // var $comments = that.$el.find("ul.comments");
+        // $comments.append(attrs.card_comment.content);
         // $cardModal.find("article.card_detail").modal();
       }
     });
-
-		// // save list
-		// list.save(attrs.list, {
-		// 	success: function (data) {
-		// 		var lists = board.lists();
-		// 		lists.add(list);
-		// 		board.trigger("add");
-		// 	}
-		// });
   },
 
   render: function () {
@@ -63,7 +59,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   	var card = that.model;
   	var comments = card.get("comments");
-  	// console.log(comments);
+  	console.log(comments);
+
   	// var list = card.get("list");
   	// var board = list.get("board");
   	// console.log("card show:");

@@ -8,9 +8,9 @@ class CardCommentsController < ApplicationController
   def create
     card = current_user.cards.find(params[:card_comment][:card_id])
     params[:card_comment][:commenter_id] = current_user.id
-    card.comments.build(params[:card_comment])
-    if card.save
-      render :json => card, :status => :ok
+    comment = card.comments.build(params[:card_comment])
+    if comment.save
+      render :json => comment, :status => :ok
     else
       render :nothing => true, :status => :unprocessable_entity
     end

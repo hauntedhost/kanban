@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701043748) do
+ActiveRecord::Schema.define(:version => 20130705181651) do
 
   create_table "board_activities", :force => true do |t|
     t.integer  "member_id",   :null => false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130701043748) do
     t.string   "bio"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "full_name"
   end
 
   add_index "users", ["session_key"], :name => "index_users_on_session_key"

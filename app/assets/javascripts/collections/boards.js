@@ -20,8 +20,8 @@ Kanban.Collections.Boards = Backbone.Collection.extend({
   	var card, foundCard; 
 
   	that.each(function (board) {
-  		board.lists().each(function (list) {
-	  		card = list.cards().get(id);
+  		board.get("lists").each(function (list) {
+	  		card = list.get("cards").get(id);
 	  		if (card) {
 	  			foundCard = card;
 	  		};

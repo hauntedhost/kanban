@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   database: kanban_dev
+  username: postgres
   host: localhost
   pool: 5
   timeout: 5000
@@ -8,6 +9,7 @@ development:
 test:
   adapter: postgresql
   database: kanban_test
+  username: postgres
   host: localhost
   pool: 5
   timeout: 5000
