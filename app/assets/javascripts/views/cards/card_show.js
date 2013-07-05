@@ -40,12 +40,49 @@ Kanban.Views.CardShow = Backbone.View.extend({
   	var that = this;
 
   	var card = that.model;
+  	var comments = card.get("comments");
+  	console.log(comments);
+
+  	// var list = card.get("list");
+  	// var board = list.get("board");
+
+  	console.log("card show:");
   	var renderedContent = that.template({
-  		card: card
+  		card: card,
+  		comments: comments
+  		// comments: comments
   	});
 
   	that.$el.html(renderedContent);
   	return that;
+
+  	// var cardComments = new Kanban.Collections.CardComments();
+  	// cardComments.fetch({
+  	// 	cardId: card.id,
+  	// 	success: function (comments) {
+
+  	// 		console.log(comments);
+  	// 		// card.reset(comments);
+  	// 		// console.log(comments);
+
+		 //  	var renderedContent = that.template({
+		 //  		card: card,
+		 //  		comments: comments
+		 //  	});
+
+		 //  	that.$el.html(renderedContent);
+		 //  	return that;
+  	// 	}
+  	// });
+
+  	// console.log(comments;)
+
+  	// var comments = comments.fetch(card.id);
+
+  	// var comments = card.fetch("comments");
+  	// var comments = card.get("comments").fetch();
+  	// console.log(comments);
+
   }
 
 });

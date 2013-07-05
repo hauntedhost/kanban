@@ -3,7 +3,7 @@ module Api
     respond_to :json
 
     def index
-      boards = current_user.boards
+      boards = current_user.boards.includes(:lists)
       render :json => boards
     end
 

@@ -102,10 +102,11 @@ section.board-show {
   }
 
   .lists {
-  	/*overflow: hidden;*/
+  	overflow: hidden;
   }
   
   .list {
+  	overflow: hidden;
     background: #e3e3e3;
     width: 220px;
     border: 1px solid #ccc;
@@ -127,11 +128,20 @@ section.board-show {
   }
 
   .list.ui-sortable-helper {
-    -webkit-transform: rotate(4deg);
-  	-moz-transform: rotate(4deg);
-  	-o-transform: rotate(4deg);
-  	-ms-transform: rotate(4deg);
+  	-webkit-font-smoothing: antialiased;
+     font-smoothing: antialiased;
+     
+	  transition: transform .04s ease;
+	  -moz-transition: -moz-transform .04s ease;
+  	-ms-transition: -ms-transform .04s ease;
+	  -o-transition: -o-transform .04s ease;
+	  -webkit-transition: -webkit-transform .04s ease;
+
   	transform: rotate(4deg);
+  	-moz-transform: rotate(4deg);
+  	-ms-transform: rotate(4deg);
+  	-o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
   }
 
   div.add_list {

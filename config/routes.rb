@@ -22,7 +22,7 @@ Kanban::Application.routes.draw do
         post :sort
       end
       member do
-      	resources :card_comments, :only => [:index]
+      	resources :card_comments, :only => [:index], :path => "comments"
       end
     end
   end

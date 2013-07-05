@@ -5,6 +5,11 @@
 </p>
 
 <h4>Activity</h4>
+<ul class="comments">
+<% comments.each(function (comment) { %>
+	<li><%= comment.escape("content") %></li>	
+<% }); %>
+</ul>
 
 <form id="add_comment" 
 			data-card-id="<%= card.id %>">

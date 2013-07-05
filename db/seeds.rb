@@ -39,3 +39,10 @@ card = Card.create([
   { list_id: 4, title: "chains.cc" }                    # second app/ideas
 ])
 
+card_comments = CardComment.create([
+	{ card_id: 1, commenter_id: 1, content: "hello world" },
+	{ card_id: 1, commenter_id: 1, content: "will do this soon" },
+	{ card_id: 2, commenter_id: 1, content: "nice" }
+])
+
+

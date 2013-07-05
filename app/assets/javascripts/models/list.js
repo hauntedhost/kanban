@@ -6,7 +6,7 @@ Kanban.Models.List = Backbone.RelationalModel.extend({
 		key: "cards",
 		relatedModel: "Kanban.Models.Card",
 		collectionType: "Kanban.Collections.Cards",
-		reverseRelations: {
+		reverseRelation: {
 			key: "list"
 		}
 	}],

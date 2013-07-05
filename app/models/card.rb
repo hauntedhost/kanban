@@ -24,7 +24,11 @@ class Card < ActiveRecord::Base
   has_many :cards_members, :class_name => "CardMember"
   has_many :members, :through => :cards_members
 
-  has_many :card_comments
-  has_many :card_activities
-  
+  has_many :comments, :class_name => "CardComment"
+  has_many :activities, :class_name => "CardActivities"
+
+  def as_json(options = {})
+    super(options.merge(:include => :comments))
+  end
+
 end

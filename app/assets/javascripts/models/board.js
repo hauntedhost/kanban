@@ -27,19 +27,21 @@ Kanban.Models.Board = Backbone.RelationalModel.extend({
   	var that = this;
 
   	// OPTIMIZE: refactor
-		var lists = that.lists();
+		// var lists = that.lists();
+		var lists = that.get("lists");
 		var list = lists.get(id);
-		if (list) {
-			// console.log("found list #" + id);
-			return list;
-		};
+		return list;
+		// if (list) {
+		// 	// console.log("found list #" + id);
+		// 	return list;
+		// };
   },
 
   getCard: function (id) {
   	var that = this;
-
-  	var lists = that.lists();
-  	var foundCard = undefined;
+  	var foundCard;
+  	// var lists = that.lists();
+  	var lists = that.get("lists");
 		lists.each(function (list) {
 			var cards = list.cards();
 			var card = cards.get(id);

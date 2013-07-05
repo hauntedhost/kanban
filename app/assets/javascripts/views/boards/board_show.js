@@ -9,6 +9,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     that.model.on('reset', this.render, this);
     that.model.on('add', this.render, this);
     that.model.on('remove', this.render, this);
+    that.model.on('sort', this.render, this);
   },
 
   events: {
@@ -25,23 +26,23 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var board = that.model;
   	event.preventDefault();
 
+		var listId = parseInt($(event.target).data("list-id"));    
+    var list = board.get("lists").get(listId)
+		var cards = list.get("cards");
+		var card = new Kanban.Models.Card();
+
   	// get form attrs, reset form
   	var $form = $(event.target);
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
 		// add list_id to attrs
-		var listId = parseInt($(event.target).data("list-id"));    
 		attrs.card.list_id = listId;
-
-		// get list, create new card
-    var list = board.getList(listId);
-		var card = new Kanban.Models.Card();
 
 		// save card
 		card.save(attrs.card, {
 			success: function (data) {
-				list.cards().add(card);
+				cards.add(card);
 				board.trigger("add");
 			}
 		});
@@ -57,12 +58,14 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var cardId = parseInt($(event.target).data("card-id"));
     var card = board.getCard(cardId);
-    var list = board.getList(card.get("list_id"));
+    var list = card.get("list");
+    // var list = board.getList(card.get("list_id"));
+    var cards = list.get("cards");
 
 		// remove list
 		card.destroy({
 			success: function (data) {
-				list.cards().remove(card);
+				cards.remove(card);
 		    board.trigger("remove");
 			}
 		});		
@@ -81,12 +84,13 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
 		// add board_id to attrs, create new list
 		attrs.list.board_id = board.id;
-		var list = new Kanban.Models.List();	
+		var list = new Kanban.Models.List();
+		var lists = board.get("lists");
 
 		// save list
 		list.save(attrs.list, {
 			success: function (data) {
-				var lists = board.lists();
+				// var lists = board.lists();
 				lists.add(list);
 				board.trigger("add");
 			}
@@ -102,8 +106,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   	console.log("archive list");
 
     var listId = parseInt($(event.target).data("list-id"));
-    var lists = board.lists();
-    var list = lists.get(listId);    
+    var lists = board.get("lists");
+    var list = lists.get(listId);
+    // var lists = board.lists();
+    // var list = lists.get(listId);    
 
 		// remove list
 		list.destroy({
@@ -124,13 +130,54 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var cardId = parseInt($(event.target).data("card-id"));    
     var $cardModal = that.$el.find("section.card_detail");
 
+    // var card = new Kanban.Models.Card({ id: cardId });
+    // card.fetch();
+
     var card = board.getCard(cardId);
-    var cardShow = new Kanban.Views.CardShow({
-      model: card
+    card.fetch({
+    	success: function (card) {
+		    var cardShow = new Kanban.Views.CardShow({
+		      model: card
+		    });
+
+		  	$cardModal.html(cardShow.render().$el);
+		  	$cardModal.find("article.card_detail").modal();
+    	}
     });
 
-  	$cardModal.html(cardShow.render().$el);
-  	$cardModal.find("article.card_detail").modal();
+  // 	var cardComments = new Kanban.Collections.CardComments();
+  // 	cardComments.fetch({
+  // 		cardId: card.id,
+  // 		success: function (comments) {
+
+		//     var cardShow = new Kanban.Views.CardShow({
+		//       model: card,
+		//       collection: comments
+		//     });
+
+		//   	$cardModal.html(cardShow.render().$el);
+		//   	$cardModal.find("article.card_detail").modal();
+		//   }
+		// });
+
+  	// card.fetch({
+  	// 	cardId: card.id,
+  	// 	success: function (comments) {
+
+  	// 		console.log(comments);
+  	// 		// card.reset(comments);
+  	// 		// console.log(comments);
+
+		 //  	var renderedContent = that.template({
+		 //  		card: card,
+		 //  		comments: comments
+		 //  	});
+
+		 //  	that.$el.html(renderedContent);
+		 //  	return that;
+  	// 	}
+  	// });
+
   },
 
   render: function () {
@@ -140,6 +187,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var board = that.model;
     var lists = board.get("lists");
+
+    console.log("lists");
+    console.log(lists);
+
     var renderedContent = that.template({
       board: board,
       lists: lists,
@@ -159,7 +210,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
       update: function (data) {
         var sortData = $(this).sortable("serialize");
         $.post(sortListsUrl, sortData, function (resortedLists) {
-          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
+        	board.get("lists").reset(resortedLists);
+        	// var lists = board.get("lists");
+        	// lists.reset
+         //  board.reset({ lists: new Kanban.Collections.Lists(resortedLists) });
         });
       }
     });
@@ -184,7 +238,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 	        sortData += '&list_id=' + listId
 
 	        $.post(sortCardsUrl, sortData, function (resortedLists) {
-	          board.set({ lists: new Kanban.Collections.Lists(resortedLists) });
+	        	board.get("lists").reset(resortedLists);
+	        	// var lists = board.get("lists");
+	        	// lists.reset(resortedLists);
+	          // board.reset({ lists: new Kanban.Collections.Lists(resortedLists) });
 	        });
         };
       }
