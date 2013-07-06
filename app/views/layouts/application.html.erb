@@ -13,14 +13,14 @@
 
   <div id="header">
     <div class="header-logo">
-      <h1><a href="#/">KANBAN</a></h1>
+      <h1><a href="#/">KANBAN <span>看板</span></a></h1>
     </div>
     <div class="header-user">
       <% if logged_in? %>
         <p>
-          welcome back 
-          <a href="#users/<%= current_user.id %>"><%= current_user.email %></a>
-          (<%= link_to "logout", logout_url %>)
+          <!-- welcome back  -->
+          <!-- <a href="#users/<%#= current_user.id %>"><%= current_user.email %></a> -->
+          <!-- (<%#= link_to "logout", logout_url %>) -->
         </p>
         <%= image_tag(current_user.gravatar_url(30)) %> 
       <% else %>

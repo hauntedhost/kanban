@@ -168,7 +168,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     	tolerance: "pointer",
       placeholder: "list-placeholder",
  			start: function (e, ui) {
-      	ui.placeholder.height(ui.item.height());
+      	ui.placeholder.height(ui.item.height() - 2);
     	},
       update: function (data) {
         var sortData = $(this).sortable("serialize");
@@ -190,7 +190,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     	tolerance: "pointer",
       placeholder: "card-placeholder",
  			start: function (e, ui) {
-      	ui.placeholder.height(ui.item.height());
+        ui.placeholder.width(ui.item.width() - 2);
+      	ui.placeholder.height(ui.item.height() - 2);
     	},
       update: function (event, ui) {
         var sortData = $(this).sortable("serialize");
