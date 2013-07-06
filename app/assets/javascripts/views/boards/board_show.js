@@ -127,8 +127,15 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var $cardModal = that.$el.find("section.card_detail");
 
     var card = board.getCard(cardId);
+    console.log("our card:");
+    console.log(card);
+
     card.fetch({
     	success: function (card) {
+
+    		console.log("card data");
+    		console.log(card);
+    		
 		    var cardShow = new Kanban.Views.CardShow({
 		      model: card
 		    });

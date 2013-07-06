@@ -62,7 +62,7 @@ a {
   }
 
 #main {
-  /*overflow: hidden;*/
+  overflow: hidden;
   padding: 0 0 15px 0;
 }
 
@@ -72,7 +72,7 @@ a {
 /*  width: 1000px;
   padding: 5px;
   padding-left: 15px;*/
-  position: relative;
+  /*position: relative;*/
 }
 
 #sidebar {
@@ -86,7 +86,8 @@ a {
 }
 
 #footer {
-  border-top: 1px solid #ccc;
+	margin-top: 40px;
+  border-top: 1px solid #D9D9D9;
 }
 
 section.login {
@@ -98,6 +99,10 @@ section.boards-index {
   width: 360px;
   margin: 0 auto;
 }
+
+	header.boards-index {
+		margin-top: 15px;
+	}
 
   .boards-index h2 {
     font-size: 18px;

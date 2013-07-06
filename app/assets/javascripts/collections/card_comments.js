@@ -3,7 +3,7 @@ Kanban.Collections.CardComments = Backbone.Collection.extend({
 
 
 	comparator: function (comment) {
-		return -comment.get("id");
+		return -comment.get("created_at_timestamp");
 	}
 
   // url: "/api/card_comments",

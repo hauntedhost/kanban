@@ -43,9 +43,9 @@ Kanban.Views.CardShow = Backbone.View.extend({
 				card.trigger("change");
 
         // TODO: this is insane
-        // var cardShow = new Kanban.Views.CardShow({
-        //   model: card
-        // });
+        var commentShow = new Kanban.Views.commentShow({
+          model: cardComment
+        });
 
         // var $comments = that.$el.find("ul.comments");
         // $comments.append(attrs.card_comment.content);

@@ -7,7 +7,7 @@ window.Kanban = {
     var that = this;
 
     that.$rootEl = $("#content");
-    that.$rootEl.html("loading ...");
+    // that.$rootEl.html("loading ...");
 
     Kanban.currentUser = new Kanban.Models.CurrentUser();
     Kanban.currentUser.fetch({

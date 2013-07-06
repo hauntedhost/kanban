@@ -1,0 +1,92 @@
+/* 
+ * This is a nice full CSS3 loader made with LESS 
+*/
+
+/* u can custom almost everything u need with these variables just bellow */
+
+.loader {
+	width: 75px;
+	margin: 0 auto;
+}
+
+@loaderSize       : 75px;
+@radThickness     : @loaderSize/10;
+@spinSpeed        : 750ms;
+@backgroundColor  : #eee;
+@forgroundColor   : #ccc;
+@masksColor       : #fff;
+@middleCircleSize : 68%;
+
+
+/* but from here u'll have to understand what u'r dealing with */
+
+/* mixins */
+.animation (@params) {
+  -webkit-animation:@params;
+     -moz-animation:@params;
+          animation:@params;
+}
+
+/* animations */
+.spin {
+  .animation(spin @spinSpeed infinite linear);
+}
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); } }
+  @-moz-keyframes spin {
+    to { -moz-transform: rotate(360deg); } }
+
+.rspin {
+  .animation(rspin @spinSpeed*3 infinite linear);
+}
+  @-webkit-keyframes rspin {
+    to { -webkit-transform: rotate(-360deg); } }
+  @-moz-keyframes rspin {
+    to { -moz-transform: rotate(-360deg); } }
+
+
+/* let's style that thing */
+.loader {
+  background-color:@backgroundColor;
+  border-radius:100%;
+  position:relative;
+  height:@loaderSize;
+  width:@loaderSize;
+  overflow:hidden; 
+  .c {
+    position:absolute; left:50%; top:50%;
+    margin:-@middleCircleSize/2 0 0 -@middleCircleSize/2;
+    width:@middleCircleSize;
+    height:@middleCircleSize;
+    background-color:@masksColor;
+    border-radius:100%;
+    z-index:3;
+  }
+  
+  .d {
+    position:absolute; top:0; bottom:0; left:0; right:0; 
+    .e { 
+      @thisWidth : @loaderSize*0.2;
+      z-index:10;
+      position:absolute; top:1%; left:50%; 
+      margin:0 0 0 -@thisWidth/2;
+      border-top:@thisWidth solid @forgroundColor;
+      border-left:@thisWidth*0.3 solid transparent;
+      border-right:@thisWidth*0.3 solid transparent;
+      height:0; width:@thisWidth;
+      -webkit-transform:rotate(10deg); -moz-transform:rotate(10deg);
+      border-radius:5px 5px 0 0;
+     }
+  }
+  .r {
+    z-index:2;
+    position:absolute; left:50%; top:-1px; bottom:-1px;
+    margin-left:-(@radThickness)/2;
+    background-color:@masksColor;
+    width:(@radThickness); 
+  }
+  .r1 { -webkit-transform:rotate(0deg); -moz-transform:rotate(0deg); }
+  .r2 { -webkit-transform:rotate(45deg); -moz-transform:rotate(45deg); }
+  .r3 { -webkit-transform:rotate(90deg); -moz-transform:rotate(90deg); }
+  .r4 { -webkit-transform:rotate(135deg); -moz-transform:rotate(135deg); }
+}

@@ -3,13 +3,13 @@ module Api
     respond_to :json
 
     def index
-      cards = current_user.cards
-      render :json => cards    
+      @cards = current_user.cards
+      # render :json => cards    
     end
 
     def show
-      card = current_user.cards.find(params[:id])
-      render :json => card
+      @card = current_user.cards.find(params[:id])
+      # render :json => card
     end
 
     def create
@@ -44,8 +44,8 @@ module Api
       end
       
       # return re-sorted lists
-      board = Card.find(card_ids.first).board
-      render :json => board.lists
+      @lists = Card.find(card_ids.first).board.lists
+      # render :json => board.lists
     end
 
   end
