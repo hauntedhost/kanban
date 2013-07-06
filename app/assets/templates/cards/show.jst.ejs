@@ -1,4 +1,6 @@
-<h3><%= card.escape("title") %></h3>
+<header class="card_title">
+	<h3><%= card.escape("title") %></h3>
+</header>
 
 <p>
 	<%= card.escape("description") %>
@@ -14,8 +16,22 @@
 
 <ul class="card_comments">
 <% comments.each(function (comment) { %>
-	<li class="comment">
-		<%= comment.escape("content") %>
+	<li>
+		<article class="comment">
+			<header>
+				<img src="http://www.gravatar.com/avatar/14941f14ff0cb4d5de963f05ba3b31b6?s=30" />
+			</header>
+
+			<a rel="author">Sean Omlor</a>
+
+			<div class="content">
+				<%= comment.escape("content") %>
+			</div>
+
+			<footer>
+				<abbr class="timeago quiet" title="<%= comment.escape("created_at") %>"><%= comment.escape("created_at") %></abbr>
+			</footer>
+		</article>
 	</li>	
 <% }); %>
 </ul>

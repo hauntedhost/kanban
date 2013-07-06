@@ -12,10 +12,11 @@
   -o-box-shadow: 0 0 10px #000;
   -ms-box-shadow: 0 0 10px #000;
   box-shadow: 0 0 10px #000;
-  margin-top: 40px !important;
 
   /* custom */
   width: 420px;
+  margin-top: 0px !important;
+  margin-bottom: 10px;
   top: 0 !important;
   position: absolute !important;
 }

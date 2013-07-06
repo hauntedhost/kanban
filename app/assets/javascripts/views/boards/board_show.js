@@ -179,7 +179,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     $cards.sortable({
       items: "div.card",
       connectWith: ".cards",
-      delay: 50,
+      delay: 125,
     	tolerance: "pointer",
       placeholder: "card-placeholder",
  			start: function (e, ui) {

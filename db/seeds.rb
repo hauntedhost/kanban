@@ -12,7 +12,7 @@ users = User.create([
 ])
 
 boards = Board.create([
-  { name: "kanban app", description: "meta-kanban for this kanban app" },
+  { name: "final project", description: "meta-kanban for this kanban app" },
   { name: "second app", description: "my second app academy app" },
   { name: "dev job", description: "job search board" }  
 ])

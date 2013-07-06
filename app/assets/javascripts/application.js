@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require jquery.modal
+//= require jquery.timeago
 //= require jquery.serializeJSON
 //= require underscore
 //= require backbone

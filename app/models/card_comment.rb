@@ -12,6 +12,7 @@
 
 class CardComment < ActiveRecord::Base
   attr_accessible :card_id, :commenter_id, :content
+	default_scope :order => "card_comments.created_at desc"
 
   belongs_to :card
   belongs_to :commenter, :class_name => "User"

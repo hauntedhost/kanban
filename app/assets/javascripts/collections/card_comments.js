@@ -1,5 +1,11 @@
 Kanban.Collections.CardComments = Backbone.Collection.extend({
   model: Kanban.Models.CardComment,
+
+
+	comparator: function (comment) {
+		return -comment.get("id");
+	}
+
   // url: "/api/card_comments",
 
   // initialize: function (models, options) {

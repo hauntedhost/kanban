@@ -71,6 +71,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
   	});
 
   	that.$el.html(renderedContent);
+	 	that.$el.find("abbr.timeago").timeago();
+
   	return that;
 
   	// var cardComments = new Kanban.Collections.CardComments();

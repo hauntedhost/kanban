@@ -30,8 +30,18 @@ class Card < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
 
+  def comments_count
+  	comments.count
+  end
+
+  # def as_json(options = {})
+  #   super(options.merge(:only => [:username, :email, :bio], 
+  #                       :methods => :gravatar_url))
+  # end
+
   def as_json(options = {})
-    super(options.merge(:include => :comments))
+    super(options.merge(:include => :comments,
+    										:methods => :comments_count))
   end
 
 end
