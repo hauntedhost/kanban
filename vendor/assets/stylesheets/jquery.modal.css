@@ -3,11 +3,9 @@
   background: #fff;
   padding: 15px 30px;
 
-  -webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .35);
-  -moz-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .35);
-  -o-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .35);
-  -ms-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .35);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .35);
+  -webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.6);
+  -moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.6);
+  box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.6);
 
   /* custom */
   width: 420px;
@@ -28,13 +26,22 @@
   top: -12.5px;
   right: -12.5px;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   text-indent: -9999px;
-  background: url(close.png) no-repeat 0 0;
 
-  top: 12px;
+  top: 9px;
   right: 9px;
+  background: url("/assets/close_squared.png") no-repeat 0 0;
+
+  opacity: .75;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;    
+  transition: .2s;
+}
+
+.modal a.close-modal:hover {
+  opacity: 1;
 }
 
 .modal-spinner {

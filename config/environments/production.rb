@@ -8,6 +8,10 @@ Kanban::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Add vendor fonts to assets pipeline
+  config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 

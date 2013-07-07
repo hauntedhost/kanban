@@ -7,8 +7,8 @@
     <div class="list" id="list_<%= list.id %>">
       <header class="title">
         <%= list.escape("title") %>
-        <button class="archive_list"
-        				data-list-id="<%= list.id %>">X</button>
+        <button class="archive_list entypo-cancel"
+        				data-list-id="<%= list.id %>"></button>
       </header>
 
       <div class="cards" 
@@ -19,9 +19,16 @@
           		 id="card_<%= card.id %>" 
           		 data-card-id="<%= card.id %>">
             <%= card.escape("title") %>
-						<p class="comments_count"><%= card.escape("comments_count") %></p>
-            <button class="archive_card"
-										data-card-id="<%= card.id %>">X</button>
+
+            <% if (card.get("comments_count") > 0) { %>
+  						<p class="comments_count">
+                <span class="entypo-comment"></span>
+                <%= card.escape("comments_count") %>
+              </p>
+            <% } %>
+
+            <button class="archive_card entypo-cancel"
+										data-card-id="<%= card.id %>"></button>
           </div>
         <% }); %>
       </div>

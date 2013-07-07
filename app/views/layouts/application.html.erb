@@ -22,7 +22,7 @@
           <!-- <a href="#users/<%#= current_user.id %>"><%= current_user.email %></a> -->
           <!-- (<%#= link_to "logout", logout_url %>) -->
         </p>
-        <%= image_tag(current_user.gravatar_url(30)) %> 
+        <%= link_to image_tag(current_user.gravatar_url(30)), "#" %> 
       <% else %>
         <p><%= link_to "login", login_url %>
       <% end %>
