@@ -3,6 +3,7 @@
 </header>
 
 <div class="lists">
+  <div class="lists_inner_wrapper">  
   <% lists.each(function (list) { %>  	
     <div class="list" id="list_<%= list.id %>">
       <header class="title">
@@ -35,7 +36,10 @@
 
       <div class="add_card">
 				<form class="add_card" data-list-id="<%= list.id %>">
-		  		<input type="text" name="card[title]" placeholder="Add a card ..." />
+		  		<input type="text" 
+                 class="card_title" 
+                 name="card[title]" 
+                 placeholder="Add a card ..." />
 					<input type="submit" value="Add Card" />
 				</form>
 			</div>
@@ -45,10 +49,15 @@
 
 	<div class="add_list">
 		<form class="add_list">
-  		<input type="text" name="list[title]" placeholder="Add a list ..." />
+  		<input type="text"
+             class="list_title"
+             name="list[title]" 
+             placeholder="Add a list ..." />
 			<input type="submit" value="Add List" />
 		</form>
 	</div>
+  </div> <!-- inner_wrapper -->
 </div>
 
 <section class="card_detail"></section>
+

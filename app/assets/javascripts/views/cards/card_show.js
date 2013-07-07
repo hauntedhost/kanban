@@ -31,7 +31,18 @@ Kanban.Views.CardShow = Backbone.View.extend({
     // TODO: research toJSON override via backbone relational
     // suspect it prevents need to patch ids in like this
     attrs.card_comment.card_id = card.id;
-    console.log(attrs.card_comment);
+
+    if (!attrs.card_comment.content) {
+      that.$el.effect("shake", { 
+        distance: 9, 
+        times: 2,
+        complete: function () {
+          $textarea = that.$el.find(".card_comment_content");
+          $textarea.focus();
+        }
+      }, 350);
+      return;
+    }
 
 		var cardComment = new Kanban.Models.CardComment();
 

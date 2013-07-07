@@ -4,6 +4,7 @@
   <title>Kanban</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -29,11 +30,19 @@
     </div>
   </div>
 
-  <div id="main">
+  <div id="main clearfix">
     <%= yield %>
   </div>
 
-  <div id="footer"></div>
+  <div id="footer">
+    <p>
+      KANBAN is hand carved with Ruby on Rails, Backbone.js, and green tea 
+      by Sean Omlor.
+    </p>
+    <p>
+      <a href="http://seanomlor.com">Hire me</a>.
+    </p>
+  </div>
 
 </div>
 

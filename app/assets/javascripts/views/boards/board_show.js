@@ -26,6 +26,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var board = that.model;
   	event.preventDefault();
 
+    var $scrollPos = $("div.lists").scrollLeft();
+
 		var listId = parseInt($(event.target).data("list-id"));    
     var list = board.get("lists").get(listId)
 		var cards = list.get("cards");
@@ -36,14 +38,34 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
-		// add list_id to attrs
-		attrs.card.list_id = listId;
+    // add list_id to attrs
+    attrs.card.list_id = listId;
+
+    if (!attrs.card.title) {
+      var $list = $("div #list_" + listId);
+      var $listInput = $("div #list_" + listId + " input.card_title");
+
+      $listInput.hide();
+      $list.effect("shake", { 
+        distance: 9, 
+        times: 2,
+        complete: function () {
+          $listInput.show();
+          $listInput.focus();
+        }
+      }, 350);
+      $("div.lists").scrollLeft($scrollPos);
+      return false;
+    }
 
 		// save card
 		card.save(attrs.card, {
 			success: function (data) {
 				cards.add(card);
 				board.trigger("add");
+        var listId = card.get("list_id");
+        $("div #list_" + listId + " input.card_title").focus();
+        $("div.lists").scrollLeft($scrollPos);
 			}
 		});
   },
@@ -86,11 +108,34 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		var list = new Kanban.Models.List();
 		var lists = board.get("lists");
 
+    if (!attrs.list.title) {
+      console.log("no title");
+      var $scrollPos = $("div.lists").scrollLeft();
+      console.log($scrollPos);
+      var $addList = $("div.add_list");
+      var $addListInput = $("div.add_list input.list_title");
+
+      $addListInput.hide();
+      $addList.effect("shake", { 
+        distance: 9, 
+        times: 2,
+        complete: function () {
+          $addListInput.show();
+          $addListInput.focus();
+        }
+      }, 350);
+      $("div.lists").scrollLeft($scrollPos);
+      return false;
+    }
+
 		// save list
 		list.save(attrs.list, {
 			success: function (data) {
 				lists.add(list);
 				board.trigger("add");
+
+        $addListInput = $("div.add_list input.list_title");
+        $addListInput.focus();
 			}
 		});
   },
@@ -168,8 +213,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     	tolerance: "pointer",
       placeholder: "list-placeholder",
  			start: function (e, ui) {
-        ui.placeholder.width(ui.item.width() - 2);        
-      	ui.placeholder.height(ui.item.height() - 2);
+        ui.placeholder.width(ui.item.width());        
+      	ui.placeholder.height(ui.item.height());
     	},
       update: function (data) {
         var sortData = $(this).sortable("serialize");
