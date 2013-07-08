@@ -14,34 +14,46 @@
  *= require jquery.modal
  */
 
+$darkGrey: #262626;
+
+@mixin gradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
 body {
   margin: 0;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
-  color: #262626;
+  color: $darkGrey;
 }
 
 a {
-	color: #262626;
+	color: $darkGrey;
 }
 
 #header {
   padding: 5px 0 0 5px;
   overflow: hidden;
 
-  background: rgba(15,15,15,1);
-  background: -moz-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(15,15,15,1)), color-stop(100%, rgba(24,24,24,1)));
-  background: -webkit-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
-  background: -o-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
-  background: -ms-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
-  background: linear-gradient(to bottom, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
+	@include gradient(rgba(15,15,15,1), rgba(24,24,24,1));
+
+//  background: rgba(15,15,15,1);
+//  background: -moz-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
+//  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(15,15,15,1)), color-stop(100%, rgba(24,24,24,1)));
+//  background: -webkit-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
+//  background: -o-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
+//  background: -ms-linear-gradient(top, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
+//  background: linear-gradient(to bottom, rgba(15,15,15,1) 0%, rgba(24,24,24,1) 100%);
 
   color: white;
   height: 50px;
   position: relative;
 }
-  
+
   #header a {
     color: white;
   }
@@ -57,7 +69,7 @@ a {
     margin: 0;
     padding: 0;
   }
-  
+
   .header-logo h1 span {
     font-weight: normal;
     font-size: 20px;
@@ -72,7 +84,7 @@ a {
     bottom: 6px;
     right: 12px;
   }
-  
+
   .header-user p {
     margin-bottom: 10px;
     display: inline-block;
@@ -109,7 +121,7 @@ a {
 
 #footer {
   width: 960px;
-  color: #262626;
+  color: $darkGrey;
   text-align: center;
   font-size: 14px;
 	margin: 60px auto;
@@ -121,7 +133,7 @@ a {
 
   opacity: .60;
   -webkit-transition: .3s;
-  -moz-transition: .3s;    
+  -moz-transition: .3s;
   transition: .3s;
 }
 
@@ -131,9 +143,9 @@ a {
 
 #footer a {
   padding: 1px;
-  color: #262626;
+  color: $darkGrey;
   text-decoration: none;
-  border-bottom: 1px dashed #262626;
+  border-bottom: 1px dashed $darkGrey;
 }
 
 #footer a:hover {
@@ -192,7 +204,7 @@ section.board-show { }
     margin: 0;
   }
 
-  .lists {
+  .lists_wrapper {
 		padding: 5px 10px 80px 10px;
     min-height: 280px;
     width: 98%;
@@ -204,6 +216,11 @@ section.board-show { }
     float: left;
     margin-right: -30000px;
   }
+
+	section.lists {
+		overflow: hidden;
+		float: left;
+	}
 
   .list {
   	// overflow: hidden;
@@ -256,7 +273,7 @@ section.board-show { }
     transform: rotate(3deg);
 
     -webkit-transition: -webkit-transform .02s ease;
-    -moz-transition: -moz-transform .02s ease;     
+    -moz-transition: -moz-transform .02s ease;
     transition: transform .02s ease;
 
     -webkit-backface-visibility: hidden;
@@ -298,7 +315,7 @@ section.board-show { }
 
     opacity: 0;
     -webkit-transition: .6s;
-    -moz-transition: .6s;    
+    -moz-transition: .6s;
     transition: .6s;
   }
 
@@ -322,7 +339,7 @@ section.board-show { }
 
     opacity: 0;
     -webkit-transition: .6s;
-    -moz-transition: .6s;    
+    -moz-transition: .6s;
     transition: .6s;
   }
 
@@ -349,7 +366,7 @@ section.board-show { }
     font-size: 14px;
     color: #666666;
   }
-  
+
   span.entypo-comment {
     color: #a1a1a1;
   }
@@ -443,8 +460,8 @@ section.board-show { }
 			a[rel="author"] {
 				font-weight: bold;
 				text-decoration: none;
-			} 
- 			
+			}
+
  			article.comment .content {
  				margin: 6px 0 4px 0;
  			}
@@ -496,8 +513,8 @@ input[type="text"],
 input[type="password"] {
 	width: 100%;
   padding: 10px;
-	border: 1px solid #a0a0a0; 
-  -webkit-box-sizing: border-box;   
+	border: 1px solid #a0a0a0;
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -523,7 +540,7 @@ textarea {
 }
 
 ::-webkit-input-placeholder { color: #565656; }
-::-moz-placeholder { color: #565656; } 
+::-moz-placeholder { color: #565656; }
 input:-moz-placeholder { color: #565656; }
 
 .quiet {

@@ -32,9 +32,10 @@ Kanban.Views.CardShow = Backbone.View.extend({
     // suspect it prevents need to patch ids in like this
     attrs.card_comment.card_id = card.id;
 
+		// fail if comment is empty
     if (!attrs.card_comment.content) {
-      that.$el.effect("shake", { 
-        distance: 9, 
+      that.$el.effect("shake", {
+        distance: 9,
         times: 2,
         complete: function () {
           $textarea = that.$el.find(".card_comment_content");
@@ -44,8 +45,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
       return;
     }
 
+		// create and render comment
 		var cardComment = new Kanban.Models.CardComment();
-
     cardComment.save(attrs.card_comment, {
       success: function (response) {
 

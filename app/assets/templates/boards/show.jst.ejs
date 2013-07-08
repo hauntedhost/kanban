@@ -2,62 +2,21 @@
 	<h2><%= board.escape("name") %></h2>
 </header>
 
-<div class="lists">
-  <div class="lists_inner_wrapper">  
-  <% lists.each(function (list) { %>  	
-    <div class="list" id="list_<%= list.id %>">
-      <header class="title">
-        <%= list.escape("title") %>
-        <button class="archive_list entypo-cancel"
-        				data-list-id="<%= list.id %>"></button>
-      </header>
+<div class="lists_wrapper">
+  <div class="lists_inner_wrapper">
 
-      <div class="cards" 
-      		 id="cards_list_<%= list.id %>" 
-      		 data-list-id="<%= list.id %>">
-        <% list.cards().each(function (card) { %>
-          <div class="card" 
-          		 id="card_<%= card.id %>" 
-          		 data-card-id="<%= card.id %>">
-            <%= card.escape("title") %>
+		<section class="lists"></section>
 
-            <% if (card.get("comments_count") > 0) { %>
-  						<p class="comments_count">
-                <span class="entypo-comment"></span>
-                <%= card.escape("comments_count") %>
-              </p>
-            <% } %>
-
-            <button class="archive_card entypo-cancel"
-										data-card-id="<%= card.id %>"></button>
-          </div>
-        <% }); %>
-      </div>
-
-      <div class="add_card">
-				<form class="add_card" data-list-id="<%= list.id %>">
-		  		<input type="text" 
-                 class="card_title" 
-                 name="card[title]" 
-                 placeholder="Add a card ..." />
-					<input type="submit" value="Add Card" />
-				</form>
-			</div>
-
-    </div>
-  <% }); %>
-
-	<div class="add_list">
-		<form class="add_list">
-  		<input type="text"
-             class="list_title"
-             name="list[title]" 
-             placeholder="Add a list ..." />
-			<input type="submit" value="Add List" />
-		</form>
-	</div>
+		<div class="add_list">
+			<form class="add_list">
+				<input type="text"
+		           class="list_title"
+		           name="list[title]"
+		           placeholder="Add a list ..." />
+				<input type="submit" value="Add List" />
+			</form>
+		</div>
   </div> <!-- inner_wrapper -->
 </div>
 
 <section class="card_detail"></section>
-

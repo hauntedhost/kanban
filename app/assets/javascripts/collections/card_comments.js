@@ -1,7 +1,6 @@
 Kanban.Collections.CardComments = Backbone.Collection.extend({
   model: Kanban.Models.CardComment,
 
-
 	comparator: function (comment) {
 		return -comment.get("created_at_timestamp");
 	}
