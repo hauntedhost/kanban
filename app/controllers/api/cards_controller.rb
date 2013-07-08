@@ -4,7 +4,7 @@ module Api
 
     def index
       @cards = current_user.cards
-      # render :json => cards    
+      # render :json => cards
     end
 
     def show
@@ -18,7 +18,7 @@ module Api
     		render :json => card, :status => :ok
     	else
     		render :nothing => true, :status => :unprocessable_entity
-    	end    	
+    	end
     end
 
     def destroy
@@ -27,7 +27,7 @@ module Api
 				render :json => card, :status => :ok
 			else
 				render :nothing => true, :status => :unprocessable_entity
-			end    	
+			end
     end
 
     def sort
@@ -39,11 +39,10 @@ module Api
     	end
 
       card_ids.each_with_index do |id, index|
-        Card.update_all({ position: index + 1,  list_id: list.id }, 
+        Card.update_all({ position: index + 1,  list_id: list.id },
                         { id: id })
       end
-      
-      # return re-sorted lists
+
       @lists = Card.find(card_ids.first).board.lists
       # render :json => board.lists
     end

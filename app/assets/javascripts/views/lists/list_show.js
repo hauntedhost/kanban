@@ -5,8 +5,9 @@ Kanban.Views.ListShow = Backbone.View.extend({
 
 	initialize: function () {
 		var that = this;
-	  that.model.on('add', this.render, this);
-	  that.model.on('remove', this.render, this);
+		that.model.on("all", that.render, that);
+	  // that.model.on('add', this.render, this);
+	  // that.model.on('remove', this.render, this);
 	},
 
 	events: {
@@ -57,7 +58,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
     // var board = that.model;
   	event.preventDefault();
 
-    var $scrollPos = $("div.lists").scrollLeft();
+    var $scrollPos = $("div.lists_wrapper").scrollLeft();
+		console.log($scrollPos);
 
 		// var listId = parseInt($(event.target).data("list-id"));
 		//     var list = board.get("lists").get(listId)
@@ -76,6 +78,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 
 		// fail is no card title
     if (!attrs.card.title) {
+			var listId = list.get("id");
       var $list = $("div #list_" + listId);
       var $listInput = $("div #list_" + listId + " input.card_title");
 
@@ -88,7 +91,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
           $listInput.focus();
         }
       }, 350);
-      $("div.lists").scrollLeft($scrollPos);
+      $("div.lists_wrapper").scrollLeft($scrollPos);
       return false;
     }
 
@@ -96,7 +99,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		card.save(attrs.card, {
 			success: function (data) {
 				cards.add(card);
-				list.trigger("add");
+				// list.trigger("add");
         var listId = card.get("list_id");
         $("div #list_" + listId + " input.card_title").focus();
         $("div.lists").scrollLeft($scrollPos);
@@ -123,7 +126,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		card.destroy({
 			success: function (data) {
 				cards.remove(card);
-		    list.trigger("remove");
+		    // list.trigger("remove");
 			}
 		});
   },

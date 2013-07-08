@@ -5,11 +5,12 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
-
-    that.model.on('reset', this.render, this);
-    that.model.on('add', this.render, this);
-    that.model.on('remove', this.render, this);
-    that.model.on('sort', this.render, this);
+		that.model.on("all", that.render, that);
+		// that.model.get("lists").on("all", this.render, this);
+    // that.model.on('reset', this.render, this);
+    // that.model.on('add', this.render, this);
+    // that.model.on('remove', this.render, this);
+    // that.model.on('sort', this.render, this);
   },
 
   events: {
@@ -33,10 +34,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		var list = new Kanban.Models.List();
 		var lists = board.get("lists");
 
+		// fail if no list title
     if (!attrs.list.title) {
-      console.log("no title");
-      var $scrollPos = $("div.lists").scrollLeft();
-      console.log($scrollPos);
+      var $scrollPos = $("div.lists_wrapper").scrollLeft();
       var $addList = $("div.add_list");
       var $addListInput = $("div.add_list input.list_title");
 
@@ -49,7 +49,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
           $addListInput.focus();
         }
       }, 350);
-      $("div.lists").scrollLeft($scrollPos);
+      $("div.lists_wrapper").scrollLeft($scrollPos);
       return false;
     }
 
@@ -57,7 +57,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		list.save(attrs.list, {
 			success: function (data) {
 				lists.add(list);
-				board.trigger("add");
+				// board.trigger("add");
 
         $addListInput = $("div.add_list input.list_title");
         $addListInput.focus();
@@ -70,8 +70,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var board = that.model;
     event.stopPropagation();
-
-  	console.log("archive list");
+    var $scrollPos = $("div.lists_wrapper").scrollLeft();
 
     var listId = parseInt($(event.target).data("list-id"));
     var lists = board.get("lists");
@@ -81,8 +80,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		list.destroy({
 			success: function (data) {
 				lists.remove({ id: listId });
-		    console.log(lists);
-		    board.trigger("remove");
+		    // console.log(lists);
+		    // board.trigger("remove");
+				$("div.lists_wrapper").scrollLeft($scrollPos);
 			}
 		});
   },
@@ -142,6 +142,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
         ui.placeholder.width(ui.item.width());
       	ui.placeholder.height(ui.item.height());
     	},
+
       update: function (event, ui) {
         var sortData = $(this).sortable("serialize");
 
@@ -151,6 +152,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 	        sortData += '&list_id=' + listId;
 
 	        $.post(sortCardsUrl, sortData, function (resortedLists) {
+						console.log("post re-sort");
+						console.log(resortedLists);
+						debugger;
 	        	board.get("lists").reset(resortedLists);
 	        	// var lists = board.get("lists");
 	        	// lists.reset(resortedLists);

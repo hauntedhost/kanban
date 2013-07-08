@@ -5,7 +5,9 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   initialize: function () {
   	var that = this;
-    that.model.on('change', this.render, this);
+		// TODO: refactor to listenTo
+		that.model.get("comments").on("all", this.render, this);
+    // that.model.on('change', this.render, this);
   },
 
   events: {
@@ -21,6 +23,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
     var card = that.model;
     var cards = card.collection;
     var comments = card.get("comments");
+
+		console.log("comments");
     console.log(comments);
 
   	// get form attrs, reset form
@@ -50,14 +54,14 @@ Kanban.Views.CardShow = Backbone.View.extend({
     cardComment.save(attrs.card_comment, {
       success: function (response) {
 
-				comments.add(cardComment);
+				comments.add(cardComment, {at: 0});
 				console.log(comments);
-				card.trigger("change");
+				// card.trigger("change");
 
         // TODO: this is insane
-        var commentShow = new Kanban.Views.commentShow({
-          model: cardComment
-        });
+        // var commentShow = new Kanban.Views.commentShow({
+        //   model: cardComment
+        // });
 
         // var $comments = that.$el.find("ul.comments");
         // $comments.append(attrs.card_comment.content);
