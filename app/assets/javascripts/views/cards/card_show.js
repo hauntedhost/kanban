@@ -5,7 +5,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   initialize: function () {
   	var that = this;
-		that.model.get("comments").on("all", this.render, this);
+		that.model.get("comments").on("add", this.render, this);
   },
 
   events: {
@@ -25,8 +25,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
 		var attrs = $form.serializeJSON();
 		$form[0].reset();
 
-    // TODO: research toJSON override via backbone relational
-    // suspect it prevents need to patch ids in like this
+    // OPTIMIZE: investigate toJSON override via backbone relational
+    // suspicion it prevents the need to patch ids in like this
     attrs.card_comment.card_id = card.id;
 
 		// fail if comment is empty
@@ -46,9 +46,13 @@ Kanban.Views.CardShow = Backbone.View.extend({
 		var cardComment = new Kanban.Models.CardComment();
     cardComment.save(attrs.card_comment, {
       success: function (response) {
-
 				comments.add(cardComment, { at: 0 });
-				that.trigger('commentAdded');
+
+				var card = comments.card;
+				var comments_count = +card.get("comments_count");
+				card.set({ comments_count: comments_count + 1 });
+				card.collection.trigger("change");
+				// debugger;
       }
     });
   },

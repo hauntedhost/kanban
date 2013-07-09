@@ -1,6 +1,3 @@
-# collection @lists
-# extends "api/lists/show"
-
 object false
 
 node :list_id do

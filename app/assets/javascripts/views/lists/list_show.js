@@ -5,7 +5,9 @@ Kanban.Views.ListShow = Backbone.View.extend({
 
 	initialize: function () {
 		var that = this;
-		that.model.get("cards").on("all", that.render, that);
+		that.model.get("cards").on("add", that.render, that);
+		that.model.get("cards").on("remove", that.render, that);
+		that.model.get("cards").on("change", that.render, that);
 	},
 
 	events: {
@@ -80,16 +82,14 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		// save card
 		card.save(attrs.card, {
 			success: function (data) {
+				var list_id = list.id;
+
+				_.defer(function () {
+					var $cardInput = $("div #list_" + list_id + " input.card_title");
+					$cardInput.focus();
+				});
+
 				cards.add(card);
-
-				// FIXME: re-select card input
-				var listId = list.get("id");
-	      var $list = $("div #list_" + listId);
-	      var $cardInput = $("div #list_" + listId + " input.card_title");
-				console.log($cardInput);
-				$cardInput.focus();
-
-				// maintain scrollbar position
         $("div.lists").scrollLeft($scrollPos);
 			}
 		});
@@ -117,6 +117,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		var that = this;
 		var list = that.model;
 		var list_id = list.get("id");
+
+		console.log("render list " + list_id);
 
 		that.$el.attr("id", "list_" + list_id);
     that.$el.html(that.template({
