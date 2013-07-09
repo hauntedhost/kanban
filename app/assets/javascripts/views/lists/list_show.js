@@ -135,7 +135,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		that.$("section.cards").html(cardsIndex.render().el);
 
     // inline edit for list title
-    that.$(".edit").editable(function (value, settings) {
+    that.$(".js-edit-list-title").editable(function (value, settings) {
       list.set({ title: value });
       list.save();
       return value;      

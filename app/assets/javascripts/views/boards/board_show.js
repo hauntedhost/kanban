@@ -101,6 +101,16 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 			that.$("section.lists").append(listShow.render().el);
 		});
 
+    // inline edit for board title
+    that.$(".js-edit-board-name").editable(function (value, settings) {
+      board.set({ name: value });
+      board.save();
+      return value;      
+    }, {
+      submit: "Save",
+      onblur: "submit"
+    });
+
 		// sortable for lists
     sortListsUrl = "/api/lists/sort"
     var $lists = that.$("section.lists");
@@ -111,6 +121,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
  			start: function (e, ui) {
         ui.placeholder.width(ui.item.width());
       	ui.placeholder.height(ui.item.height());
+      	// $(this).addClass("swing");
     	},
       update: function (data) {
         var sortData = $(this).sortable("serialize");

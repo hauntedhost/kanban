@@ -179,7 +179,7 @@ section.boards-index {
 
 section.board-show { }
 
-	header.board_title {
+	header.board_name {
 		padding: 12px 0 12px 20px;
 		background: #e3e3e3;
 		-webkit-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .25);
@@ -241,7 +241,7 @@ section.board-show { }
     margin: 2px 0 6px 0;
   }
 
-  .list span.edit:hover {
+  .edit:hover {
     cursor: pointer;
   }
   
