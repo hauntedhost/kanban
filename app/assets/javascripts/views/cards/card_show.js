@@ -5,7 +5,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   initialize: function () {
   	var that = this;
-		that.model.get("comments").on("add", this.render, this);
+    that.model.on("update", that.render, that);
+		that.model.get("comments").on("add", that.render, that);
   },
 
   events: {
@@ -65,6 +66,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
   	var renderedContent = that.template({
   		card: card,
+      list: card.get("list"),
   		comments: comments
   	});
 

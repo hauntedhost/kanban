@@ -4,12 +4,10 @@ module Api
 
     def index
       @lists = current_user.lists
-      # render :json => lists
     end
 
     def show
       @list = current_user.lists.find(params[:id])
-      # render :json => list
     end
 
     def create
@@ -19,6 +17,15 @@ module Api
     	else
     		render :nothing => true, :status => :unprocessable_entity
     	end
+    end
+
+    def update
+      list = current_user.lists.find(params[:id])
+      if list.update_attributes(params[:list])
+        render :json => list, :status => :ok
+      else
+        render :nothing => true, :status => :unprocessable_entity
+      end
     end
 
     def destroy
@@ -43,7 +50,6 @@ module Api
 
       # return re-sorted lists
       @lists = List.find(list_ids.first).board.lists
-      # render :json => board.lists
     end
 
   end

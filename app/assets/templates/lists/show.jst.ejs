@@ -1,5 +1,5 @@
 <header class="title">
-  <%= list.escape("title") %>
+  <span class="edit" id="list_<%= list.id %>"><%= list.escape("title") %></span>
   <button class="archive_list entypo-cancel"
   				data-list-id="<%= list.id %>"></button>
 </header>
