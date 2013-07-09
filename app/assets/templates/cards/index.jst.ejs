@@ -5,7 +5,10 @@
     <div class="card"
     		 id="card_<%= card.id %>"
     		 data-card-id="<%= card.id %>">
-      <%= card.escape("title") %>
+
+			<span class="card_title">
+	      <%= card.escape("title") %>
+			</span>
 
       <% if (card.get("comments_count") > 0) { %>
 				<p class="comments_count">

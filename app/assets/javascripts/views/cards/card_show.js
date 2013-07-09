@@ -6,6 +6,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
   initialize: function () {
   	var that = this;
     that.model.on("update", that.render, that);
+		that.model.on("change", that.render, that);
 		that.model.get("comments").on("add", that.render, that);
   },
 
@@ -61,6 +62,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
   render: function () {
   	var that = this;
 
+		console.log("render card show");
+
   	var card = that.model;
   	var comments = card.get("comments");
 
@@ -71,6 +74,19 @@ Kanban.Views.CardShow = Backbone.View.extend({
   	});
 
   	that.$el.html(renderedContent);
+
+    // inline edit for card title
+    that.$(".js-edit-card-title").editable(function (value, settings) {
+      card.set({ title: value });
+			// card.trigger("")
+      card.save();
+      return value;
+    }, {
+      submit: "Save",
+      onblur: "submit"
+    });
+
+		// decorate comment timestamps
 	 	that.$el.find("abbr.timeago").timeago();
 
   	return that;

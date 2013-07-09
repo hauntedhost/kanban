@@ -71,15 +71,19 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var lists = board.get("lists");
     var list = lists.get(listId);
 
-		// remove list
-		list.destroy({
-			success: function (data) {
-				lists.remove({ id: listId });
+		$("#list_" + listId).addClass("animated hinge");
+		setTimeout(function () {
+			// remove list
+			list.destroy({
+				success: function (data) {
+					lists.remove({ id: listId });
 
-				// maintain horizontal scrollbar position
-				$("div.lists_wrapper").scrollLeft($scrollPos);
-			}
-		});
+					// maintain horizontal scrollbar position
+					$("div.lists_wrapper").scrollLeft($scrollPos);
+				}
+			});
+		}, 1250);
+
   },
 
   render: function () {
@@ -105,7 +109,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     that.$(".js-edit-board-name").editable(function (value, settings) {
       board.set({ name: value });
       board.save();
-      return value;      
+      return value;
     }, {
       submit: "Save",
       onblur: "submit"
@@ -121,7 +125,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
  			start: function (e, ui) {
         ui.placeholder.width(ui.item.width());
       	ui.placeholder.height(ui.item.height());
-      	// $(this).addClass("swing");
+				// ui.item.addClass("animated swing");
     	},
       update: function (data) {
         var sortData = $(this).sortable("serialize");

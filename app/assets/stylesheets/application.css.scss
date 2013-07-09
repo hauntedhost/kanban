@@ -12,10 +12,19 @@
  *= require_tree .
  *= require jquery.ui.all
  *= require jquery.modal
+ *= require animate
  */
 
 $darkGrey: #262626;
 $lightGrey: #939393;
+
+@mixin ellipsis($width) {
+	display: inline-block;
+	width: $width;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 @mixin gradient($from, $to) {
   background-color: $from;
@@ -187,6 +196,10 @@ section.board-show { }
 		margin-bottom: 10px;
 	}
 
+	.board_name span {
+		@include ellipsis(300px);
+	}
+
   .board-show h2 {
     font-size: 18px;
     font-weight: bold;
@@ -208,8 +221,15 @@ section.board-show { }
   }
 
 	section.lists {
-		overflow: hidden;
+//		overflow: hidden;
 		float: left;
+	}
+
+	.list.animated.hinge {
+		-webkit-animation-duration: 1.25s;
+		   -moz-animation-duration: 1.25s;
+		     -o-animation-duration: 1.25s;
+		        animation-duration: 1.25s;
 	}
 
   .list {
@@ -241,17 +261,21 @@ section.board-show { }
     margin: 2px 0 6px 0;
   }
 
+	.list_title span {
+		@include ellipsis(200px);
+	}
+
   .edit:hover {
     cursor: pointer;
   }
-  
+
   span.edit input {
     width: 210px !important;
     padding: 3px;
 
     -webkit-transition: .2s;
     -moz-transition: .2s;
-    transition: .2s;    
+    transition: .2s;
   }
 
   span.edit button {
@@ -269,7 +293,7 @@ section.board-show { }
 
     -webkit-transition: .2s;
     -moz-transition: .2s;
-    transition: .2s;       
+    transition: .2s;
   }
 
   span.edit button:hover {
@@ -410,6 +434,15 @@ section.board-show { }
     box-shadow:         1px 1px 2px rgba(50, 50, 50, 0.2);
   }
 
+	.card_title span {
+		@include ellipsis(360px);
+	}
+
+	span.card_title {
+		@include ellipsis(200px);
+		pointer-events: none;
+	}
+
   .card:hover {
   	border: 1px solid #575757;
   }
@@ -441,7 +474,7 @@ section.board-show { }
   .card_detail header h3 {
   	margin: 0 0 3px 0;
   }
-  
+
   .card_detail header h4 {
     margin: 3px 0 3px 0;
     font-weight: normal;

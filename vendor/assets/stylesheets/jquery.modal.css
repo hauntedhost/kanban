@@ -21,6 +21,10 @@
 }
 
 .modal a.close-modal {
+	display: none;
+}
+
+.modal a.close-modal-custom {
   position: absolute;
   top: -12.5px;
   right: -12.5px;
@@ -35,11 +39,11 @@
 
   opacity: .75;
   -webkit-transition: .2s;
-  -moz-transition: .2s;    
+  -moz-transition: .2s;
   transition: .2s;
 }
 
-.modal a.close-modal:hover {
+.modal a.close-modal-custom:hover {
   opacity: 1;
 }
 

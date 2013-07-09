@@ -19,6 +19,15 @@ module Api
     	end
     end
 
+    def update
+    	card = current_user.cards.find(params[:id])
+    	if card.update_attributes(params[:card])
+        render :json => card, :status => :ok
+      else
+        render :nothing => true, :status => :unprocessable_entity
+      end
+    end
+
     def destroy
       card = current_user.cards.find(params[:id])
 			if card.destroy

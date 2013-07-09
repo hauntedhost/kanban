@@ -5,7 +5,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
 
 	initialize: function () {
 		var that = this;
-    that.model.on("change", that.render, that);
+    // that.model.on("change", that.render, that);
+    that.model.on("add", that.render, that);
 		that.model.get("cards").on("add", that.render, that);
 		that.model.get("cards").on("remove", that.render, that);
 		that.model.get("cards").on("change", that.render, that);
@@ -138,7 +139,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
     that.$(".js-edit-list-title").editable(function (value, settings) {
       list.set({ title: value });
       list.save();
-      return value;      
+      return value;
     }, {
       submit: "Save",
       onblur: "submit"
