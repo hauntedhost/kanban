@@ -4,12 +4,10 @@ module Api
 
     def index
       @cards = current_user.cards
-      # render :json => cards
     end
 
     def show
       @card = current_user.cards.find(params[:id])
-      # render :json => card
     end
 
     def create
@@ -38,15 +36,12 @@ module Api
       #   render :nothing => true, :status => :unauthorized
       # end
 
-      # @list.card_ids = card_ids
       card_ids.each_with_index do |id, index|
         Card.update_all({ position: index + 1,  list_id: @list.id },
                         { id: id })
       end
 
       @cards = @list.cards.where(:id => card_ids)
-      # @lists = Card.find(card_ids.first).board.lists
-      # render :json => board.lists
     end
 
   end

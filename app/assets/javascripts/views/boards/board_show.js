@@ -6,7 +6,6 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   initialize: function () {
     var that = this;
 		that.model.on("all", that.render, that);
-		// that.model.get("lists").on("all", that.render, that);
   },
 
   events: {
@@ -53,10 +52,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		list.save(attrs.list, {
 			success: function (data) {
 				lists.add(list);
-				// board.trigger("add");
 
+				// re-select list input
         $listInput = $("div.add_list input.list_title");
-				console.log($listInput);
         $listInput.focus();
 			}
 		});
@@ -77,8 +75,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		list.destroy({
 			success: function (data) {
 				lists.remove({ id: listId });
-		    // console.log(lists);
-		    // board.trigger("remove");
+
+				// maintain horizontal scrollbar position
 				$("div.lists_wrapper").scrollLeft($scrollPos);
 			}
 		});
@@ -93,8 +91,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var lists = board.get("lists");
 
     that.$el.html(that.template({
-      board: board,
-      // lists: lists,
+      board: board
     }));
 
 		lists.each(function (list) {
@@ -104,8 +101,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 			that.$("section.lists").append(listShow.render().el);
 		});
 
-    // that.$el.html(renderedContent);
-
+		// sortable for lists
     sortListsUrl = "/api/lists/sort"
     var $lists = that.$("section.lists");
     $lists.sortable({
@@ -120,14 +116,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
         var sortData = $(this).sortable("serialize");
         $.post(sortListsUrl, sortData, function (resortedLists) {
         	board.get("lists").reset(resortedLists);
-        	// var lists = board.get("lists");
-        	// lists.reset
-         //  board.reset({ lists: new Kanban.Collections.Lists(resortedLists) });
         });
       }
     });
-
     return that;
   }
-
 });
