@@ -54,7 +54,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
     cardComment.save(attrs.card_comment, {
       success: function (response) {
 
-				comments.add(cardComment, {at: 0});
+				comments.add(cardComment, { at: 0 });
 				console.log(comments);
 				// card.trigger("change");
 

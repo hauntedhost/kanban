@@ -4,27 +4,7 @@
   				data-list-id="<%= list.id %>"></button>
 </header>
 
-<div class="cards"
-		 id="cards_list_<%= list.id %>"
-		 data-list-id="<%= list.id %>">
-  <% list.cards().each(function (card) { %>
-    <div class="card"
-    		 id="card_<%= card.id %>"
-    		 data-card-id="<%= card.id %>">
-      <%= card.escape("title") %>
-
-      <% if (card.get("comments_count") > 0) { %>
-				<p class="comments_count">
-          <span class="entypo-comment"></span>
-          <%= card.escape("comments_count") %>
-        </p>
-      <% } %>
-
-      <button class="archive_card entypo-cancel"
-							data-card-id="<%= card.id %>"></button>
-    </div>
-  <% }); %>
-</div>
+<section class="cards"></section>
 
 <div class="add_card">
 	<form class="add_card" data-list-id="<%= list.id %>">

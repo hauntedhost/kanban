@@ -6,11 +6,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   initialize: function () {
     var that = this;
 		that.model.on("all", that.render, that);
-		// that.model.get("lists").on("all", this.render, this);
-    // that.model.on('reset', this.render, this);
-    // that.model.on('add', this.render, this);
-    // that.model.on('remove', this.render, this);
-    // that.model.on('sort', this.render, this);
+		// that.model.get("lists").on("all", that.render, that);
   },
 
   events: {
@@ -59,8 +55,9 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 				lists.add(list);
 				// board.trigger("add");
 
-        $addListInput = $("div.add_list input.list_title");
-        $addListInput.focus();
+        $listInput = $("div.add_list input.list_title");
+				console.log($listInput);
+        $listInput.focus();
 			}
 		});
   },
@@ -110,7 +107,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     // that.$el.html(renderedContent);
 
     sortListsUrl = "/api/lists/sort"
-    var $lists = that.$el.find("section.lists");
+    var $lists = that.$("section.lists");
     $lists.sortable({
       items: "div.list",
     	tolerance: "pointer",
@@ -127,40 +124,6 @@ Kanban.Views.BoardShow = Backbone.View.extend({
         	// lists.reset
          //  board.reset({ lists: new Kanban.Collections.Lists(resortedLists) });
         });
-      }
-    });
-
-    sortCardsUrl = "/api/cards/sort"
-    var $cards = $lists.find("div.cards");
-    $cards.sortable({
-      items: "div.card",
-      connectWith: ".cards",
-      delay: 125,
-    	tolerance: "pointer",
-      placeholder: "card-placeholder",
- 			start: function (e, ui) {
-        ui.placeholder.width(ui.item.width());
-      	ui.placeholder.height(ui.item.height());
-    	},
-
-      update: function (event, ui) {
-        var sortData = $(this).sortable("serialize");
-
-        if (sortData) {
-	        // add list_id to sortData
-	        var listId = parseInt($(this).data("listId"));
-	        sortData += '&list_id=' + listId;
-
-	        $.post(sortCardsUrl, sortData, function (resortedLists) {
-						console.log("post re-sort");
-						console.log(resortedLists);
-						debugger;
-	        	board.get("lists").reset(resortedLists);
-	        	// var lists = board.get("lists");
-	        	// lists.reset(resortedLists);
-	          // board.reset({ lists: new Kanban.Collections.Lists(resortedLists) });
-	        });
-        };
       }
     });
 

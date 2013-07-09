@@ -31,19 +31,21 @@ module Api
     end
 
     def sort
-      list = List.find(params[:list_id])
+      @list = List.find(params[:list_id])
       card_ids = params[:card].map(&:to_i)
 
-      unless (card_ids - current_user.card_ids).empty?
-    		render :nothing => true, :status => :unauthorized
-    	end
+      # unless (card_ids - current_user.card_ids).empty?
+      #   render :nothing => true, :status => :unauthorized
+      # end
 
+      # @list.card_ids = card_ids
       card_ids.each_with_index do |id, index|
-        Card.update_all({ position: index + 1,  list_id: list.id },
+        Card.update_all({ position: index + 1,  list_id: @list.id },
                         { id: id })
       end
 
-      @lists = Card.find(card_ids.first).board.lists
+      @cards = @list.cards.where(:id => card_ids)
+      # @lists = Card.find(card_ids.first).board.lists
       # render :json => board.lists
     end
 
