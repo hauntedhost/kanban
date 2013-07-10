@@ -31,6 +31,6 @@ Kanban::Application.routes.draw do
       end
     end
 
-    resources :card_comments, :only => [:create, :destroy]
+    resources :card_comments, :only => [:index, :create, :destroy]
   end
 end

@@ -8,7 +8,8 @@
 
 users = User.create([
   { full_name: "Sean Omlor", bio: "Rails hacker", email: "somlor@gmail.com", password: "123" },
-  { full_name: "Sebastian", bio: "Strange cat", email: "sebastian@catmail.com", password: "123" }
+  { full_name: "Sebastian", bio: "Strange cat", email: "sebastian@catmail.com", password: "123" },
+  { full_name: "Alli", bio: "Banana slug", email: "alli.crwfrd@gmail.com", password: "123" }  
 ])
 
 boards = Board.create([
@@ -19,6 +20,8 @@ boards = Board.create([
 
 boards_members = BoardMember.create([
   { board_id: 1, member_id: 1 },
+  { board_id: 1, member_id: 2 },
+  { board_id: 1, member_id: 3 },  
   { board_id: 2, member_id: 1 },
   { board_id: 3, member_id: 1 }  
 ])

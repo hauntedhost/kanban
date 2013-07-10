@@ -82,7 +82,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 					$("div.lists_wrapper").scrollLeft($scrollPos);
 				}
 			});
-		}, 1250);
+		}, 1350);
 
   },
 

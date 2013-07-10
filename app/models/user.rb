@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
   has_many :lists, :through => :boards
   has_many :cards, :through => :lists
 
+  # has_many :comments, 
+    # :class_:name => "CardComments", 
+    # :foreign_key => :commenter_id
+
   validates_uniqueness_of :email
   validates_presence_of :email, :password_digest
   validates_length_of :password, { :minimum => 3 }

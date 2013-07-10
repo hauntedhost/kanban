@@ -245,6 +245,10 @@ section.boards-index {
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
+
+    li {
+      display: inline-block;
+    }
 	}
 
 
@@ -294,10 +298,10 @@ section.board-show {
 	}
 
 	.list.animated.hinge {
-		-webkit-animation-duration: 1.25s;
-		   -moz-animation-duration: 1.25s;
-		     -o-animation-duration: 1.25s;
-		        animation-duration: 1.25s;
+		-webkit-animation-duration: 1.35s;
+		   -moz-animation-duration: 1.35s;
+		     -o-animation-duration: 1.35s;
+		        animation-duration: 1.35s;
 	}
 
   .list {
