@@ -7,7 +7,6 @@ window.Kanban = {
     var that = this;
 
     that.$rootEl = $("#content");
-    // that.$rootEl.html("loading ...");
 
     Kanban.currentUser = new Kanban.Models.CurrentUser();
     Kanban.currentUser.fetch({
@@ -19,7 +18,7 @@ window.Kanban = {
           success: function (response) {
             console.log("got boards");
             new Kanban.Routers.Boards({ $rootEl: that.$rootEl });
-            Backbone.history.start();        
+            Backbone.history.start();
           }
         });
       },

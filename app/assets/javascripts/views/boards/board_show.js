@@ -1,7 +1,7 @@
 Kanban.Views.BoardShow = Backbone.View.extend({
   template: JST['boards/show'],
   tagName: "section",
-  className: "board-show",
+  className: "board-show group",
 
   initialize: function () {
     var that = this;
@@ -93,17 +93,41 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 
     var board = that.model;
     var lists = board.get("lists");
+		var users = board.get("users");
 
     that.$el.html(that.template({
       board: board
     }));
 
+		// render lists
 		lists.each(function (list) {
 			var listShow = new Kanban.Views.ListShow({
 				model: list
 			});
 			that.$("section.lists").append(listShow.render().el);
 		});
+
+    // include members in sidebar
+		var usersIndex = new Kanban.Views.UsersIndex({
+			collection: users
+		});
+		that.$("section.board-sidebar").html(usersIndex.render().el);
+
+		// members.each(function (member) {
+		// 	// var listShow = new Kanban.Views.ListShow({
+		// 	// 	model: list
+		// 	// });
+		// 	var email = member.get("email");
+		// 	that.$("section.board-sidebar").append(email);
+		// });
+
+		// var $content = $("#content");
+		// $content.height($(window).height() - 55);
+		// $("#content").height($(window).height());
+		// console.log(that.$(".board-sidebar"));
+		// that.$(".board-sidebar").height($(".lists_wrapper").height() + 95);
+		// that.$(".board-sidebar").height($(window).height());
+		// that.$(".lists_wrapper").width($(window).width() - 140);
 
     // inline edit for board title
     that.$(".js-edit-board-name").editable(function (value, settings) {

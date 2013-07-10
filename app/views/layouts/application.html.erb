@@ -23,7 +23,7 @@
           <!-- <a href="#users/<%#= current_user.id %>"><%= current_user.email %></a> -->
           <!-- (<%#= link_to "logout", logout_url %>) -->
         </p>
-        <%= link_to image_tag(current_user.gravatar_url(30)), "#" %> 
+        <%= link_to image_tag(current_user.gravatar_url(30), :class => "avatar"), "#" %>
       <% else %>
         <p><%= link_to "login", login_url %>
       <% end %>
@@ -36,7 +36,7 @@
 
   <div id="footer">
     <p>
-      KANBAN is hand carved with Ruby on Rails, Backbone.js, and green tea 
+      KANBAN is hand carved with Ruby on Rails, Backbone.js, and green tea
       by Sean Omlor.
     </p>
     <p>

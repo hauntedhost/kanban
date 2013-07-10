@@ -1,0 +1,16 @@
+<header>
+	<p>Board Members</p>
+</header>
+
+<ul class="users">
+	<% users.each(function (user) { %>
+		<li><img class="avatar" src="<%= user.escape("gravatar_url") %>" /></li>
+	<% }); %>
+</ul>
+
+<form class="add_user">
+	<input type="text"
+         name="user_id"
+         placeholder="Add a member ..." />
+	<input type="submit" value="Add Member" />
+</form>

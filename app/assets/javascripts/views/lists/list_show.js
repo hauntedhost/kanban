@@ -120,7 +120,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 		var list = that.model;
 		var list_id = list.get("id");
 
-		console.log("render list " + list_id);
+		// console.log("render list " + list_id);
 
     // list show
 		that.$el.attr("id", "list_" + list_id);

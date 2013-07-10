@@ -44,6 +44,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
       return;
     }
 
+		// FIXME: server needs to respond with nested user
 		// create and render comment
 		var cardComment = new Kanban.Models.CardComment();
     cardComment.save(attrs.card_comment, {

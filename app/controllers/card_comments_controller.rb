@@ -5,6 +5,7 @@ class CardCommentsController < ApplicationController
 	# 	render :json => comments, :status => :ok
 	# end
 
+  # FIXME: render json comment with nested user
   def create
     card = current_user.cards.find(params[:card_comment][:card_id])
     params[:card_comment][:commenter_id] = current_user.id

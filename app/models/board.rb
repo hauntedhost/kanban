@@ -18,8 +18,4 @@ class Board < ActiveRecord::Base
   has_many :boards_members, :class_name => "BoardMember"
   has_many :members, :through => :boards_members
 
-  # def as_json(options = {})
-  #   super(options.merge(:include => {:lists => {:include => {:cards => {:methods => [:comments_count] }}}}))
-  # end
-
 end

@@ -7,7 +7,7 @@ Kanban::Application.routes.draw do
   get "login" => "Sessions#new"
   get "logout" => "Sessions#destroy"
 
-  resources :users, :only => [:show]
+  # resources :users, :only => [:show]
 
   namespace :api do
 

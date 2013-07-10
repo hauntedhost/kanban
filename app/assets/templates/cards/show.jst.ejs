@@ -20,10 +20,12 @@
 
 <ul class="card_comments">
 <% comments.each(function (comment) { %>
+	<% user = comment.get("user") %>
 	<li>
 		<article class="comment">
 			<header>
-				<img src="http://www.gravatar.com/avatar/14941f14ff0cb4d5de963f05ba3b31b6?s=32" />
+				<!-- FIXME: on new comment this will be blank because not receiving users back -->
+				<img src="<%= user.get("gravatar_url") %>" />
 			</header>
 
 			<a rel="author">Sean Omlor</a>

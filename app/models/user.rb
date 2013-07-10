@@ -19,15 +19,15 @@ class User < ActiveRecord::Base
   attr_reader :password
   default_scope :order => 'id'
 
-  has_many :boards_members, 
-    :class_name => "BoardMember", 
+  has_many :boards_members,
+    :class_name => "BoardMember",
     :foreign_key => :member_id
 
-  has_many :cards_members, 
-    :class_name => "CardMember", 
+  has_many :cards_members,
+    :class_name => "CardMember",
     :foreign_key => :member_id
 
-  has_many :boards, :through => :boards_members 
+  has_many :boards, :through => :boards_members
   has_many :lists, :through => :boards
   has_many :cards, :through => :lists
 
@@ -62,17 +62,17 @@ class User < ActiveRecord::Base
     save
   end
 
-  def correct_session_key?(key) 
+  def correct_session_key?(key)
     key == self.session_key
   end
 
-  def gravatar_url(size = 80)
+  def gravatar_url(size = 32)
     md5 = Digest::MD5.hexdigest(self.email)
-    "http://www.gravatar.com/avatar/#{md5}?s=#{size}" 
+    "http://www.gravatar.com/avatar/#{md5}?s=#{size}"
   end
 
   def as_json(options = {})
-    super(options.merge(:only => [:username, :email, :bio], 
+    super(options.merge(:only => [:username, :email, :bio],
                         :methods => :gravatar_url))
   end
 
