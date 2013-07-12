@@ -298,10 +298,31 @@ section.board-show {
 	}
 
 	.list.animated.hinge {
-		-webkit-animation-duration: 1.35s;
-		   -moz-animation-duration: 1.35s;
-		     -o-animation-duration: 1.35s;
-		        animation-duration: 1.35s;
+		-webkit-animation-duration: 1.4s;
+		   -moz-animation-duration: 1.4s;
+		     -o-animation-duration: 1.4s;
+		        animation-duration: 1.4s;
+	}
+
+	.card.animated.hinge {
+		-webkit-animation-duration: 1s;
+		   -moz-animation-duration: 1s;
+		     -o-animation-duration: 1s;
+		        animation-duration: 1s;
+	}
+
+	.animated.fadeOut {
+		-webkit-animation-duration: .75s;
+		   -moz-animation-duration: .75s;
+		     -o-animation-duration: .75s;
+		        animation-duration: .75s;
+	}
+
+	.animated.flipOutX {
+		-webkit-animation-duration: .35s;
+		   -moz-animation-duration: .35s;
+		     -o-animation-duration: .35s;
+		        animation-duration: .35s;
 	}
 
   .list {
@@ -338,17 +359,27 @@ section.board-show {
 	}
 
   .edit:hover {
-    cursor: pointer;
+		// cursor: pointer;
   }
 
   span.edit input {
-    width: 210px !important;
     padding: 3px;
-
     -webkit-transition: .2s;
     -moz-transition: .2s;
     transition: .2s;
   }
+
+	.board_name span.edit input {
+		width: 180px !important;
+	}
+
+	.list_title span.edit input {
+    width: 160px !important;
+	}
+
+	.card_title span.edit input {
+    width: 220px !important;
+	}
 
   span.edit button {
     padding: 5px 12px 5px 12px;

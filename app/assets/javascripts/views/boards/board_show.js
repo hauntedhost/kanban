@@ -53,9 +53,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 			success: function (data) {
 				lists.add(list);
 
-				// re-select list input
-        $listInput = $("div.add_list input.list_title");
-        $listInput.focus();
+				$("#list_" + list.id).addClass("animated flipInY");
+        $("div.add_list input.list_title").focus();
 			}
 		});
   },
@@ -71,6 +70,16 @@ Kanban.Views.BoardShow = Backbone.View.extend({
     var lists = board.get("lists");
     var list = lists.get(listId);
 
+		var cards = list.get("cards");
+		var timeOffset = 115 * cards.length;
+		cards.each(function (card) {
+			setTimeout(function () {
+				$("#card_" + card.id).addClass("animated hinge");
+				console.log(card.get("title"));
+			}, timeOffset);
+			timeOffset -= 115;
+		});
+
 		$("#list_" + listId).addClass("animated hinge");
 		setTimeout(function () {
 			// remove list
@@ -82,7 +91,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 					$("div.lists_wrapper").scrollLeft($scrollPos);
 				}
 			});
-		}, 1350);
+		}, 1400);
 
   },
 
@@ -113,22 +122,6 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 		});
 		that.$("section.board-sidebar").html(usersIndex.render().el);
 
-		// members.each(function (member) {
-		// 	// var listShow = new Kanban.Views.ListShow({
-		// 	// 	model: list
-		// 	// });
-		// 	var email = member.get("email");
-		// 	that.$("section.board-sidebar").append(email);
-		// });
-
-		// var $content = $("#content");
-		// $content.height($(window).height() - 55);
-		// $("#content").height($(window).height());
-		// console.log(that.$(".board-sidebar"));
-		// that.$(".board-sidebar").height($(".lists_wrapper").height() + 95);
-		// that.$(".board-sidebar").height($(window).height());
-		// that.$(".lists_wrapper").width($(window).width() - 140);
-
     // inline edit for board title
     that.$(".js-edit-board-name").editable(function (value, settings) {
       board.set({ name: value });
@@ -136,7 +129,8 @@ Kanban.Views.BoardShow = Backbone.View.extend({
       return value;
     }, {
       submit: "Save",
-      onblur: "submit"
+      onblur: "submit",
+			cssclass : "animated fadeIn"
     });
 
 		// sortable for lists

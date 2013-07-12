@@ -86,13 +86,10 @@ Kanban.Views.ListShow = Backbone.View.extend({
 			success: function (data) {
 				var list_id = list.id;
 
-				_.defer(function () {
-					var $cardInput = $("div #list_" + list_id + " input.card_title");
-					$cardInput.focus();
-				});
-
 				cards.add(card);
+				$("#card_" + card.id).addClass("animated flipInX");
         $("div.lists").scrollLeft($scrollPos);
+				$("div #list_" + list_id + " input.card_title").focus();
 			}
 		});
   },
@@ -107,12 +104,15 @@ Kanban.Views.ListShow = Backbone.View.extend({
     var cards = list.get("cards");
 		var card = cards.get(cardId);
 
-		// remove list
-		card.destroy({
-			success: function (data) {
-				cards.remove(card);
-			}
-		});
+		$("#card_" + card.id).addClass("animated flipOutX");
+		setTimeout(function () {
+			// remove card
+			card.destroy({
+				success: function (data) {
+					cards.remove(card);
+				}
+			});
+		}, 350);
   },
 
 	render: function () {
@@ -142,7 +142,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
       return value;
     }, {
       submit: "Save",
-      onblur: "submit"
+      onblur: "submit",
+			cssclass : "animated fadeIn"
     });
 
 		// sortable for cards

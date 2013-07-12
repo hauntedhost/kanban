@@ -44,8 +44,6 @@ Kanban.Views.CardShow = Backbone.View.extend({
       return;
     }
 
-		// FIXME: server needs to respond with nested user
-		// create and render comment
 		var cardComment = new Kanban.Models.CardComment();
     cardComment.save(attrs.card_comment, {
       success: function (response) {
@@ -54,8 +52,13 @@ Kanban.Views.CardShow = Backbone.View.extend({
 				var card = comments.card;
 				var comments_count = +card.get("comments_count");
 				card.set({ comments_count: comments_count + 1 });
+
+				_.defer(function () {
+					$("ul.card_comments li:first-child").addClass("animated fadeIn");
+				});
+
+				// trigger card re-render
 				card.collection.trigger("change");
-				// debugger;
       }
     });
   },
@@ -79,12 +82,12 @@ Kanban.Views.CardShow = Backbone.View.extend({
     // inline edit for card title
     that.$(".js-edit-card-title").editable(function (value, settings) {
       card.set({ title: value });
-			// card.trigger("")
       card.save();
       return value;
     }, {
       submit: "Save",
-      onblur: "submit"
+      onblur: "submit",
+			cssclass : "animated fadeIn"
     });
 
 		// decorate comment timestamps
