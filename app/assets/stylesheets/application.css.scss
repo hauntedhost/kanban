@@ -215,11 +215,18 @@ section.boards-index {
     }
 	}
 
+	li.user:hover img {
+		border: 1px solid #8C8C8C;
+		opacity: 1;
+		cursor: pointer;
+	}
+
 	li.user img {
 		border: 1px solid #bfbfbf;
 		-webkit-border-radius: 2px;
 		-moz-border-radius: 2px;
     border-radius: 2px;
+		opacity: .95;
 	}
 
 section.board-show { }
@@ -582,6 +589,13 @@ section.board-show { }
 
   section.card_detail { }
 
+	.card_detail .members {
+//		float: right;
+	}
+	.card_detail .members img {
+		display: inline-block;
+	}
+
   .card_detail header h3 {
   	margin: 0 0 3px 0;
   }
@@ -594,6 +608,11 @@ section.board-show { }
 
   .card_detail header h4 span {
     font-weight: bold;
+  }
+
+  .card_detail h5 {
+		font-size: 1em;
+  	margin: 3px 0 7px 0;
   }
 
   ul.card_comments {

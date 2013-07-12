@@ -75,6 +75,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
   	var renderedContent = that.template({
   		card: card,
       list: card.get("list"),
+			assignee: card.get("assignee"),
   		comments: comments
   	});
 

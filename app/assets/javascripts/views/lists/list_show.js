@@ -89,6 +89,9 @@ Kanban.Views.ListShow = Backbone.View.extend({
 				// add card to collection
 				cards.add(card);
 
+				console.log("card post-save");
+				console.log(card);
+
 				// animate card insertion
 				setTimeout(function () {
 					$("#card_" + card.id).removeClass("animated flipInX");
@@ -177,9 +180,15 @@ Kanban.Views.ListShow = Backbone.View.extend({
 	        var listId = parseInt($(this).data("listId"));
 	        sortData += '&list_id=' + listId;
 
+					console.log("listId:")
+					console.log(listId);
+
 	        $.post(sortCardsUrl, sortData, function (resortedCards) {
 						var cards = list.get("cards");
 						cards.reset(resortedCards.cards);
+
+						console.log("cards post-sort");
+						console.log(cards);
 	        });
         };
       }

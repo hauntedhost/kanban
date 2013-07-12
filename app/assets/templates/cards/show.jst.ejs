@@ -9,7 +9,13 @@
 	<%= card.escape("description") %>
 </p>
 
-<h4>Activity</h4>
+<div class="members">
+	<% if (assignee) { %>
+		<img src="<%= assignee.get("gravatar_url") %>" />
+	<% } %>
+</div>
+
+<h5>Activity</h5>
 
 <form id="add_comment">
   <textarea name="card_comment[content]"
@@ -24,7 +30,6 @@
 	<li>
 		<article class="comment">
 			<header>
-				<!-- FIXME: on new comment this will be blank because not receiving users back -->
 				<img src="<%= user.get("gravatar_url") %>" />
 			</header>
 
