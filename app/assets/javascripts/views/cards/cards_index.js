@@ -25,12 +25,12 @@ Kanban.Views.CardsIndex = Backbone.View.extend({
 
 				// lookup related models
 				var card = cards.get(card_id);
-				var board = card.get("list").get("board");      // OPTIMIZE: refactor
-				var user = board.get("users").get(user_id);     // reaching to far
+				var board = card.get("list").get("board");   // OPTIMIZE: refactor
+				var user = board.get("users").get(user_id);  // reaching to far
 
-				console.log("received user " + user_id + " on card " + card_id + " : " + card.get("title"));
-
-				card.set({assignee: user});
+				// set and save card
+				card.set({ assignee: user });
+				card.save({ assignee_id: user.id }); // OPTIMIZE: use patch verb with rails 4!
     	}
     });
 
