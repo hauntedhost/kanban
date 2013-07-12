@@ -152,6 +152,31 @@ Kanban.Views.BoardShow = Backbone.View.extend({
         });
       }
     });
+
+		// draggable board members
+    var $users = that.$("ul.users li");
+    $users.draggable({
+			helper: "clone",
+
+ 			start: function (event, ui) {
+				// console.log(ui);
+				var user_id = $(event.target).data("user-id");
+				console.log("picked up user " + user_id);
+    	}
+    });
+
+		// droppable board members to card assignee
+    var $assignees = that.$("div.card");
+    $assignees.droppable({
+			accept: "li.user",
+    	drop: function (event, ui) {
+				var user_id = ui.draggable.data("user-id");
+				console.log("received user " + user_id);
+
+				// TODO: assign this user to list
+    	}
+    });
+
     return that;
   }
 });

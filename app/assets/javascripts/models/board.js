@@ -12,10 +12,7 @@ Kanban.Models.Board = Backbone.RelationalModel.extend({
 		type: Backbone.HasMany,
 		key: "users",
 		relatedModel: "Kanban.Models.User",
-		collectionType: "Kanban.Collections.Users",
-		reverseRelation: {
-			key: "board"
-		}
+		collectionType: "Kanban.Collections.Users"
 	}],
 
   getList: function (id) {

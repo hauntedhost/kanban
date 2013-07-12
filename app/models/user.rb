@@ -31,8 +31,12 @@ class User < ActiveRecord::Base
   has_many :lists, :through => :boards
   has_many :cards, :through => :lists
 
-  # has_many :comments, 
-    # :class_:name => "CardComments", 
+  has_many :cards_assigned,
+    :class_name => "Card",
+    :foreign_key => :assignee_id
+
+  # has_many :comments,
+    # :class_:name => "CardComments",
     # :foreign_key => :commenter_id
 
   validates_uniqueness_of :email

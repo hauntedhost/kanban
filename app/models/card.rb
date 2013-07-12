@@ -14,12 +14,14 @@
 #
 
 class Card < ActiveRecord::Base
-  attr_accessible :list_id, :title, :description, :due_date, :open, :position,
+  attr_accessible :list_id, :assignee_id, :title, :description, :due_date, :open, :position,
                   :comments_attributes
   default_scope :order => "cards.position"
   acts_as_list
 
   belongs_to :list
+  belongs_to :assignee, :class_name => "User"
+
   has_one :board, :through => :list
 
   has_many :cards_members, :class_name => "CardMember"
@@ -35,7 +37,7 @@ class Card < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(options.merge(:only => [:username, :email, :bio], 
+    super(options.merge(:only => [:username, :email, :bio],
                         :methods => :gravatar_url))
   end
 

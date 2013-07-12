@@ -9,6 +9,10 @@ Kanban.Models.Card = Backbone.RelationalModel.extend({
 		reverseRelation: {
 			key: "card"
 		}
+	},{
+		type: Backbone.HasOne,
+		key: "assignee",
+		relatedModel: "Kanban.Models.User",
+		collectionType: "Kanban.Collections.Users"
 	}],
-
 });

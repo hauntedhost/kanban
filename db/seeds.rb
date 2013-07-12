@@ -9,21 +9,21 @@
 users = User.create([
   { full_name: "Sean Omlor", bio: "Rails hacker", email: "somlor@gmail.com", password: "123" },
   { full_name: "Sebastian", bio: "Strange cat", email: "sebastian@catmail.com", password: "123" },
-  { full_name: "Alli", bio: "Banana slug", email: "alli.crwfrd@gmail.com", password: "123" }  
+  { full_name: "Alli", bio: "Banana slug", email: "alli.crwfrd@gmail.com", password: "123" }
 ])
 
 boards = Board.create([
   { name: "final project", description: "meta-kanban for this kanban app" },
   { name: "second app", description: "my second app academy app" },
-  { name: "dev job", description: "job search board" }  
+  { name: "dev job", description: "job search board" }
 ])
 
 boards_members = BoardMember.create([
   { board_id: 1, member_id: 1 },
   { board_id: 1, member_id: 2 },
-  { board_id: 1, member_id: 3 },  
+  { board_id: 1, member_id: 3 },
   { board_id: 2, member_id: 1 },
-  { board_id: 3, member_id: 1 }  
+  { board_id: 3, member_id: 1 }
 ])
 
 lists = List.create([
@@ -36,8 +36,8 @@ lists = List.create([
 ])
 
 card = Card.create([
-  { list_id: 1, title: "pass lists/cards with board" }, # kanban/todo 
-  { list_id: 3, title: "add boards index" },            # kanban/finished
+  { list_id: 1, title: "pass lists/cards with board", assignee_id: 1 }, # kanban/todo
+  { list_id: 3, title: "add boards index", assignee_id: 3 },            # kanban/finished
   { list_id: 3, title: "add boards show" },             # kanban/finished
   { list_id: 4, title: "chains.cc" }                    # second app/ideas
 ])

@@ -4,7 +4,10 @@
 
 <ul class="users">
 	<% users.each(function (user) { %>
-		<li><img class="avatar" src="<%= user.escape("gravatar_url") %>" /></li>
+		<li class="user"
+				data-user-id="<%= user.id %>">
+			<img class="avatar" src="<%= user.escape("gravatar_url") %>" />
+		</li>
 	<% }); %>
 </ul>
 
