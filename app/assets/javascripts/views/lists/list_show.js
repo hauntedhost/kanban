@@ -86,8 +86,16 @@ Kanban.Views.ListShow = Backbone.View.extend({
 			success: function (data) {
 				var list_id = list.id;
 
+				// add card to collection
 				cards.add(card);
+
+				// animate card insertion
+				setTimeout(function () {
+					$("#card_" + card.id).removeClass("animated flipInX");
+				}, 450);
 				$("#card_" + card.id).addClass("animated flipInX");
+
+				// fix scroll jump, re-focus on card input
         $("div.lists").scrollLeft($scrollPos);
 				$("div #list_" + list_id + " input.card_title").focus();
 			}
@@ -112,7 +120,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 					cards.remove(card);
 				}
 			});
-		}, 350);
+		}, 300);
   },
 
 	render: function () {

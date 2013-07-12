@@ -283,11 +283,26 @@ section.board-show { }
 		        animation-duration: .75s;
 	}
 
+	.animated.flipInY {
+		-webkit-animation-duration: .65s;
+		   -moz-animation-duration: .65s;
+		     -o-animation-duration: .65s;
+		        animation-duration: .65s;
+	}
+
 	.animated.flipOutX {
-		-webkit-animation-duration: .35s;
-		   -moz-animation-duration: .35s;
-		     -o-animation-duration: .35s;
-		        animation-duration: .35s;
+		-webkit-animation-duration: .30s;
+		   -moz-animation-duration: .30s;
+		     -o-animation-duration: .30s;
+		        animation-duration: .30s;
+	}
+
+	.animated.flipInX {
+		-webkit-animation-iteration-count: 1;
+		-webkit-animation-duration: .45s;
+		   -moz-animation-duration: .45s;
+		     -o-animation-duration: .45s;
+		        animation-duration: .45s;
 	}
 
   .list {

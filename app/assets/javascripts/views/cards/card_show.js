@@ -58,7 +58,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
 				});
 
 				// trigger card re-render
-				card.collection.trigger("change");
+				card.get("list").trigger("change");
+				// card.collection.trigger("change"); // this way failed inconsistently (?)
       }
     });
   },
