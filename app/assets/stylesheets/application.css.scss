@@ -171,6 +171,19 @@ section.login {
   margin: 0 auto;
 }
 
+.demo {
+	color: #393939;
+	font-size: 14px;
+	padding: 10px;
+	border: 1px dashed #181818;
+	font-weight: normal;
+	background: #FFFCD6;
+}
+
+.demo p {
+	margin: 5px 0 5px 0;
+}
+
 section.boards-index {
   width: 360px;
   margin: 0 auto;
@@ -689,6 +702,13 @@ input:focus + input[type="submit"] {
   height: auto;
   max-height: 100px;
   padding: 7px 16px 7px 16px;
+}
+
+section.login form input[type="submit"] {
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: 100px !important;
+  padding: 7px 16px 7px 16px !important;
 }
 
 input {
