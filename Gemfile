@@ -17,6 +17,7 @@ group :development do
   gem 'meta_request'
   gem 'pry-rails'
   gem 'rails-erd'
+  gem 'seed_dump'
 end
 
 gem 'acts_as_list'
