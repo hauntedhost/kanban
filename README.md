@@ -6,7 +6,8 @@
     |__|\__\ /__/     \__\ |__| \__| |______/  /__/     \__\ |__| \__| 
 
 
-= Kanban =
+Kanban
+======
 
 Kanban is a work-in-progress Trello clone I developed for a final project at [App Academy](http://appacademy.io), a 9-week Ruby on Rails and JavaScript web development intensive in San Francisco.
 
