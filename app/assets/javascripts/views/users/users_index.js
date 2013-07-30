@@ -7,6 +7,7 @@ Kanban.Views.UsersIndex = Backbone.View.extend({
 
 	render: function () {
 		var that = this;
+    
   	var renderedContent = that.template({
   		users: that.collection
   	});

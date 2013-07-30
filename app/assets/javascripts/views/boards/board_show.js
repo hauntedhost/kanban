@@ -14,11 +14,10 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   },
 
   addList: function (event) {
+    event.preventDefault();
   	var that = this;
 
     var board = that.model;
-  	event.preventDefault();
-
   	// get form attrs, reset form
   	var $form = $(event.target);
 		var attrs = $form.serializeJSON();
@@ -66,16 +65,18 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   },
 
   archiveList: function (event) {
-  	var that = this;
+    event.stopPropagation();
+    var that = this;
 
     var board = that.model;
-    event.stopPropagation();
-    var $scrollPos = $("div.lists_wrapper").scrollLeft();
-
     var listId = parseInt($(event.target).data("list-id"));
     var lists = board.get("lists");
     var list = lists.get(listId);
 
+    // save horizontal scroll position
+    var $scrollPos = $("div.lists_wrapper").scrollLeft();
+
+    // cards hinge animation
 		var cards = list.get("cards");
 		var timeOffset = 115 * cards.length;
 		cards.each(function (card) {
@@ -86,6 +87,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 			timeOffset -= 115;
 		});
 
+    // list hinge animation
 		$("#list_" + listId).addClass("animated hinge");
 		setTimeout(function () {
 			// remove list
@@ -93,7 +95,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
 				success: function (data) {
 					lists.remove({ id: listId });
 
-					// maintain horizontal scrollbar position
+					// restore horizontal scrollbar position
 					$("div.lists_wrapper").scrollLeft($scrollPos);
 				}
 			});
@@ -104,8 +106,7 @@ Kanban.Views.BoardShow = Backbone.View.extend({
   render: function () {
     var that = this;
 
-    console.log("render board");
-
+    // console.log("render board");
     var board = that.model;
     var lists = board.get("lists");
 		var users = board.get("users");

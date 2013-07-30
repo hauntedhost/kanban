@@ -19,10 +19,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
 	},
 
   cardClick: function (event) {
-  	var that = this;
-
-    // var board = that.model;
     event.stopPropagation();
+  	var that = this;
 
     var cardId = parseInt($(event.target).data("card-id"));
     var $cardModal = $("section.card_detail");
@@ -44,15 +42,15 @@ Kanban.Views.ListShow = Backbone.View.extend({
   },
 
   addCard: function (event) {
+    event.preventDefault();
   	var that = this;
 
-  	event.preventDefault();
+    var list = that.model;
+    var cards = list.get("cards");
+    var card = new Kanban.Models.Card();
 
+    // grab horizontal scroll position
     var $scrollPos = $("div.lists_wrapper").scrollLeft();
-
-		var list = that.model;
-		var cards = list.get("cards");
-		var card = new Kanban.Models.Card();
 
   	// get form attrs, reset form
   	var $form = $(event.target);
@@ -98,7 +96,7 @@ Kanban.Views.ListShow = Backbone.View.extend({
 				}, 450);
 				$("#card_" + card.id).addClass("animated flipInX");
 
-				// fix scroll jump, re-focus on card input
+				// restore scroll position, re-focus on card input
         $("div.lists").scrollLeft($scrollPos);
 				$("div #list_" + list_id + " input.card_title").focus();
 			}
@@ -106,9 +104,8 @@ Kanban.Views.ListShow = Backbone.View.extend({
   },
 
   archiveCard: function (event) {
-  	var that = this;
-
     event.stopPropagation();
+  	var that = this;
 
 		var list = that.model;
     var cardId = parseInt($(event.target).data("card-id"));
@@ -128,9 +125,9 @@ Kanban.Views.ListShow = Backbone.View.extend({
 
 	render: function () {
 		var that = this;
+
 		var list = that.model;
 		var list_id = list.get("id");
-
 		// console.log("render list " + list_id);
 
     // list show
@@ -180,15 +177,15 @@ Kanban.Views.ListShow = Backbone.View.extend({
 	        var listId = parseInt($(this).data("listId"));
 	        sortData += '&list_id=' + listId;
 
-					console.log("listId:")
-					console.log(listId);
+					// console.log("listId:")
+					// console.log(listId);
 
 	        $.post(sortCardsUrl, sortData, function (resortedCards) {
 						var cards = list.get("cards");
 						cards.reset(resortedCards.cards);
 
-						console.log("cards post-sort");
-						console.log(cards);
+						// console.log("cards post-sort");
+						// console.log(cards);
 	        });
         };
       }

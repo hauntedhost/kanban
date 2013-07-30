@@ -7,6 +7,7 @@ Kanban.Views.CardsIndex = Backbone.View.extend({
 
 	render: function () {
 		var that = this;
+		
 		var cards = that.collection;
   	var renderedContent = that.template({
   		cards: cards
@@ -14,7 +15,7 @@ Kanban.Views.CardsIndex = Backbone.View.extend({
 
   	that.$el.html(renderedContent);
 
-		// droppable board members to card assignee
+		// allow dropping members onto cards to assign
     var $assignees = that.$("div.card");
     $assignees.droppable({
 			accept: "li.user",
@@ -26,7 +27,7 @@ Kanban.Views.CardsIndex = Backbone.View.extend({
 				console.log("assigning card:")
 				console.log("user_id: " + user_id + " + card_id: " + card_id);
 
-				// FIXME:
+				// OPTIMIZE: !!!
 				// create a card and drag to new list -- cannot find that card
 				// also i am reaching waaay too far through models here
 

@@ -15,8 +15,8 @@ Kanban.Views.CardShow = Backbone.View.extend({
   },
 
   addComment: function (event) {
+    event.preventDefault();
     var that = this;
-  	event.preventDefault();
 
     var card = that.model;
     var cards = card.collection;
@@ -28,10 +28,10 @@ Kanban.Views.CardShow = Backbone.View.extend({
 		$form[0].reset();
 
     // OPTIMIZE: investigate toJSON override via backbone relational
-    // suspicion it prevents the need to patch ids in like this
+    // suspect it prevents the need to patch ids in like this
     attrs.card_comment.card_id = card.id;
 
-		// fail if comment is empty
+		// shake if comment is empty
     if (!attrs.card_comment.content) {
       that.$el.effect("shake", {
         distance: 9,
@@ -59,7 +59,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
 
 				// trigger card re-render
 				card.get("list").trigger("change");
-				// card.collection.trigger("change"); // this way failed inconsistently (?)
+				// card.collection.trigger("change"); // FIXME: this fails inconsistently (?)
       }
     });
   },
@@ -67,8 +67,7 @@ Kanban.Views.CardShow = Backbone.View.extend({
   render: function () {
   	var that = this;
 
-		console.log("render card show");
-
+		// console.log("render card show");
   	var card = that.model;
   	var comments = card.get("comments");
 
@@ -78,7 +77,6 @@ Kanban.Views.CardShow = Backbone.View.extend({
 			assignee: card.get("assignee"),
   		comments: comments
   	});
-
   	that.$el.html(renderedContent);
 
     // inline edit for card title
