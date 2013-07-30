@@ -25,14 +25,10 @@
     </div>
     <div class="header-user">
       <% if logged_in? %>
-        <p>
-          <!-- welcome back  -->
-          <!-- <a href="#users/<%#= current_user.id %>"><%= current_user.email %></a> -->
-          <!-- (<%#= link_to "logout", logout_url %>) -->
-        </p>
         <%= link_to image_tag(current_user.gravatar_url(30), :class => "avatar"), "#" %>
-      <%# else %>
-        <!-- <p><%#= link_to "login", login_url %> -->
+        <p>(<%= link_to "logout", logout_url %>)</p>
+      <% else %>
+        <p><%= link_to "login", login_url %></p>
       <% end %>
     </div>
   </div>

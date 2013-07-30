@@ -11,20 +11,19 @@ window.Kanban = {
     Kanban.currentUser = new Kanban.Models.CurrentUser();
     Kanban.currentUser.fetch({
       success: function (response) {
-        console.log("got user");
-
+        // console.log("got user");
         Kanban.boards = new Kanban.Collections.Boards();
         Kanban.boards.fetch({
           success: function (response) {
-            console.log("got boards");
-            new Kanban.Routers.Boards({ $rootEl: that.$rootEl });
+            // console.log("got boards");
+            new Kanban.Routers.Main({ $rootEl: that.$rootEl });
             Backbone.history.start();
           }
         });
       },
 
       error: function (response) {
-        console.log("please log in");
+        // console.log("please log in");
       }
     });
   }

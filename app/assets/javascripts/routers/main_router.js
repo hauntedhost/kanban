@@ -1,4 +1,4 @@
-Kanban.Routers.Boards = Backbone.Router.extend({
+Kanban.Routers.Main = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
   },
@@ -7,10 +7,6 @@ Kanban.Routers.Boards = Backbone.Router.extend({
     "": "index",
     "/login": "login",
     "boards/:id": "show"
-  },
-
-  login: function () {
-    console.log("login");
   },
 
   index: function () {

@@ -11,8 +11,8 @@ Kanban.Models.List = Backbone.RelationalModel.extend({
 		}
 	}],
 
-  cards: function () {
-    return this.get("cards");
-  }
+  // cards: function () {
+  //   return this.get("cards");
+  // }
 
 });
