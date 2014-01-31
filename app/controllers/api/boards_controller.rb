@@ -13,9 +13,9 @@ module Api
     def update
     	board = current_user.boards.find(params[:id])
     	if board.update_attributes(params[:board])
-        render :json => board, :status => :ok
+        render json: board, status: :ok
       else
-        render :nothing => true, :status => :unprocessable_entity
+        render nothing: true, status: :unprocessable_entity
       end    		
     end
 

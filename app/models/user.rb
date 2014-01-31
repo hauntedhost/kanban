@@ -17,31 +17,31 @@ require "digest/md5"
 class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :full_name, :bio
   attr_reader :password
-  default_scope :order => 'id'
+  default_scope order: 'id'
 
   has_many :boards_members,
-    :class_name => "BoardMember",
-    :foreign_key => :member_id
+    class_name: "BoardMember",
+    foreign_key: :member_id
 
   has_many :cards_members,
-    :class_name => "CardMember",
-    :foreign_key => :member_id
+    class_name: "CardMember",
+    foreign_key: :member_id
 
-  has_many :boards, :through => :boards_members
-  has_many :lists, :through => :boards
-  has_many :cards, :through => :lists
+  has_many :boards, through: :boards_members
+  has_many :lists, through: :boards
+  has_many :cards, through: :lists
 
   has_many :cards_assigned,
-    :class_name => "Card",
-    :foreign_key => :assignee_id
+    class_name: "Card",
+    foreign_key: :assignee_id
 
   # has_many :comments,
-    # :class_:name => "CardComments",
-    # :foreign_key => :commenter_id
+    # class_name: "CardComments",
+    # foreign_key: :commenter_id
 
   validates_uniqueness_of :email
   validates_presence_of :email, :password_digest
-  validates_length_of :password, { :minimum => 3 }
+  validates_length_of :password, { minimum: 3 }
 
   def password
     @password || self.password_digest
@@ -80,8 +80,8 @@ class User < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(options.merge(:only => [:username, :email, :bio],
-                        :methods => :gravatar_url))
+    super(options.merge(only: [:username, :email, :bio],
+                        methods: :gravatar_url))
   end
 
 end
