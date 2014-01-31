@@ -12,10 +12,10 @@
 
 class CardComment < ActiveRecord::Base
   attr_accessible :card_id, :commenter_id, :content
-	default_scope :order => "card_comments.created_at desc"
+	default_scope order: "card_comments.created_at desc"
 
   belongs_to :card
-  belongs_to :commenter, :class_name => "User"
+  belongs_to :commenter, class_name: "User"
 
   def created_at_timestamp
   	created_at.to_time.to_i

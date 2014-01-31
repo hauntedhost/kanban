@@ -8,7 +8,7 @@ module Api
 
       @comment = card.comments.build(params[:card_comment])
       unless @comment.save
-        render :nothing => true, :status => :unprocessable_entity
+        render nothing: true, status: :unprocessable_entity
       end      
     end
     

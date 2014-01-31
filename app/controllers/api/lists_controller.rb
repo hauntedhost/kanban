@@ -13,27 +13,27 @@ module Api
     def create
     	list = List.new(params[:list])
     	if list.save
-    		render :json => list, :status => :ok
+    		render json: list, status: :ok
     	else
-    		render :nothing => true, :status => :unprocessable_entity
+    		render nothing: true, status: :unprocessable_entity
     	end
     end
 
     def update
       list = current_user.lists.find(params[:id])
       if list.update_attributes(params[:list])
-        render :json => list, :status => :ok
+        render json: list, status: :ok
       else
-        render :nothing => true, :status => :unprocessable_entity
+        render nothing: true, status: :unprocessable_entity
       end
     end
 
     def destroy
       list = current_user.lists.find(params[:id])
 			if list.destroy
-				render :json => list, :status => :ok
+				render json: list, status: :ok
 			else
-				render :nothing => true, :status => :unprocessable_entity
+				render nothing: true, status: :unprocessable_entity
 			end
     end
 
@@ -41,7 +41,7 @@ module Api
       list_ids = params[:list].map(&:to_i)
 
       unless (list_ids - current_user.list_ids).empty?
-      	render :nothing => true, :status => :unauthorized
+      	render nothing: true, status: :unauthorized
       end
 
       list_ids.each_with_index do |id, index|

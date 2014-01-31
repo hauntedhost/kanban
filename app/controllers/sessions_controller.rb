@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :redirect_logged_in_user, :only => [:new]
+  before_filter :redirect_logged_in_user, only: [:new]
 
   def new
     render :new

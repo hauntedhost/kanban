@@ -3,7 +3,7 @@
 <head>
   <title>Kanban</title>
   <%= favicon_link_tag "/favicon.ico" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", media: "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
@@ -25,7 +25,7 @@
     </div>
     <div class="header-user">
       <% if logged_in? %>
-        <%= link_to image_tag(current_user.gravatar_url(30), :class => "avatar"), "#" %>
+        <%= link_to image_tag(current_user.gravatar_url(30), class: "avatar"), "#" %>
         <p>(<%= link_to "logout", logout_url %>)</p>
       <% else %>
         <p><%= link_to "login", login_url %></p>
