@@ -3,8 +3,10 @@ KANBAN 看板
 
 Demo:
 -----
-Live demo hosted here on Heroku (database is reset daily):  
+Live demo hosted here on Heroku (database is reset daily):
 [**LIVE DEMO**](http://kanban-app.herokuapp.com)
+
+[![Screenshot](/app/assets/images/screenshot.jpg)](http://kanban-app.herokuapp.com)
 
 Summary:
 --------
@@ -14,7 +16,6 @@ Built with Ruby on Rails on the backend as a JSON API for Backbone.js on the fro
 
 Notes:
 ------
-
 * Hand-rolled Rails user authentication with BCrypt
 * Custom, nested Rails JSON templating with [Rabl](https://github.com/nesquena/rabl)
 * Backbone models/collections with [Backbone-relational.js](http://backbonerelational.org/)
