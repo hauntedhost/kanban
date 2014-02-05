@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by_email(params[:user][:email])
+    user = User.find_by_email(params[:email])
 
-    if @user && @user.correct_password?(params[:user][:password])
-      login_user(@user)
+    if UserAuth.new(user).login(params[:password])
+      session[:session_key] = user.session_key
       redirect_to root_url
     else
       # TODO: add errors
@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout_user
+    UserAuth.new(current_user).logout
+    reset_session
     redirect_to login_url
   end
-  
 end

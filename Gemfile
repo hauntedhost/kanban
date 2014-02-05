@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-# ---
+
 gem 'acts_as_list'
-gem 'bcrypt-ruby', require: 'bcrypt'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ejs'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

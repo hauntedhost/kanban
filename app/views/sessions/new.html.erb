@@ -1,19 +1,19 @@
 <section class="login">
-  
+
   <h2>Log In</h2>
 
   <div class="demo">
   	<p><strong>Demo Account:</strong></p>
   	<p>email: homer@sent.as</p>
-  	<p>password: 123</p>  	
+  	<p>password: 123</p>
   </div>
 
   <form action ="/session" method="post">
     <p>
       <label for="user_email">Email</label>
-      <input type="text" 
-             name="user[email]" 
-             id="user_email" 
+      <input type="text"
+             name="email"
+             id="user_email"
              placeholder="Enter your email address"
              value="homer@sent.as"
              />
@@ -21,9 +21,9 @@
 
     <p>
       <label for="user_password">Password:</label>
-      <input type="password" 
-             name="user[password]" 
-             id="user_password" 
+      <input type="password"
+             name="password"
+             id="user_password"
              placeholder="Enter your password"
              value="123"
              />

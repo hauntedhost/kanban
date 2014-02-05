@@ -34,7 +34,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (3.0.3)
-    bcrypt-ruby (3.1.2)
+    bcrypt-ruby (3.0.1)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -172,7 +172,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   annotate
-  bcrypt-ruby
+  bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller
   coffee-rails (~> 3.2.1)
