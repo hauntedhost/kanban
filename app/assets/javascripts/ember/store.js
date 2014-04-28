@@ -5,3 +5,7 @@ Kanban.Store = DS.Store.extend({
   // is built to work nicely with the ActiveModel::Serializers gem.
   adapter: '_ams'
 });
+
+Kanban.ApplicationAdapter = DS.RESTAdapter.extend({
+  namespace: 'api'
+});
