@@ -7,5 +7,6 @@ Kanban.Store = DS.Store.extend({
 });
 
 Kanban.ApplicationAdapter = DS.RESTAdapter.extend({
-  namespace: 'api'
+  namespace: 'api',
+  headers: { ember: true }
 });

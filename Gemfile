@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.17'
 
-# gem 'active_model_serializers'
+gem 'active_model_serializers'
 gem 'acts_as_list'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ejs'

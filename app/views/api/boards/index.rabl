@@ -1,2 +1,2 @@
-collection @boards => :boards # FIXME: this breaks backbone (too soon)
+collection @boards
 extends "api/boards/show"

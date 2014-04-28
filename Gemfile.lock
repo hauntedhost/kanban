@@ -183,6 +183,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   acts_as_list
   annotate
   bcrypt-ruby (~> 3.0.0)

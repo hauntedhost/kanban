@@ -8,5 +8,8 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
-  
+
+  def if_ember_render(things)
+    render json: things if params[:ember] || request.headers["ember"]
+  end
 end

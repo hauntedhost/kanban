@@ -2,6 +2,10 @@ hi boards.
 
 <ul>
   {{#each board in model}}
-    <li>{{board.name}}</li>
+    <li>
+      {{#link-to 'board' board}}
+        {{board.name}}
+      {{/link-to}}
+    </li>
   {{/each}}
 </ul>
