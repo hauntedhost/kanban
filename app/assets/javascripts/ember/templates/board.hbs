@@ -1,3 +1,66 @@
-<h2>Board: {{board.name}}</h2>
+<section class="board-show group">
+  <header class="board_name">
+    <span class="edit js-edit-board-name">{{name}}</span>
+  </header>
 
-hi.
+  <section class="board-sidebar"></section>
+
+  <div class="lists_wrapper">
+    <div class="lists_inner_wrapper">
+
+      <section class="lists">
+        {{#each list in lists}}
+          <div class="list" {{bind-attr id=list.id}}>
+            <header class="list_title">
+              <span class="edit js-edit-list-title" {{bind-attr id=list.id}}>
+                {{list.title}}
+              </span>
+              <button class="archive_list entypo-cancel"
+                      {{bind-attr data-list-id=list.id}}</button>
+            </header>
+
+            <section class="cards">
+              <div class="cards"{{bind-attr data-list-id=list.id}}>
+                {{#each card in list.cards}}
+                  <div class="card" {{bind-attr data-card-id=card.id}}>
+
+                    <button class="archive_card entypo-cancel"
+                            {{bind-attr data-card-id=card.id}}></button>
+
+                    <span class="card_title">
+                      {{card.title}}
+                    </span>
+
+                    <footer>
+                    </footer>
+
+                  </div>
+                {{/each}}
+              </div>
+            </section>
+
+            <div class="add_card">
+              <form class="add_card" {{bind-attr data-list-id=list.id}}>
+                <input type="text"
+                       class="card_title"
+                       name="card[title]"
+                       placeholder="Add a card ..." />
+                <input type="submit" value="Add Card" />
+              </form>
+            </div>
+          </div>
+        {{/each}}
+      </section>
+
+      <div class="add_list">
+        <form class="add_list">
+          <input type="text"
+                 class="list_title"
+                 name="list[title]"
+                 placeholder="Add a list ..." />
+          <input type="submit" value="Add List" />
+        </form>
+      </div>
+    </div> <!-- inner_wrapper -->
+  </div>
+</section>

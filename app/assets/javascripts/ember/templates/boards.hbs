@@ -1,11 +1,15 @@
-hi boards.
+<section class="boards-index">
+  <header class="boards-index">
+    <h2>My Boards</h2>
+  </header>
 
-<ul>
-  {{#each board in model}}
-    <li>
-      {{#link-to 'board' board}}
-        {{board.name}}
-      {{/link-to}}
-    </li>
-  {{/each}}
-</ul>
+  <ul class="boards-list">
+    {{#each board in model}}
+      <li>
+        {{#link-to 'board' board}}
+          {{board.name}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+  </ul>
+</section>

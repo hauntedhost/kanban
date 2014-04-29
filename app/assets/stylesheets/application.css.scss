@@ -107,7 +107,13 @@ img.avatar {
   clear: both;
 }
 
-#main, #ember-app {
+#ember-app {
+  overflow: hidden;
+  padding: 0 0 15px 0;
+  width: 100%;
+}
+
+#main {
   overflow: hidden;
   padding: 0 0 15px 0;
 }
@@ -761,4 +767,3 @@ input:-moz-placeholder { color: #565656; }
 	font-size: 12px;
 	line-height: 18px;
 }
-
