@@ -6,10 +6,8 @@ Kanban.BoardController = Ember.ObjectController.extend({
     listParams += "&ember=true";
     $.post(sortListsURL, listParams, function(response) {
       response.lists.forEach(function(listData) {
-        // store.push('list', listData);
-        list = store.getById('list', listData.id);
-        list.set('position', listData.position);
-        // list.save(); // POSTS -- unnecessary
+        store.update('list', { id: listData.id,
+                               position: listData.position});
       });
     });
   },
@@ -21,9 +19,8 @@ Kanban.BoardController = Ember.ObjectController.extend({
     cardParams += "&ember=true";
     $.post(sortCardsURL, cardParams, function(response) {
       response.cards.forEach(function(cardData) {
-        // store.push('card', cardData);
-        card = store.getById('card', cardData.id);
-        card.set('position', cardData.position);
+        store.update('card', { id: cardData.id,
+                               position: cardData.position});
       });
     });
   }
