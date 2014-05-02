@@ -13,8 +13,8 @@ module Api
     end
 
     def update
-    	board = current_user.boards.find(params[:id])
-    	if board.update_attributes(params[:board])
+      board = current_user.boards.find(params[:id])
+      if board.update_attributes(params[:board])
         render json: board, status: :ok
       else
         render nothing: true, status: :unprocessable_entity

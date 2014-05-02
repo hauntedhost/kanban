@@ -1,0 +1,17 @@
+<section class="cards">
+  <div class="cards" {{bind-attr data-list-id=list.id}}>
+    {{#each card in list.cards}}
+      {{view 'Kanban.CardView' card=card}}
+    {{/each}}
+  </div>
+</section>
+
+<div class="add_card">
+  <form class="add_card">
+    <input type="text"
+           class="card_title"
+           name="card[title]"
+           placeholder="Add a card ..." />
+    <input type="submit" value="Add Card" />
+  </form>
+</div>
