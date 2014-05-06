@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def if_ember_render(things)
-    render json: things if params[:ember] || request.headers["ember"]
+  def if_ember_render(things, options = {})
+    options = options.reverse_merge(json: things)
+    if params[:ember] || request.headers["ember"]
+      render options
+    end
   end
 end

@@ -7,11 +7,11 @@
   </section>
 
   <div class="add_list">
-    <form class="add_list">
-      <input type="text"
-             class="list_title"
-             name="list[title]"
-             placeholder="Add a list ..." />
+    <form class="add_list" {{action "addList" on="submit"}}>
+      {{input type="text"
+              value=listTitle
+              placeholder="Add a list ..."
+              classNames="list_title"}}
       <input type="submit" value="Add List" />
     </form>
   </div>

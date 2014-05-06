@@ -4,16 +4,22 @@ module Api
 
     def index
       @lists = current_user.lists
+      if_ember_render(@lists)
     end
 
     def show
       @list = current_user.lists.find(params[:id])
+      if_ember_render(@list.board)
     end
 
     def create
       list = List.new(params[:list])
       if list.save
-        render json: list, status: :ok
+        # NOTE: bug in active model serializers causes lists to render twice
+        # https://github.com/rails-api/active_model_serializers/issues/521
+        # for now we just render list.board and list will be side-loaded
+        # in the future this will probably work: if_ember_render([list])
+        if_ember_render(list.board)
       else
         render nothing: true, status: :unprocessable_entity
       end
@@ -22,7 +28,7 @@ module Api
     def update
       list = current_user.lists.find(params[:id])
       if list.update_attributes(params[:list])
-        render json: list, status: :ok
+        if_ember_render(list.board)
       else
         render nothing: true, status: :unprocessable_entity
       end
@@ -31,7 +37,7 @@ module Api
     def destroy
       list = current_user.lists.find(params[:id])
       if list.destroy
-        render json: list, status: :ok
+        if_ember_render(list.board)
       else
         render nothing: true, status: :unprocessable_entity
       end
