@@ -10,3 +10,17 @@ Kanban.ApplicationAdapter = DS.RESTAdapter.extend({
   namespace: 'api',
   headers: { ember: true }
 });
+
+Kanban.ApplicationSerializer = DS.RESTSerializer.extend({
+  // add _id(s) to association keys
+  keyForRelationship: function(rel, kind) {
+    if (kind === 'belongsTo') {
+      var underscored = rel.underscore();
+      return underscored + "_id";
+    } else {
+      var singular = rel.singularize();
+      var underscored = singular.underscore();
+      return underscored + "_ids";
+    }
+  }
+});
