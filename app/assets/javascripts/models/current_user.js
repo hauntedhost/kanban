@@ -1,3 +1,3 @@
-Kanban.Models.CurrentUser = Backbone.Model.extend({
+Kanban.Models.CurrentUser = Kanban.Models.User.extend({
   urlRoot: "/api/users/current"
 });

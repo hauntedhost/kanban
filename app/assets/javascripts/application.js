@@ -21,6 +21,7 @@
 //= require backbone
 //= require backbone-relational
 //= require kanban
+//= require ./models/user
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
