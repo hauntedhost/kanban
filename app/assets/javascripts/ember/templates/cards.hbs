@@ -1,17 +1,18 @@
 <section class="cards">
   <div class="cards" {{bind-attr data-list-id=list.id}}>
-    {{#each card in list.cards}}
+    {{#each card in model}}
       {{view 'Kanban.CardView' card=card}}
     {{/each}}
   </div>
 </section>
 
+
 <div class="add_card">
-  <form class="add_card">
-    <input type="text"
-           class="card_title"
-           name="card[title]"
-           placeholder="Add a card ..." />
-    <input type="submit" value="Add Card" {{action "addCard"}}/>
+  <form class="add_card" {{action "addCard" on="submit"}}>
+    {{input type="text"
+            value=cardTitle
+            placeholder="Add a card ..."
+            classNames="card_title"}}
+    <input type="submit" value="Add Card" />
   </form>
 </div>

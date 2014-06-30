@@ -13,7 +13,11 @@ module Api
     def create
       card = Card.new(params[:card])
       if card.save
-        render json: card, status: :ok
+        # NOTE: bug in active model serializers causes cards to render twice
+        # https://github.com/rails-api/active_model_serializers/issues/521
+        # for now we just render card.list and card will be side-loaded
+        # in the future this will probably work: if_ember_render([card])
+        if_ember_render(card.list)
       else
         render nothing: true, status: :unprocessable_entity
       end
