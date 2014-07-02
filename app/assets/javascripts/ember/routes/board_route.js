@@ -1,5 +1,18 @@
-// Kanban.BoardRoute = Ember.Route.extend({
-//   model: function(params) {
-//     return this.store.find('board', params.board_id);
-//   }
-// });
+Kanban.BoardRoute = Ember.Route.extend({
+  actions: {
+    showModal: function(modalName, model) {
+      this.controllerFor(modalName).set('model', model);
+      this.render(modalName, {
+        into: 'board',
+        outlet: 'modal',
+      });
+    },
+
+    removeModal: function() {
+      this.disconnectOutlet({
+        outlet: 'modal',
+        parentView: 'board'
+      });
+    }
+  }
+});

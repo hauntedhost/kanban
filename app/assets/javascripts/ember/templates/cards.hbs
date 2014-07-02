@@ -1,7 +1,7 @@
 <section class="cards">
   <div class="cards" {{bind-attr data-list-id=list.id}}>
     {{#each card in model}}
-      {{view 'Kanban.CardView' card=card}}
+      {{render 'card' card}}
     {{/each}}
   </div>
 </section>
