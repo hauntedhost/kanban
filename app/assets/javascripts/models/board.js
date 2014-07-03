@@ -1,5 +1,7 @@
 Kanban.Models.Board = Backbone.RelationalModel.extend({
 
+  url: "/api/boards",
+
 	relations: [{
 		type: Backbone.HasMany,
 		key: "lists",
@@ -13,7 +15,7 @@ Kanban.Models.Board = Backbone.RelationalModel.extend({
 		key: "users",
 		relatedModel: "Kanban.Models.User",
 		collectionType: "Kanban.Collections.Users"
-	}],
+	}]
 
   // getList: function (id) {
   // 	var that = this;
