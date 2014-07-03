@@ -33,7 +33,7 @@
 				<img src="<%= user.get("gravatar_url") %>" />
 			</header>
 
-			<a rel="author">Sean Omlor</a>
+			<a rel="author"><%= user.get("full_name") %></a>
 
 			<div class="content">
 				<%= comment.escape("content") %>
