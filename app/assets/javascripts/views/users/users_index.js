@@ -1,20 +1,20 @@
 Kanban.Views.UsersIndex = Backbone.View.extend({
-	template: JST['users/index'],
+  template: JST['users/index'],
 
-	initialize: function () {
-		var that = this;
-	},
+  initialize: function () {
+    var that = this;
+  },
 
-	render: function () {
-		var that = this;
-    
-  	var renderedContent = that.template({
-  		users: that.collection
-  	});
+  render: function () {
+    var that = this;
 
-  	that.$el.html(renderedContent);
+    var renderedContent = that.template({
+      users: that.collection
+    });
 
-		return that;
-	}
+    that.$el.html(renderedContent);
+
+    return that;
+  }
 
 });
