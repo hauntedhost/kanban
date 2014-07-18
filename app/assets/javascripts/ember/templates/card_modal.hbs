@@ -1,5 +1,36 @@
 {{#modal-dialog title=title close='removeModal'}}
-  {{title}}
 
-  <button {{action 'doThing'}}>do the thing</button>
+<h5>Activity</h5>
+
+<form {{action submitComment on="submit"}}>
+  {{textarea value=cardComment
+             classNames="card_comment_content"
+             placeholder="Write a comment"}}
+
+  {{input type="submit"
+          value="Comment"}}
+</form>
+
+<ul class="card_comments">
+{{#each comment in card_comments}}
+  <li>
+    <article class="comment">
+      <header>
+        <img src="" />
+      </header>
+
+      <a rel="author">...</a>
+
+      <div class="content">
+        {{comment.content}}
+      </div>
+
+      <footer>
+        <abbr class="timeago quiet" title="">{{comment.created_at}}</abbr>
+      </footer>
+    </article>
+  </li>
+{{/each}}
+</ul>
+
 {{/modal-dialog}}

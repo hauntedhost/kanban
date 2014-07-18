@@ -4,10 +4,12 @@ module Api
 
     def index
       @cards = current_user.cards
+      if_ember_render(@cards)
     end
 
     def show
       @card = current_user.cards.find(params[:id])
+      if_ember_render(@card)
     end
 
     def create

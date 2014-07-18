@@ -1,9 +1,9 @@
-<button class="archive_card entypo-cancel"></button>
+<article {{action 'showModal' 'card_modal' card}}>
+  <button class="archive_card entypo-cancel"></button>
 
-<span class="card_title">
-  {{card.title}}
-</span>
+  <span class="card_title">
+    {{card.title}}
+  </span>
 
-<button {{action 'showModal' 'card_modal' card}}>show card</button>
-
-<footer></footer>
+  <footer></footer>
+</article>
