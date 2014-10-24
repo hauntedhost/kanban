@@ -1,4 +1,5 @@
 Kanban.CardsController = Ember.ArrayController.extend({
+  needs: ['list'],
   actions: {
     addCard: function() {
       var cards = this.get('model'),
@@ -20,16 +21,65 @@ Kanban.CardsController = Ember.ArrayController.extend({
     }
   },
 
-  resortCards: function(cardParams) {
-    var store = this.store,
-        sortCardsURL = '/api/cards/sort';
+  resortCards: function(cardParams, cardArray, listId) {
+    var controller = this;
+    var sortCardsURL = '/api/cards/sort';
 
-    cardParams += "&ember=true";
-    $.post(sortCardsURL, cardParams, function(response) {
-      response.cards.forEach(function(cardData) {
-        store.update('card', { id: cardData.id,
-                               position: cardData.position});
-      });
-    });
+    // this.cardArray = cardArray.map(function(card) {
+    //   return card.replace('card_', '');
+    // });
+
+    // this.forEach(function(card, idx) {
+    //   // var index = indexes[item.get('id')];
+    //   // item.set('idx', index);
+    //   debugger;
+    // }, this);
+    this.listId = listId;
+    this.beginPropertyChanges();
+    cardArray.forEach($.proxy(function(card, idx) {
+      var store = this.store;
+      var listId = this.listId;
+      var cardId = card.replace('card_', '');
+
+      store.update('card', { id: cardId,
+                             list: listId,
+                             position: idx + 1 });
+    }, this));
+    this.endPropertyChanges();
+
+    var list = this.get('model.owner');
+    list.save();
+
+    // this.store.find('list', { id: listId }).then(function(list) {
+    //   debugger;
+    // });
+
+    // var cards = this.get('model');
+    // cards.save();
+
+    // cardParams += "&ember=true";
+    // $.ajax({
+    //   url: sortCardsURL,
+    //   type: 'post',
+    //   data: cardParams,
+    //   controller: controller,
+    //   success: function(response) {
+    //     var controller = this.controller;
+    //     var store = controller.store;
+    //     response.cards.forEach(function(cardData) {
+    //       store.update('card', { id: cardData.id,
+    //                              list: cardData.list_id,
+    //                              position: cardData.position});
+    //     });
+    //   }
+    // })
+
+    // $.post(sortCardsURL, cardParams, function(response) {
+    //   response.cards.forEach(function(cardData) {
+    //     store.update('card', { id: cardData.id,
+    //                            list: cardData.list_id,
+    //                            position: cardData.position});
+    //   });
+    // });
   }
 });

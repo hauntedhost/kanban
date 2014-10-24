@@ -31,5 +31,5 @@ Kanban.ListsController = Ember.ArrayController.extend({
                                position: listData.position});
       });
     });
-  },  
+  },
 });

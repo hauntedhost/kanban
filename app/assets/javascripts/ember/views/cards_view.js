@@ -17,14 +17,21 @@ Kanban.CardsView = Ember.View.extend({
       update: function (event, ui) {
         // card sort data looks like this:
         // card[]=2&card[]=3&card[]=1
-        var cardParams = $(this).sortable('serialize', { attribute: 'data-position' });
+        var cardParams = $(this).sortable('serialize', {
+          attribute: 'data-position'
+        });
+
+        var cardArray = $(this).sortable('toArray', {
+          attribute: 'data-position'
+        });
+
         if (cardParams) {
           // add list_id to sortData so that it looks like this:
           // card[]=2&card[]=3&card[]=1&list_id=8
-          var listID = $(this).data('list-id');
-          cardParams += '&list_id=' + listID;
+          var listId = $(this).data('list-id');
+          cardParams += '&list_id=' + listId;
           console.log('cardParams:', cardParams);
-          controller.resortCards(cardParams);
+          controller.resortCards(cardParams, cardArray, listId);
         };
       }
     });

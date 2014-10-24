@@ -1,7 +1,7 @@
 <div class="lists_inner_wrapper">
   <section class="lists">
     {{#each list in model}}
-      {{view 'Kanban.ListView' list=list}}
+      {{render 'list' list}}
     {{/each}}
   </section>
 
