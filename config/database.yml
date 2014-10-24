@@ -19,3 +19,8 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: kanban_staging
