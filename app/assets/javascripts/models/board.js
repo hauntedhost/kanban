@@ -1,6 +1,6 @@
 Kanban.Models.Board = Backbone.RelationalModel.extend({
 
-  url: "/api/boards",
+  urlRoot: "/api/boards",
 
 	relations: [{
 		type: Backbone.HasMany,
