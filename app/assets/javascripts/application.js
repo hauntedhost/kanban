@@ -17,3 +17,17 @@
 //= require jquery.jeditable
 //= require jquery.timeago
 //= require jquery.serializeJSON
+<<<<<<< HEAD
+=======
+//= require underscore
+//= require backbone
+//= require backbone-relational
+//= require kanban
+//= require ./models/user
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
+//= require_tree .
+>>>>>>> origin/master

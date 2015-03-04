@@ -17,7 +17,7 @@ Kanban::Application.routes.draw do
       end
     end
 
-    resources :boards, only: [:index, :show, :update]
+    resources :boards, only: [:index, :show, :create, :update]
 
     resources :lists , except: [:edit] do
       collection do
