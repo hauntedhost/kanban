@@ -17,6 +17,8 @@
 //= require jquery.jeditable
 //= require jquery.timeago
 //= require jquery.serializeJSON
+<<<<<<< HEAD
+=======
 //= require underscore
 //= require backbone
 //= require backbone-relational
@@ -28,3 +30,4 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+>>>>>>> origin/master

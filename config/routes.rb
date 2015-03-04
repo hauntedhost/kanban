@@ -3,11 +3,11 @@ Kanban::Application.routes.draw do
   root to: "Root#index"
   resource :root, only: [:index]
 
+  get "ember" => "root#ember"
+
   resource :session, only: [:new, :create, :destroy]
   get "login" => "Sessions#new"
   get "logout" => "Sessions#destroy"
-
-  # resources :users, only: [:show]
 
   namespace :api do
 

@@ -1,0 +1,18 @@
+<section class="cards">
+  <div class="cards" {{bind-attr data-list-id=list.id}}>
+    {{#each card in model}}
+      {{render 'card' card}}
+    {{/each}}
+  </div>
+</section>
+
+
+<div class="add_card">
+  <form class="add_card" {{action "addCard" on="submit"}}>
+    {{input type="text"
+            value=cardTitle
+            placeholder="Add a card ..."
+            classNames="card_title"}}
+    <input type="submit" value="Add Card" />
+  </form>
+</div>

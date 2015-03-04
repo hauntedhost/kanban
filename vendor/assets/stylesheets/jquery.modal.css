@@ -1,11 +1,11 @@
-.modal {
+/* .modal {
   display: none;
   background: #fff;
   -webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.6);
   -moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.6);
   box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.6);
 
-  /* custom */
+  custom
   width: 420px;
   padding: 25px;
   margin-top: 40px !important;
@@ -21,7 +21,7 @@
 }
 
 .modal a.close-modal {
-	display: none;
+  display: none;
 }
 
 .modal a.close-modal-custom {
@@ -62,4 +62,4 @@
   -o-border-radius: 8px;
   -ms-border-radius: 8px;
   border-radius: 8px;
-}
+} */
