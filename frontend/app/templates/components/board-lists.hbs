@@ -1,0 +1,8 @@
+<ul>
+  {{#each list in board.lists}}
+    <li>
+      {{list.title}}
+      {{list-cards list=list}}
+    </li>
+  {{/each}}
+</ul>
