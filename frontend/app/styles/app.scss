@@ -1,0 +1,80 @@
+.lists {
+  float: left;
+
+  .list {
+    min-height: 60px;
+
+    float: left;
+    display: inline-block;
+    background: #e3e3e3;
+    position: relative;
+
+    width: 240px;
+    padding: 6px;
+    margin: 6px;
+
+    border: 2px solid #9f9f9f;
+
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+
+    .cards {
+      min-height: 42px;
+
+      .card {
+        border: 1px solid #8e8e8e;
+
+        background: white;
+        padding: 10px;
+        margin: 3px 0px 3px 0px;
+        cursor: pointer;
+        position: relative;
+
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+
+        -webkit-box-shadow: 1px 1px 2px rgba(50, 50, 50, 0.2);
+        -moz-box-shadow:    1px 1px 2px rgba(50, 50, 50, 0.2);
+        box-shadow:         1px 1px 2px rgba(50, 50, 50, 0.2);
+      }
+    }
+  }
+
+  .list-placeholder {
+    border: 2px dashed #595959;
+    width: 240px;
+    height: auto;
+    padding: 6px;
+    margin: 6px;
+    float: left;
+
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+
+  .list.ui-sortable-helper {
+    -webkit-font-smoothing: antialiased;
+     font-smoothing: antialiased;
+
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    transform: rotate(3deg);
+
+    -webkit-transition: -webkit-transform .02s ease;
+    -moz-transition: -moz-transform .02s ease;
+    transition: transform .02s ease;
+
+    -webkit-backface-visibility: hidden;
+
+    -webkit-box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.6);
+    -moz-box-shadow:    5px 5px 5px rgba(50, 50, 50, 0.6);
+    box-shadow:         5px 5px 5px rgba(50, 50, 50, 0.6);
+  }
+}

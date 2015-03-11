@@ -1,0 +1,11 @@
+<p>
+  Boards
+</p>
+
+<ul>
+  {{#each board in boards}}
+    <li>
+      {{link-to board.name 'board' board}}
+    </li>
+  {{/each}}
+</ul>

@@ -1,0 +1,10 @@
+<section class="lists">
+  {{#each list in sortedLists}}
+    <div class="list"
+         data-list-id={{list.id}}
+         data-position="list_{{list.id}}">
+      {{list.title}}
+      {{list-cards list=list store=store}}
+    </div>
+  {{/each}}
+</section>
