@@ -1,8 +1,10 @@
-<ul>
-  {{#each card in list.cards}}
-    <li>
+<section class="cards">
+  {{#each card in sortedCards}}
+    <div class="card"
+         data-card-id={{card.id}}
+         data-position="card_{{card.id}}">
       {{card.title}}
       {{card-comments card=card}}
-    </li>
+    </div>
   {{/each}}
-</ul>
+</section>

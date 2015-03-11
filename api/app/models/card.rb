@@ -18,7 +18,7 @@ class Card < ActiveRecord::Base
   #                 :comments_attributes
   # default_scope order: 'cards.position'
 
-  acts_as_list
+  # acts_as_list
 
   belongs_to :list
   belongs_to :assignee, class_name: 'User'
