@@ -4,24 +4,30 @@ module Api
 
     def index
       @cards = current_user.cards
+      if_ember_render(@cards)
     end
 
     def show
       @card = current_user.cards.find(params[:id])
+      if_ember_render(@card)
     end
 
     def create
-    	card = Card.new(params[:card])
-    	if card.save
-    		render json: card, status: :ok
-    	else
-    		render nothing: true, status: :unprocessable_entity
-    	end
+      card = Card.new(params[:card])
+      if card.save
+        # NOTE: bug in active model serializers causes cards to render twice
+        # https://github.com/rails-api/active_model_serializers/issues/521
+        # for now we just render card.list and card will be side-loaded
+        # in the future this will probably work: if_ember_render([card])
+        if_ember_render(card.list)
+      else
+        render nothing: true, status: :unprocessable_entity
+      end
     end
 
     def update
-    	card = current_user.cards.find(params[:id])
-    	if card.update_attributes(params[:card])
+      card = current_user.cards.find(params[:id])
+      if card.update_attributes(params[:card])
         render json: card, status: :ok
       else
         render nothing: true, status: :unprocessable_entity
@@ -30,11 +36,11 @@ module Api
 
     def destroy
       card = current_user.cards.find(params[:id])
-			if card.destroy
-				render json: card, status: :ok
-			else
-				render nothing: true, status: :unprocessable_entity
-			end
+      if card.destroy
+        render json: card, status: :ok
+      else
+        render nothing: true, status: :unprocessable_entity
+      end
     end
 
     def sort
@@ -51,7 +57,7 @@ module Api
       end
 
       @cards = @list.cards.where(id: card_ids)
+      if_ember_render(@cards)
     end
-
   end
 end

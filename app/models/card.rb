@@ -36,14 +36,14 @@ class Card < ActiveRecord::Base
   	self.comments.count
   end
 
-  def as_json(options = {})
-    super(options.merge(only: [:username, :email, :bio],
-                        methods: :gravatar_url))
-  end
-
-  def as_json(options = {})
-    super(options.merge(include: :comments,
-    										methods: :comments_counts))
-  end
+  # def as_json(options = {})
+  #   super(options.merge(only: [:username, :email, :bio],
+  #                       methods: :gravatar_url))
+  # end
+  #
+  # def as_json(options = {})
+  #   super(options.merge(include: :comments,
+  #   										methods: :comments_counts))
+  # end
 
 end

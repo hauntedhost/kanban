@@ -8,13 +8,15 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
  *= require jquery.ui.all
  *= require jquery.modal
  *= require animate
+ *= require bootstrap
+ *= require bootstrap-theme
  *= require gh-fork-ribbon
  *= require loader
+ *= require_self
+ *= require_tree .
  */
 
 $darkGrey: #262626;
@@ -105,6 +107,12 @@ img.avatar {
 
 .clearfix {
   clear: both;
+}
+
+#ember-app {
+  overflow: hidden;
+  padding: 0 0 15px 0;
+  width: 100%;
 }
 
 #main {
@@ -761,4 +769,3 @@ input:-moz-placeholder { color: #565656; }
 	font-size: 12px;
 	line-height: 18px;
 }
-

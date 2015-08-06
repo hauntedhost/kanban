@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kanban</title>
+  <%= favicon_link_tag "/favicon.ico" %>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "backbone/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="wrapper">
+  <div class="github-fork-ribbon-wrapper right">
+      <div class="github-fork-ribbon">
+          <a href="https://github.com/somlor/kanban">Fork me on GitHub</a>
+      </div>
+  </div>
+
+  <div id="header">
+    <div class="header-logo">
+      <h1><a href="#/">KANBAN <span>看板</span></a></h1>
+    </div>
+    <div class="header-user">
+      <% if logged_in? %>
+        <%= link_to image_tag(current_user.gravatar_url(30), class: "avatar"), "#" %>
+        <p>(<%= link_to "logout", logout_url %>)</p>
+      <% else %>
+        <p><%= link_to "login", login_url %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="main clearfix">
+    <%= yield %>
+  </div>
+
+  <div id="footer">
+    <p>
+      KANBAN is hand carved with Ruby on Rails, Backbone.js, and green tea
+      by Sean Omlor.
+    </p>
+    <p>
+      <a href="http://seanomlor.com">Hire me</a>.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
