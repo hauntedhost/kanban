@@ -1,33 +1,33 @@
 <div class="cards"
-		 id="cards_list_<%= cards.list.id %>"
-		 data-list-id="<%= cards.list.id %>">
-  <% cards.each(function (card) { %>
+     id="cards_list_<%= cards.list.id %>"
+     data-list-id="<%= cards.list.id %>">
+  <% cards.each(function(card) { %>
     <div class="card"
-    		 id="card_<%= card.id %>"
-    		 data-card-id="<%= card.id %>">
+         id="card_<%= card.id %>"
+         data-card-id="<%= card.id %>">
 
-			<button class="archive_card entypo-cancel"
-							data-card-id="<%= card.id %>"></button>
+      <button class="archive_card entypo-cancel"
+              data-card-id="<%= card.id %>"></button>
 
-			<span class="card_title">
-	      <%= card.escape("title") %>
-			</span>
+      <span class="card_title">
+        <%= card.escape('title') %>
+      </span>
 
-			<footer>
-				<p class="comments_count">
-	    	<% if (card.get("comments_count") > 0) { %>
+      <footer>
+        <p class="comments_count">
+        <% if (card.get('comments_count') > 0) { %>
           <span class="entypo-comment"></span>
-          <%= card.escape("comments_count") %>
-	      <% } %>
-	      </p>
+          <%= card.escape('comments_count') %>
+        <% } %>
+        </p>
 
-				<div class="assignee">
-				<% assignee = card.get("assignee"); %>
-	    	<% if (assignee) { %>
-						<img src="<%= assignee.escape("gravatar_url") %>" />
-	      <% } %>
-				</div>
-			</footer>
+        <div class="assignee">
+        <% assignee = card.get('assignee'); %>
+        <% if (assignee) { %>
+            <img src="<%= assignee.escape('gravatar_url') %>" />
+        <% } %>
+        </div>
+      </footer>
 
     </div>
   <% }); %>

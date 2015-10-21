@@ -3,15 +3,18 @@
 # Table name: boards
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :string(255)
+#  name        :string
+#  description :string
 #  open        :boolean          default(TRUE), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+# Indexes
+#
+#  index_boards_on_open  (open)
 #
 
 class Board < ActiveRecord::Base
-  attr_accessible :description, :name, :open
 
   has_many :lists
   has_many :board_activities

@@ -3,21 +3,25 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  username        :string(255)
-#  email           :string(255)      not null
-#  password_digest :string(255)
-#  session_key     :string(255)
-#  activation_key  :string(255)
-#  bio             :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  username        :string
+#  email           :string           not null
+#  password_digest :string
+#  session_key     :string
+#  activation_key  :string
+#  bio             :string
+#  created_at      :datetime
+#  updated_at      :datetime
+#  full_name       :string
 #
+# Indexes
+#
+#  index_users_on_session_key  (session_key)
+#
+
 require "digest/md5"
 
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :full_name, :bio
-
-  default_scope order: 'id'
+  has_secure_password
 
   has_many :boards_members,
            class_name: "BoardMember",
@@ -39,7 +43,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password_digest
   validates_length_of :password, { minimum: 3 }
 
-  has_secure_password
+  default_scope { order(:id) }
 
   def gravatar_url(size = 32)
     md5 = Digest::MD5.hexdigest(self.email)

@@ -1,6 +1,5 @@
 module Api
   class UsersController < ApplicationController
-    respond_to :json
 
     def show
       user = User.find(params[:id])
@@ -14,6 +13,5 @@ module Api
         render nothing: true, status: :not_found
       end
     end
-
   end
 end

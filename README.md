@@ -10,7 +10,7 @@ Live demo hosted here on Heroku (database is reset daily):
 
 Summary
 -------
-Kanban is a work-in-progress Trello clone I developed for a final project at [App Academy](http://appacademy.io), a 9-week Ruby on Rails and JavaScript web development intensive in San Francisco.
+Kanban is a work-in-progress Trello clone.
 
 Built with Ruby on Rails on the backend as a JSON API for Backbone.js on the frontend.
 

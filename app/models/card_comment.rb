@@ -6,19 +6,22 @@
 #  card_id      :integer          not null
 #  commenter_id :integer          not null
 #  content      :text
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+# Indexes
+#
+#  index_card_comments_on_card_id  (card_id)
 #
 
 class CardComment < ActiveRecord::Base
-  attr_accessible :card_id, :commenter_id, :content
-	default_scope order: "card_comments.created_at desc"
 
   belongs_to :card
   belongs_to :commenter, class_name: "User"
 
-  def created_at_timestamp
-  	created_at.to_time.to_i
-  end
+  default_scope { order(created_at: :desc) }
 
+  def created_at_timestamp
+    created_at.to_time.to_i
+  end
 end

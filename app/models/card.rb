@@ -4,19 +4,21 @@
 #
 #  id          :integer          not null, primary key
 #  list_id     :integer          not null
-#  title       :string(255)      not null
+#  title       :string           not null
 #  description :text
 #  due_date    :datetime
 #  open        :boolean          default(TRUE), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #  position    :integer
+#  assignee_id :integer
+#
+# Indexes
+#
+#  index_cards_on_list_id  (list_id)
 #
 
 class Card < ActiveRecord::Base
-  attr_accessible :list_id, :assignee_id, :title, :description, :due_date, :open, :position,
-                  :comments_attributes
-  default_scope order: "cards.position"
   acts_as_list
 
   belongs_to :list
@@ -32,8 +34,10 @@ class Card < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments
 
+  default_scope { order(:position) }
+
   def comments_count
-  	self.comments.count
+    self.comments.count
   end
 
   def as_json(options = {})
@@ -43,7 +47,6 @@ class Card < ActiveRecord::Base
 
   def as_json(options = {})
     super(options.merge(include: :comments,
-    										methods: :comments_counts))
+                        methods: :comments_counts))
   end
-
 end

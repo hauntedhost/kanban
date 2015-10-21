@@ -16,5 +16,4 @@ Kanban.Views.UsersIndex = Backbone.View.extend({
 
     return that;
   }
-
 });

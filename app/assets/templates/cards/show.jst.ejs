@@ -1,49 +1,51 @@
 <header class="card_title">
-	<h3>
-		<span class="edit js-edit-card-title"><%= card.escape("title") %></span>
-	</h3>
-	<h4>In list <span><%= list.escape("title") %></span></h4>
+  <h3>
+    <span class="edit js-edit-card-title">
+      <%= card.escape('title') %>
+    </span>
+  </h3>
+  <h4>In list <span><%= list.escape("title") %></span></h4>
 </header>
 
 <p>
-	<%= card.escape("description") %>
+  <%= card.escape('description') %>
 </p>
 
 <div class="members">
-	<% if (assignee) { %>
-		<img src="<%= assignee.get("gravatar_url") %>" />
-	<% } %>
+  <% if (assignee) { %>
+    <img src="<%= assignee.get('gravatar_url') %>" />
+  <% } %>
 </div>
 
 <h5>Activity</h5>
 
 <form id="add_comment">
   <textarea name="card_comment[content]"
-  					class="card_comment_content"
-  					placeholder="Write a comment"></textarea>
-	<input type="submit" value="Comment" />
+            class="card_comment_content"
+            placeholder="Write a comment"></textarea>
+  <input type="submit" value="Comment" />
 </form>
 
 <ul class="card_comments">
-<% comments.each(function (comment) { %>
-	<% user = comment.get("user") %>
-	<li>
-		<article class="comment">
-			<header>
-				<img src="<%= user.get("gravatar_url") %>" />
-			</header>
+<% comments.each(function(comment) { %>
+  <% user = comment.get('user') %>
+  <li>
+    <article class="comment">
+      <header>
+        <img src="<%= user.get('gravatar_url') %>" />
+      </header>
 
-			<a rel="author"><%= user.get("full_name") %></a>
+      <a rel="author"><%= user.get('full_name') %></a>
 
-			<div class="content">
-				<%= comment.escape("content") %>
-			</div>
+      <div class="content">
+        <%= comment.escape('content') %>
+      </div>
 
-			<footer>
-				<abbr class="timeago quiet" title="<%= comment.escape("created_at") %>"><%= comment.escape("created_at") %></abbr>
-			</footer>
-		</article>
-	</li>
+      <footer>
+        <abbr class="timeago quiet" title="<%= comment.escape('created_at') %>"><%= comment.escape('created_at') %></abbr>
+      </footer>
+    </article>
+  </li>
 <% }); %>
 </ul>
 

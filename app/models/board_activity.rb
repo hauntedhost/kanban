@@ -6,12 +6,15 @@
 #  member_id   :integer          not null
 #  board_id    :integer          not null
 #  description :text             not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+# Indexes
+#
+#  index_board_activities_on_board_id  (board_id)
 #
 
 class BoardActivity < ActiveRecord::Base
-  attr_accessible :board_id, :member_id, :description
 
   belongs_to :member, class_name: "User"
   belongs_to :board
