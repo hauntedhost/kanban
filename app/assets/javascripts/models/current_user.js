@@ -1,3 +1,3 @@
 Kanban.Models.CurrentUser = Kanban.Models.User.extend({
-  urlRoot: "/api/users/current"
+  urlRoot: '/api/users/current'
 });

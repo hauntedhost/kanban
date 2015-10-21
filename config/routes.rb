@@ -1,16 +1,15 @@
 Kanban::Application.routes.draw do
 
-  root to: "Root#index"
+  root to: "main#index"
   resource :root, only: [:index]
 
   resource :session, only: [:new, :create, :destroy]
-  get "login" => "Sessions#new"
-  get "logout" => "Sessions#destroy"
+  get "login" => "sessions#new"
+  get "logout" => "sessions#destroy"
 
   # resources :users, only: [:show]
 
   namespace :api do
-
     resources :users, only: [:show] do
       collection do
         get :current

@@ -1,7 +1,7 @@
 object false
 
 node :list_id do
-	@list.id
+  @list.id
 end
 
 child @cards, root: "cards" do

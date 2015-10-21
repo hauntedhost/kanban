@@ -1,15 +1,15 @@
 Kanban.Views.BoardsIndex = Backbone.View.extend({
   template: JST['boards/index'],
-  tagName: "section",
-  className: "boards-index",
+  tagName: 'section',
+  className: 'boards-index',
 
   events: {
-    "submit form.create_board": "createBoard"
+    'submit form.create_board': 'createBoard'
   },
 
   initialize: function () {
     var that = this;
-    that.collection.on("all", that.render, that);
+    that.collection.on('all', that.render, that);
   },
 
   render: function () {
@@ -36,11 +36,11 @@ Kanban.Views.BoardsIndex = Backbone.View.extend({
 
     // fail if no board name
     if (!attrs.board.name) {
-      var $createContainer = $("div.create_board");
-      var $nameInput = that.$el.find("input.board_name");
+      var $createContainer = $('div.create_board');
+      var $nameInput = that.$el.find('input.board_name');
 
       $nameInput.hide();
-      $createContainer.effect("shake", {
+      $createContainer.effect('shake', {
         distance: 9,
         times: 2,
         complete: function () {
@@ -54,11 +54,11 @@ Kanban.Views.BoardsIndex = Backbone.View.extend({
     // save list
     board.save(attrs.board, {
       success: function (data) {
-        board.get("users").add(Kanban.currentUser);
+        board.get('users').add(Kanban.currentUser);
         that.collection.add(board);
 
         // keep focus on list input
-        that.$el.find("input.board_name").focus();
+        that.$el.find('input.board_name').focus();
       }
     });
   }

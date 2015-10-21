@@ -1,18 +1,18 @@
 <header class="list_title">
-	<span class="edit js-edit-list-title" 
-				id="list_<%= list.id %>"><%= list.escape("title") %></span>
+  <span class="edit js-edit-list-title"
+        id="list_<%= list.id %>"><%= list.escape('title') %></span>
   <button class="archive_list entypo-cancel"
-  				data-list-id="<%= list.id %>"></button>
+          data-list-id="<%= list.id %>"></button>
 </header>
 
 <section class="cards"></section>
 
 <div class="add_card">
-	<form class="add_card" data-list-id="<%= list.id %>">
-		<input type="text"
+  <form class="add_card" data-list-id="<%= list.id %>">
+    <input type="text"
            class="card_title"
            name="card[title]"
            placeholder="Add a card ..." />
-		<input type="submit" value="Add Card" />
-	</form>
+    <input type="submit" value="Add Card" />
+  </form>
 </div>

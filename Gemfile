@@ -1,38 +1,38 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.2.4'
+ruby '2.2.2'
 
 gem 'acts_as_list'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt'
 gem 'ejs'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'less-rails'
+gem 'pg'
 gem 'rabl'
 gem 'therubyracer'
+gem 'sass-rails', '~> 5.0'
 gem 'thin'
-
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'less-rails'
-  gem 'sass-rails', '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem 'annotate'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'debugger'
-  gem 'meta_request'
-  gem 'pry-rails'
-  gem 'rails-erd'
-  gem 'seed_dump'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'annotate'
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
-group :production, :staging do
-  gem 'pg'
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
