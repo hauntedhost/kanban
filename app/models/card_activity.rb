@@ -19,4 +19,5 @@ class CardActivity < ActiveRecord::Base
   belongs_to :member, class_name: 'User'
   belongs_to :card
 
+  validates_presence_of :card, :member, :description
 end

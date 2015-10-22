@@ -17,7 +17,12 @@
 #  index_users_on_session_key  (session_key)
 #
 
-class UserSerializer < ActiveModel::Serializer
-  attributes :id, :bio, :email, :full_name, :gravatar_url
-
+FactoryGirl.define do
+  factory :user do
+    full_name { Faker::Name.name }
+    email { Faker::Internet.email }
+    password '12345678'
+    password_confirmation '12345678'
+    bio { Faker::Lorem.paragraph(1) }
+  end
 end

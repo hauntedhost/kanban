@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  username        :string
 #  email           :string           not null
 #  password_digest :string
 #  session_key     :string
@@ -39,9 +38,9 @@ class User < ActiveRecord::Base
            class_name: 'Card',
            foreign_key: :assignee_id
 
-  validates_uniqueness_of :email
   validates_presence_of :email, :password_digest
-  validates_length_of :password, { minimum: 3 }
+  validates_length_of :password, in: 8..64
+  validates_uniqueness_of :email
 
   default_scope { order(:id) }
 
@@ -49,5 +48,4 @@ class User < ActiveRecord::Base
     md5 = Digest::MD5.hexdigest(self.email)
     "http://www.gravatar.com/avatar/#{md5}?s=#{size}"
   end
-
 end

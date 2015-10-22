@@ -18,14 +18,17 @@
 #  index_cards_on_list_id  (list_id)
 #
 
-class CardSerializer < ActiveModel::Serializer
-  attributes :id, :comments_count, :description, :due_date, :list_id,
-    :open, :position, :title
+require 'rails_helper'
 
-  has_one :assignee, embed: :objects
-  has_many :comments, embed: :objects
+RSpec.describe Card, type: :model do
+  let(:card) { build(:card) }
 
-  def list_id
-    object.list.id
+  it 'has a valid factory' do
+    expect(card).to be_valid
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:list) }
+    it { is_expected.to validate_presence_of(:title) }
   end
 end

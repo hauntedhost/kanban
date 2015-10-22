@@ -15,12 +15,17 @@
 #  index_lists_on_board_id  (board_id)
 #
 
-class ListSerializer < ActiveModel::Serializer
-  attributes :id, :board_id, :open, :position, :title
+require 'rails_helper'
 
-  has_many :cards, embed: :objects
+RSpec.describe List, type: :model do
+  let(:list) { build(:list) }
 
-  def board_id
-    object.board.id
+  it 'has a valid factory' do
+    expect(list).to be_valid
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:board) }
+    it { is_expected.to validate_presence_of(:title) }
   end
 end

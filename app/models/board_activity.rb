@@ -19,4 +19,5 @@ class BoardActivity < ActiveRecord::Base
   belongs_to :member, class_name: 'User'
   belongs_to :board
 
+  validates_presence_of :board, :member, :description
 end

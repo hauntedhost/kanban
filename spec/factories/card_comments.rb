@@ -14,16 +14,10 @@
 #  index_card_comments_on_card_id  (card_id)
 #
 
-class CardComment < ActiveRecord::Base
-
-  belongs_to :card
-  belongs_to :commenter, class_name: 'User'
-
-  validates_presence_of :card, :commenter, :content
-
-  default_scope { order(created_at: :desc) }
-
-  def created_at_timestamp
-    created_at.to_time.to_i
+FactoryGirl.define do
+  factory :card_comment do
+    association :card
+    association :commenter, factory: :user
+    content { Faker::Lorem.paragraph(1) }
   end
 end

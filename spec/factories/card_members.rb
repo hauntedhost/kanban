@@ -14,13 +14,9 @@
 #  index_card_members_on_card_id_and_member_id  (card_id,member_id) UNIQUE
 #
 
-class CardMember < ActiveRecord::Base
-
-  belongs_to :card
-  belongs_to :member, class_name: 'User'
-
-  validates_presence_of :card, :member
-  validates_uniqueness_of :card_id, scope: [:card_id, :member_id]
-  validates_uniqueness_of :member_id, scope: [:member_id, :card_id]
-
+FactoryGirl.define do
+  factory :card_member do
+    association :card
+    association :member, factory: :user
+  end
 end
