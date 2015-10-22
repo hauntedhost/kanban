@@ -14,13 +14,16 @@
 #  index_boards_on_open  (open)
 #
 
-class Board < ActiveRecord::Base
+require 'rails_helper'
 
-  has_many :lists
-  has_many :board_activities
-  has_many :boards_members, class_name: 'BoardMember'
-  has_many :members, through: :boards_members
+RSpec.describe Board, type: :model do
+  let(:board) { build(:board) }
 
-  validates_presence_of :name
+  it 'has a valid factory' do
+    expect(board).to be_valid
+  end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+  end
 end

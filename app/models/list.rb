@@ -21,6 +21,8 @@ class List < ActiveRecord::Base
   belongs_to :board
   has_many :cards, dependent: :destroy
 
+  validates_presence_of :board, :title
+
   default_scope { order(:position) }
 
 end

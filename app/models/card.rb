@@ -32,6 +32,8 @@ class Card < ActiveRecord::Base
   has_many :comments, class_name: 'CardComment'
   has_many :activities, class_name: 'CardActivities'
 
+  validates_presence_of :list, :title
+
   accepts_nested_attributes_for :comments
 
   default_scope { order(:position) }

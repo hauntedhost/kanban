@@ -15,13 +15,9 @@
 #  index_board_members_on_board_id_and_member_id  (board_id,member_id) UNIQUE
 #
 
-class BoardMember < ActiveRecord::Base
-
-  belongs_to :board
-  belongs_to :member, class_name: 'User'
-
-  validates_presence_of :board, :member
-  validates_uniqueness_of :board_id, scope: [:board_id, :member_id]
-  validates_uniqueness_of :member_id, scope: [:member_id, :board_id]
-
+FactoryGirl.define do
+  factory :board_member do
+    association :board
+    association :member, factory: :user
+  end
 end
