@@ -22,31 +22,21 @@ class Card < ActiveRecord::Base
   acts_as_list
 
   belongs_to :list
-  belongs_to :assignee, class_name: "User"
+  belongs_to :assignee, class_name: 'User'
 
   has_one :board, through: :list
 
-  has_many :cards_members, class_name: "CardMember"
+  has_many :cards_members, class_name: 'CardMember'
   has_many :members, through: :cards_members
 
-  has_many :comments, class_name: "CardComment"
-  has_many :activities, class_name: "CardActivities"
+  has_many :comments, class_name: 'CardComment'
+  has_many :activities, class_name: 'CardActivities'
 
   accepts_nested_attributes_for :comments
 
   default_scope { order(:position) }
 
   def comments_count
-    self.comments.count
-  end
-
-  def as_json(options = {})
-    super(options.merge(only: [:username, :email, :bio],
-                        methods: :gravatar_url))
-  end
-
-  def as_json(options = {})
-    super(options.merge(include: :comments,
-                        methods: :comments_counts))
+    comments.count
   end
 end

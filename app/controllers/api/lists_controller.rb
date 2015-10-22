@@ -2,13 +2,13 @@ module Api
   class ListsController < ApplicationController
 
     def index
-      @lists = current_user.lists
-      # render json: lists
+      lists = current_user.lists
+      render json: lists
     end
 
     def show
-      @list = current_user.lists.find(params[:id])
-      # render json: list
+      list = current_user.lists.find(params[:id])
+      render json: list
     end
 
     def create
@@ -41,6 +41,7 @@ module Api
     def sort
       list_ids = params[:list].map(&:to_i)
 
+      # TODO: authorize lists
       # unless (list_ids - current_user.list_ids).empty?
       #   render nothing: true, status: :unauthorized
       # end
