@@ -2,13 +2,13 @@ module Api
   class CardsController < ApplicationController
 
     def index
-      @cards = current_user.cards
-      # render json: cards
+      cards = current_user.cards
+      render json: cards
     end
 
     def show
-      @card = current_user.cards.find(params[:id])
-      # render json: card
+      card = current_user.cards.find(params[:id])
+      render json: card
     end
 
     def create
@@ -42,6 +42,7 @@ module Api
       list = List.find(params[:list_id])
       card_ids = params[:card].map(&:to_i)
 
+      # TODO: authorize cards
       # unless (card_ids - current_user.card_ids).empty?
       #   render nothing: true, status: :unauthorized
       # end

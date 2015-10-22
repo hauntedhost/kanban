@@ -17,7 +17,7 @@
 class CardComment < ActiveRecord::Base
 
   belongs_to :card
-  belongs_to :commenter, class_name: "User"
+  belongs_to :commenter, class_name: 'User'
 
   default_scope { order(created_at: :desc) }
 

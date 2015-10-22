@@ -23,7 +23,4 @@ class List < ActiveRecord::Base
 
   default_scope { order(:position) }
 
-  def as_json(options = {})
-    super(options.merge(include: :cards))
-  end
 end

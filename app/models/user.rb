@@ -18,17 +18,17 @@
 #  index_users_on_session_key  (session_key)
 #
 
-require "digest/md5"
+require 'digest/md5'
 
 class User < ActiveRecord::Base
   has_secure_password
 
   has_many :boards_members,
-           class_name: "BoardMember",
+           class_name: 'BoardMember',
            foreign_key: :member_id
 
   has_many :cards_members,
-           class_name: "CardMember",
+           class_name: 'CardMember',
            foreign_key: :member_id
 
   has_many :boards, through: :boards_members
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   has_many :cards, through: :lists
 
   has_many :cards_assigned,
-           class_name: "Card",
+           class_name: 'Card',
            foreign_key: :assignee_id
 
   validates_uniqueness_of :email
@@ -50,8 +50,4 @@ class User < ActiveRecord::Base
     "http://www.gravatar.com/avatar/#{md5}?s=#{size}"
   end
 
-  def as_json(options = {})
-    super(options.merge(only: [:username, :email, :bio],
-                        methods: :gravatar_url))
-  end
 end
