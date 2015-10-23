@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :redirect_logged_in_user, only: [:new]
+  before_action :require_login, only: [] # disable require login
+  before_action :redirect_logged_in_user, only: [:new]
 
   def new
     render :new
